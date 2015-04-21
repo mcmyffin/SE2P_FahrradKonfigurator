@@ -15,7 +15,18 @@
 			<div id="navbar">
 				<div id="navbar-bg-left"></div>
 				<div id="navbar-bg-center">
-					<div id="navbar-buttons" class="navbar">Test</div>
+					<div id="navbar-buttons" class="navbar">
+					<img alt=" | " src="de/get/break.png" style="position: absolute; margin: auto; margin-top: -6px; margin-left: -9px;" /> &nbsp; 
+					<a href="index.php?section=main">News</a>
+					<img alt=" | " src="de/get/break.png" style="position: absolute; margin: auto; margin-top: -6px; left: 65px;" /> &nbsp; &nbsp; &nbsp; 
+					<a href="index.php?section=konfigurator">Konfigurator</a>
+					<img alt=" | " src="de/get/break.png" style="position: absolute; margin: auto; margin-top: -6px; left: 194px;" /> &nbsp; &nbsp; &nbsp; 
+					<a href="index.php?section=login">Mein Konto</a>
+					<img alt=" | " src="de/get/break.png" style="position: absolute; margin: auto; margin-top: -6px; left: 312px;" /> &nbsp; &nbsp; &nbsp; 
+					<a href="index.php?section=warenkorb">Warenkorb</a>
+					<img alt=" | " src="de/get/break.png" style="position: absolute; margin: auto; margin-top: -6px; left: 426px;" /> &nbsp; &nbsp; &nbsp; 
+					<a href="index.php?section=kontakt">Kontakt</a>
+					<img alt=" | " src="de/get/break.png" style="position: absolute; margin: auto; margin-top: -6px; left: 517px;" /></div>
 				</div>
 				<div id="navbar-bg-right"></div>
 			</div>
