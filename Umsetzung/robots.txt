@@ -1,0 +1,4 @@
+# Robots.txt zu http://www.fahrradkonfigurator.de/ //anpassen
+# Jeder Robot darf diese Domain durchsuchen
+User-agent: *
+Disallow:
