@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<?php
+// Compatibility
+include_once 'de/libraries/compat.php';
+
+// Session initialization
+ini_set('session.use_cookies', true);
+ini_set('session.use_only_cookies', true);
+@session_start();
+
+if (isset($_SESSION) === false) {
+	$_SESSION = array();
+}
+?>
 <html id="html" lang="de" xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
 	<head>
 		<meta charset="utf-8" /> 
