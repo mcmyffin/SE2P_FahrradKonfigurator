@@ -1,5 +1,7 @@
 <div class="content">
 	<div class="headline">Impressum</div>
+		<iframe width="451" height="270" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=10.020722150802612%2C53.555963183773336%2C10.024605989456177%2C53.55755329954288&amp;layer=mapnik" style="border: 1px solid #aaa; right: 0px; position: absolute; top: 13px;"></iframe>
+	<br />
 	<div class="text">
 		<b>SEP/02</b><br />
 		<i>(Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV)</i><br />

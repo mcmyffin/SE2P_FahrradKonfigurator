@@ -90,7 +90,7 @@ if ($send === true) {
 		'bcc' => null,
 		'cc' => array(array($name => $email)),
 		'reply-to' => array(array($name => $email)),
-		'message' => 'Vielen Dank fÃ¼r deine Anfrage. Wir werden diese schnellstm&ouml;glich bearbeiten.' . "\n\n\n" . 'Folgende Daten hast du bei uns angegeben:' . "\n\n" . 'Telefon: ' . $phone . "\n" . 'Betreff: ' . $subject . "\n\n" . $message,
+		'message' => 'Vielen Dank für deine Anfrage. Wir werden diese schnellstm&ouml;glich bearbeiten.' . "\n\n\n" . 'Folgende Daten hast du bei uns angegeben:' . "\n\n" . 'Telefon: ' . $phone . "\n" . 'Betreff: ' . $subject . "\n\n" . $message,
 		'subject' => 'Kontaktformular: Fahrradkonfigurator.de'
 	);
 	
@@ -113,6 +113,7 @@ if ($send === true) {
 ?>
 <div class="content">
 	<div class="headline">Kontaktformular</div><br />
+	<iframe width="606px" height="196px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=10.020722150802612%2C53.555963183773336%2C10.024605989456177%2C53.55755329954288&amp;layer=mapnik" style="border: 1px solid #aaa; right: 0px; position: absolute; top: 36px;"></iframe>
 	<div id="form">
 		<form action="index.php?section=kontakt#form" method="post" onsubmit="if (this.submitted === true) { return false; } this.submitted = true; document.getElementById('submit').value = 'bitte warten...';">
 			<input name="session" type="hidden" value="<?php echo htmlspecialchars($session, ENT_QUOTES, 'UTF-8'); ?>" />
