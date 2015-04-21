@@ -42,5 +42,15 @@
 				?>
 			</div>
 		</div>
+		<div id="footer-bg">
+			<div id="footer">
+				<div id="footer-bg-left"></div>
+				<div id="footer-bg-center">
+					<div id="footer-text-left" class="footer">test</div>
+					<div id="footer-text-right" class="footer">test</div>
+				</div>
+				<div id="footer-bg-right"></div>
+			</div>
+		<div>
 	</body>
 </html>
