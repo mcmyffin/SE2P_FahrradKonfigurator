@@ -14,9 +14,10 @@ if (isset($_SESSION) === false) {
 ?>
 <html id="html" lang="de" xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
 	<head>
+		<link href="de/get/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<link href="de/style.css" rel="stylesheet" type="text/css" />
 		<meta charset="utf-8" /> 
 		<meta content="index,follow" name="robots" />
-		<link href="de/style.css" rel="stylesheet" type="text/css" />
 		<title>Willkommen beim Fahrradkonfigurator</title>
 	</head>
 	<body bgcolor="#f4f4f4">
