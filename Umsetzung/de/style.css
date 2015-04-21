@@ -113,6 +113,69 @@ text-align: right;
 margin: auto;
 }
 
+#info{
+height: 54px;
+left: 59px;
+margin: auto;
+padding: auto;
+position: absolute;
+width: 751px;
+}
+
+#info-bg-center{
+background-image: url("get/info-center.png");
+height: 54px;
+left: 7px;
+position: absolute;
+top: 0px;
+width: 738px;
+}
+
+#info-bg-left{
+background-image: url("get/info-left.png");
+height: 54px;
+left: 0px;
+position: absolute;
+top: 0px;
+width: 7px;
+}
+
+#info-bg-right{
+background-image: url("get/info-right.png");
+height: 54px;
+left: 745px;
+position: absolute;
+top: 0px;
+width: 7px;
+}
+
+#infobox-bg{
+background-color: #ddd;
+height: 350px;
+left: 600px;
+margin: auto;
+margin-left: -8px;
+margin-right: -8px;
+outline: 1px solid #bbb;
+padding: auto;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+position: absolute;
+top: 59px;
+width: 250px;
+}
+
+#last{
+height: 54px;
+left: 0px;
+margin: auto;
+padding: auto;
+position: absolute;
+width: 53px;
+}
+
 #logo{
 height: 83px;
 left: 25px;
@@ -141,6 +204,16 @@ width: 700px;
 color: #0c62d0; 
 font: 13pt Arial; 
 text-decoration: none; 
+}
+
+#menu{
+height: 54px;
+margin: auto;
+margin-left: -10px;
+margin-top: 14px;
+position: relative;
+top: 3px;
+width: 850px;
 }
 
 #navbar{
@@ -199,6 +272,41 @@ top: 7px;
 width: 882px;
 }
 
+#next{
+height: 54px;
+left: 817px;
+margin: auto;
+padding: auto;
+position: absolute;
+width: 53px;
+}
+
+#timeline-bg{
+background-color: #ddd;
+height: 50px;
+margin: auto;
+margin-left: -8px;
+outline: 1px solid #bbb;
+position: relative;
+width: 866px;
+}
+
+#view-bg{
+background-color: #ddd;
+height: 350px;
+margin: auto;
+margin-left: -8px;
+outline: 1px solid #bbb;
+padding: auto;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+position: relative;
+top: 9px;
+width: 575px;
+}
+
 .content{
 background-color: #ddd;
 outline: 1px solid #bbb;
@@ -235,6 +343,16 @@ text-decoration: none;
 color: #333; 
 font-size: 19pt;
 font-weight: bold;
+text-decoration: none; 
+}
+
+.info{
+color: #fefefe; 
+font-size: 19pt;
+font-weight: bold;
+margin: auto;
+margin-top: 11px;
+text-align: center;
 text-decoration: none; 
 }
 
