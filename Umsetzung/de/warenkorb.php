@@ -1,0 +1,72 @@
+<div class="content">
+	<div class="headline">Warenkorb</div><br />
+	<div class="text" style="color: #333;">
+		<table width="850px">
+			<colgroup>
+				<col width="550">
+				<col width="100px">
+				<col width="100px">
+				<col width="100px">
+			</colgroup>
+			<tr align="center" bgcolor="#bbb" height="26px">
+				<td>Produkt</td>
+				<td>Anzahl</td>
+				<td>Einzelpreis</td>
+				<td>Gesamtpreis</td>
+			</tr>
+			<tr align="center" bgcolor="#ccc" height="80px">
+				<td align="left"><img alt="Bild" src="de/get/logo.png" style="padding: 5px;" />&nbsp;&nbsp;&nbsp;&nbsp;<span style="position: absolute; text-align: left;">Typ: Hollandrad<br />Rahmenfarbe: blau<br />test<br />weiteres</span></td>
+				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp; &nbsp;<a href=""><img alt="o" src="de/get/refresh.png" /></a>&nbsp; &nbsp;<a href=""><img alt="x" src="de/get/delete.png" /></a></td>
+				<td>€ 300,29</td>
+				<td>€ 300,29</td>
+			</tr>
+			<tr align="center" bgcolor="#ccc" height="80px">
+				<td align="left"><img alt="Bild" src="de/get/logo.png" style="padding: 5px;" />&nbsp;&nbsp;&nbsp;&nbsp;<span style="position: absolute; text-align: left;">Typ: Hollandrad<br />Rahmenfarbe: blau<br />test<br />weiteres</span></td>
+				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp; &nbsp;<a href=""><img alt="o" src="de/get/refresh.png" /></a>&nbsp; &nbsp;<a href=""><img alt="x" src="de/get/delete.png" /></a></td>
+				<td>€ 305,29</td>
+				<td>€ 305,29</td>
+			</tr>
+			<tr align="center" bgcolor="#ccc" height="80px">
+				<td align="left"><img alt="Bild" src="de/get/logo.png" style="padding: 5px;" />&nbsp;&nbsp;&nbsp;&nbsp;<span style="position: absolute; text-align: left;">Typ: Hollandrad<br />Rahmenfarbe: blau<br />test<br />weiteres</span></td>
+				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp; &nbsp;<a href=""><img alt="o" src="de/get/refresh.png" /></a>&nbsp; &nbsp;<a href=""><img alt="x" src="de/get/delete.png" /></a></td>
+				<td>€ 419,29</td>
+				<td>€ 419,29</td>
+			</tr>
+		</table>
+	</div>
+	<div class="text">
+		<table width="850px">
+			<colgroup>
+				<col width="500">
+				<col width="200px">
+				<col width="150px">
+			</colgroup>
+			<tr align="right" height="26px">
+				<td></td>
+				<td>Warenwert</td>
+				<td>€ $Summe</td>
+			</tr>
+			<tr align="right" height="26px">
+				<td></td>
+				<td>zzgl. Versankosten</td>
+				<td>ab € 6,95</td>
+			</tr>
+			<tr align="right" height="26px">
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr align="right" height="26px">
+				<td></td>
+				<td><b>Gesamtpreis</b></td>
+				<td><b>€ $Summe + VK.</td>
+			</tr>
+			<tr align="right" height="26px">
+				<td></td>
+				<td>inkl. 19% MwSt.</td>
+				<td>€ $Warenwert*0,19</td>
+			</tr>
+		</table>
+		<input id="submit" style="cursor: pointer !important; margin-left: 556px; margin-top: 13px; width: 292px;" type="submit" value="zur Kasse" />	
+	</div>
+</div>
