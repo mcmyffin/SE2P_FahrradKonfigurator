@@ -30,6 +30,37 @@ top: 0px;
 width: 850px;
 }
 
+
+#logo{
+height: 83px;
+left: 25px;
+margin: auto;
+position: absolute;
+top: 8px;
+width: 80px;
+}
+
+#logo-bg{
+height: 83px;
+margin: auto;
+position: relative;
+top: 0px;
+width: 900px;
+}
+
+#logo-extend{
+height: 83px;
+left: 120px;
+margin: auto;
+margin-top: 15px;
+position: absolute;
+top: 8px;
+width: 700px;
+color: #0c62d0; 
+font: 13pt Arial; 
+text-decoration: none; 
+}
+
 .content{
 background-color: #ddd;
 outline: 1px solid #bbb;

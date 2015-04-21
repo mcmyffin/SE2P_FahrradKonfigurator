@@ -7,6 +7,10 @@
 		<title>Willkommen beim Fahrradkonfigurator</title>
 	</head>
 	<body bgcolor="#f4f4f4">
+		<div id="logo-bg">
+			<div id="logo"><a href="index.php?section=index"><img alt="Fahrradkonfigurator" src="de/get/logo.png" /></a></div>
+			<div id="logo-extend"><b style="font-size: 164.5%;">Fahrradkonfigurator</b><br />Der schnelle Weg zu Ihrem Fahrrad</div>
+		</div>
 		<div id="body-bg">
 			<div id="body">
 				<?php
