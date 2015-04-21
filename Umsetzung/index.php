@@ -46,8 +46,8 @@
 			<div id="footer">
 				<div id="footer-bg-left"></div>
 				<div id="footer-bg-center">
-					<div id="footer-text-left" class="footer">test</div>
-					<div id="footer-text-right" class="footer">test</div>
+					<div id="footer-text-left" class="footer">Copyright by <b>SEP/02</b></div>
+					<div id="footer-text-right" class="footer"><a href="index.php?section=agb">AGB</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="index.php?section=kontakt">Kontakt</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="index.php?section=impressum">Impressum</a></div>
 				</div>
 				<div id="footer-bg-right"></div>
 			</div>
