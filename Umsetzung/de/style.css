@@ -109,6 +109,10 @@ width: 400px;
 text-align: right;
 }
 
+#form{
+margin: auto;
+}
+
 #logo{
 height: 83px;
 left: 25px;
@@ -138,7 +142,6 @@ color: #0c62d0;
 font: 13pt Arial; 
 text-decoration: none; 
 }
-
 
 #navbar{
 height: 36px;
