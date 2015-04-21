@@ -212,6 +212,19 @@ padding-right: 8px;
 padding-top: 8px;
 }
 
+.error{
+background-color: #ffcaca;
+outline: 1px solid #ff7b7b;
+margin: auto;
+margin-left: -8px;
+margin-right: -8px;
+padding: auto;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+}
+
 .footer{
 color: #fefefe; 
 font-size: 11pt; 
@@ -231,8 +244,34 @@ font-size: 12pt;
 text-decoration: none; 
 }
 
+.success{
+background-color: #a6ffa6;
+outline: 1px solid #00bb00;
+margin: auto;
+margin-left: -8px;
+margin-right: -8px;
+padding: auto;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
+}
+
 .text{
 color: #666; 
 font-size: 12.5pt; 
 text-decoration: none; 
+}
+
+.warning{
+background-color: #ffffaa;
+outline: 1px solid #b2b200;
+margin: auto;
+margin-left: -8px;
+margin-right: -8px;
+padding: auto;
+padding-bottom: 8px;
+padding-left: 8px;
+padding-right: 8px;
+padding-top: 8px;
 }
