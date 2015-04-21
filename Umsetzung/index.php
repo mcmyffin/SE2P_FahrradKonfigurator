@@ -11,6 +11,15 @@
 			<div id="logo"><a href="index.php?section=index"><img alt="Fahrradkonfigurator" src="de/get/logo.png" /></a></div>
 			<div id="logo-extend"><b style="font-size: 164.5%;">Fahrradkonfigurator</b><br />Der schnelle Weg zu Ihrem Fahrrad</div>
 		</div>
+		<div id="navbar-bg">
+			<div id="navbar">
+				<div id="navbar-bg-left"></div>
+				<div id="navbar-bg-center">
+					<div id="navbar-buttons" class="navbar">Test</div>
+				</div>
+				<div id="navbar-bg-right"></div>
+			</div>
+		</div>
 		<div id="body-bg">
 			<div id="body">
 				<?php

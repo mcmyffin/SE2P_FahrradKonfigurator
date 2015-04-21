@@ -12,6 +12,11 @@ text-decoration: none;
 font-family: Arial; 
 }
 
+a:link{color: #fefefe;}
+a:visited{color: #fefefe;}
+a:hover{color: #111;}
+html {overflow-y: scroll;}
+
 #body-bg{
 margin: auto;
 margin-top: 8px;
@@ -61,6 +66,63 @@ font: 13pt Arial;
 text-decoration: none; 
 }
 
+
+#navbar{
+height: 36px;
+margin: auto;
+position: relative;
+top: 0px;
+width: 900px;
+}
+
+#navbar-bg{
+background-image: url("get/nav-bg.png");
+height: 36px;
+margin: auto;
+margin-top: 14px;
+position: relative;
+top: 0px;
+width: 900px;
+}
+
+#navbar-bg-center{
+background-image: url("get/nav-center.png");
+height: 36px;
+left: 9px;
+position: absolute;
+text-align: center;
+top: 0px;
+width: 882px;
+}
+
+#navbar-bg-left{
+background-image: url("get/nav-left.png");
+height: 36px;
+left: 0px;
+position: absolute;
+top: 0px;
+width: 9px;
+}
+
+#navbar-bg-right{
+background-image: url("get/nav-right.png");
+height: 36px;
+left: 891px;
+position: absolute;
+top: 0px;
+width: 9px;
+}
+
+#navbar-buttons{
+font-weight: bold;
+height: 29px;
+left: 9px;
+position: absolute;
+text-align: left;
+top: 7px;
+width: 882px;
+}
+
 .content{
 background-color: #ddd;
 outline: 1px solid #bbb;
@@ -78,6 +140,12 @@ padding-top: 8px;
 color: #333; 
 font-size: 19pt;
 font-weight: bold;
+text-decoration: none; 
+}
+
+.navbar{
+color: #fefefe; 
+font-size: 12pt; 
 text-decoration: none; 
 }
 
