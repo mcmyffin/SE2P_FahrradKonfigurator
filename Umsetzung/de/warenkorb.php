@@ -16,19 +16,19 @@
 			</tr>
 			<tr align="center" bgcolor="#ccc" height="80px">
 				<td align="left"><img alt="Bild" src="de/get/logo.png" style="padding: 5px;" />&nbsp;&nbsp;&nbsp;&nbsp;<span style="position: absolute; text-align: left;">Typ: Hollandrad<br />Rahmenfarbe: blau<br />test<br />weiteres</span></td>
-				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp; &nbsp;<a href=""><img alt="o" src="de/get/refresh.png" /></a>&nbsp; &nbsp;<a href=""><img alt="x" src="de/get/delete.png" /></a></td>
+				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp;<a href=""><img alt="o" height="23px" src="de/get/refresh.png" style="position: relative; top: 7px;" width="23px" /></a>&nbsp;<a href=""><img alt="x" height="23px" src="de/get/delete.png" style="position: relative; top: 7px;" width="23px" /></a></td>
 				<td>€ 300,29</td>
 				<td>€ 300,29</td>
 			</tr>
 			<tr align="center" bgcolor="#ccc" height="80px">
 				<td align="left"><img alt="Bild" src="de/get/logo.png" style="padding: 5px;" />&nbsp;&nbsp;&nbsp;&nbsp;<span style="position: absolute; text-align: left;">Typ: Hollandrad<br />Rahmenfarbe: blau<br />test<br />weiteres</span></td>
-				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp; &nbsp;<a href=""><img alt="o" src="de/get/refresh.png" /></a>&nbsp; &nbsp;<a href=""><img alt="x" src="de/get/delete.png" /></a></td>
+				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp;<a href=""><img alt="o" height="23px" src="de/get/refresh.png" style="position: relative; top: 7px;" width="23px" /></a>&nbsp;<a href=""><img alt="x" height="23px" src="de/get/delete.png" style="position: relative; top: 7px;" width="23px" /></a></td>
 				<td>€ 305,29</td>
 				<td>€ 305,29</td>
 			</tr>
 			<tr align="center" bgcolor="#ccc" height="80px">
 				<td align="left"><img alt="Bild" src="de/get/logo.png" style="padding: 5px;" />&nbsp;&nbsp;&nbsp;&nbsp;<span style="position: absolute; text-align: left;">Typ: Hollandrad<br />Rahmenfarbe: blau<br />test<br />weiteres</span></td>
-				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp; &nbsp;<a href=""><img alt="o" src="de/get/refresh.png" /></a>&nbsp; &nbsp;<a href=""><img alt="x" src="de/get/delete.png" /></a></td>
+				<td><input id="number" name="number" value="" size="1" style="outline: 1px solid #aaa; text-align: center;" />&nbsp;<a href=""><img alt="o" height="23px" src="de/get/refresh.png" style="position: relative; top: 7px;" width="23px" /></a>&nbsp;<a href=""><img alt="x" height="23px" src="de/get/delete.png" style="position: relative; top: 7px;" width="23px" /></a></td>
 				<td>€ 419,29</td>
 				<td>€ 419,29</td>
 			</tr>
