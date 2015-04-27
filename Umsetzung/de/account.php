@@ -87,6 +87,9 @@
 				<p><br />
 					<input id="submit" style="cursor: pointer !important; margin-top: 3px; width: 317px;" type="submit" value="Ändern" />
 				</p><br />
+				<p>
+					<input id="submit" style="cursor: pointer !important; margin-top: 3px; width: 317px;" type="submit" value="Account Löschen" />
+				</p><br />
 			</div>
 		</form>
 	</div>
