@@ -9,8 +9,9 @@ import play.data.Form;
 
 public class Application extends Controller {
 
-public static Result index() {
-        return ok(index.render());
+    public boolean doSomething(){
+        boolean iDidSomething = true;
+        return iDidSomething;
     }
 
 }
