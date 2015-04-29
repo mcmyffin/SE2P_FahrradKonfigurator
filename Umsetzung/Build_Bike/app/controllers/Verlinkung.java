@@ -37,7 +37,7 @@ public class Verlinkung extends Controller {
     }
 
     public static Result login() {
-        return ok(login.render());
+        return ok(login.render(null));
     }
 
     public static Result registrieren() {
