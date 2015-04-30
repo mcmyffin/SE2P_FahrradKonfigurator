@@ -29,7 +29,7 @@
 </div>
 <div id="infobox-bg">
 	<div id="infobox">
-		<b>Beleuchtung:</b><br /><br />
+		<b>Zubehör:</b><br /><br />
 		Sie haben die Auswahl zwischen:<br /><br />
 		<form action="index.php?section=step09#form">
 			<table style="border-spacing: 0px;">
