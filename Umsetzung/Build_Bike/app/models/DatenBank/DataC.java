@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.DatenBank.IDatenBank;
 import play.db.*;
 
 /**
@@ -22,6 +21,7 @@ public class DataC implements IDatenBank {
         try {
             Statement stmt = _con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT K_email from KundeT where K_email = '"+mailadr+"';");
+            stmt.close();
             while (rs.next()){
                 return true;
             }
@@ -37,6 +37,7 @@ public class DataC implements IDatenBank {
         try {
             Statement stmt = _con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT K_adresse, K_email, K_nachname, K_telefon, K_vorname from KundeT where K_ID ="+id+";");
+            stmt.close();
             while (rs.next()){
                 kudArr.add(rs.getString("K_adresse"));
                 kudArr.add(rs.getString("K_email"));
@@ -57,6 +58,7 @@ public class DataC implements IDatenBank {
         try {
             Statement stmt = _con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT K_ID from KundeT where K_email = '"+mail+"' AND K_passwort = '"+pass+"';");
+            stmt.close();
             while (rs.next()){
                 uID = rs.getInt("K_ID");
             }
@@ -73,6 +75,7 @@ public class DataC implements IDatenBank {
         try {
             Statement stmt = _con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT A_strasse, A_hausnummer, A_plz, A_Stadt, A_adresszusatz from KundeT,AdresseT where K_ID ="+id+" AND A_ID = K_adresse;");
+            stmt.close();
             while (rs.next()){
                 adrArr.add(rs.getString("A_strasse"));
                 adrArr.add(rs.getString("A_hausnummer"));
@@ -109,6 +112,23 @@ public class DataC implements IDatenBank {
 
     @Override
     public boolean setPasswort(int id, String passwort) {
+        return false;
+    }
+
+    @Override
+    public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname, int telefonummer, String strasse, int hausnummer, String adresszusatz, int plz, String stadt) {
+        List<String> adrArr = new ArrayList<String>();
+        try {
+            Statement stmt = _con.createStatement();
+            stmt.execute("INSERT INTO AdresseT (A_adresszusatz, A_hausnummer, A_plz, A_Stadt, A_strasse)\n" +
+                    "VALUES ('"+adresszusatz+"', "+hausnummer+", "+plz+",'"+stadt+"', '"+strasse+"');\n" +
+                    "INSERT INTO KundeT (K_adresse, K_email, K_nachname, K_passwort, K_telefon, K_vorname)\n" +
+                    "VALUES ((SELECT LAST_INSERT_ID()),'"+email+"', '"+nachname+"', '"+passwort+"', "+telefonummer+", '"+vorname+"')");
+            stmt.close();
+            return true;
+        } catch (Exception e) {
+
+        }
         return false;
     }
 
