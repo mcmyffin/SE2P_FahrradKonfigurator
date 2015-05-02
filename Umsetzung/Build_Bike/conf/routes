@@ -2,18 +2,29 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /                           controllers.Verlinkung.index()
-GET     /index                           controllers.Verlinkung.index()
-GET     /agb                           controllers.Verlinkung.agb()
-GET     /impressum                           controllers.Verlinkung.impressum()
-GET     /account                           controllers.Verlinkung.account()
-GET     /konfigurator                           controllers.Verlinkung.konfigurator()
-GET     /kontakt                           controllers.Verlinkung.kontakt()
-GET     /login                           controllers.Verlinkung.login()
-GET     /registrieren                           controllers.Verlinkung.registrieren()
-GET     /step02                           controllers.Verlinkung.step02()
-GET     /warenkorb                           controllers.Verlinkung.warenkorb()
+# GET Verlinkungen
+GET         /                    controllers.Verlinkung.index()
+GET         /index               controllers.Verlinkung.index()
+GET         /agb                 controllers.Verlinkung.agb()
+GET         /impressum           controllers.Verlinkung.impressum()
+GET         /account             controllers.Verlinkung.account()
+GET         /konfigurator        controllers.Verlinkung.konfigurator()
+GET         /kontakt             controllers.Verlinkung.kontakt()
+GET         /login               controllers.Verlinkung.login()
+GET         /registrieren        controllers.Verlinkung.registrieren()
+GET         /step02              controllers.Verlinkung.step02()
+GET         /step03              controllers.Verlinkung.step03()
+GET         /step04              controllers.Verlinkung.step04()
+GET         /step05              controllers.Verlinkung.step05()
+GET         /step06              controllers.Verlinkung.step06()
+GET         /step07              controllers.Verlinkung.step07()
+GET         /step08              controllers.Verlinkung.step08()
+GET         /step09              controllers.Verlinkung.step09()
+GET         /bestellen           controllers.Verlinkung.bestellen()
+GET         /warenkorb           controllers.Verlinkung.warenkorb()
+# POST Verlinkungen
+POST        /login               controllers.User.login()
+POST        /kontakt             controllers.User.mail()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET         /assets/*file        controllers.Assets.at(path="/public", file)
