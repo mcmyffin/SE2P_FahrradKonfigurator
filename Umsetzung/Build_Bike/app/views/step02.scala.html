@@ -3,35 +3,66 @@
 		<div id="timeline">
 			<table height="50px" width="850px">
 				<colgroup>
-				<?php
-			$count=8; //auslesen der Datein auch Namen mit php
-			for($i=0; $i < $count; $i++){
-				echo "<col>";
-					echo "<col width=\"6px\">
-						";
-						}
-						?>
+				@for(i <- 0 to 8) {
+					@Html("<col>")
+					@Html("<col width=\\\"6px\\\">")
+				}
 				</colgroup>
 				<tr>
-				<?php
-			for($i=0; $i < $count; $i++){
-				echo "<td align=\"center\"> <b class=\"text\">test</b> </td>";
-					echo "<td><img alt=\"|\" height=\"41px\" src=\"de/get/timeline-break.png\" /></td>
-						";
-						}
-						?>
+					<td align="center"> <b class="text">Typ</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+					<td align="center"> <b class="text">Farbe</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+					<td align="center"> <b class="text">Größe</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+					<td align="center"> <b class="text">Gabel</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+					<td align="center"> <b class="text">Reifen</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+					<td align="center"> <b class="text">Schaltung</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+					<td align="center"> <b class="text">Sattel</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+					<td align="center"> <b class="text">Licht</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+					<td align="center"> <b class="text">Zubehör</b> </td>
+					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
 				</tr>
 			</table>
 		</div>
 	</div>
 	<div id="view-bg">
-		<div id="view"></div>
+		<div id="view"><img alt="$php" height="366px" src="@routes.Assets.at("images/stadtrad/stadtrad-blau.png")" width="591px"/></div>
 	</div>
 	<div id="infobox-bg">
-		<div id="infobox"></div>
+		<div id="infobox">
+			<b>Rahmenfarbe:</b><br /><br />
+			Sie haben die Auswahl zwischen:<br /><br />
+			<table style="border-spacing: 0px;">
+				<tr>
+					<td align="center" bgcolor="#fa842b" height="50px" width="85px"></td>
+					<td align="center" bgcolor="#48a43f" height="50px" width="85px"></td>
+					<td align="center" bgcolor="#3481b9" height="50px" width="85px"></td>
+				</tr>
+				<tr>
+					<td align="center" bgcolor="#f3e03b" height="50px" width="85px"></td>
+					<td align="center" bgcolor="#f4f8f4" height="50px" width="85px"></td>
+					<td align="center" bgcolor="#0a0a0d" height="50px" width="85px"></td>
+				</tr>
+			</table><br />
+			Im <a href="step03">nächsten Schritt</a> wählen Sie die Rahmengröße aus.<br /><br />
+		</div>
 	</div>
 	<div id="menu">
-		<div id="last"><a href="step02"><img alt="Last" src="@routes.Assets.at("images/last.png")" /></a></div>
 		<div id="info">
 			<div id="info-bg-left"></div>
 			<div id="info-bg-center"><div class="info">Aktueller Preis: php€</div></div>

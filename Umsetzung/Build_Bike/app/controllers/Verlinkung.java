@@ -7,6 +7,9 @@ import views.html.*;
 
 import play.data.Form;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by tin on 27.04.15.
  */
@@ -33,7 +36,7 @@ public class Verlinkung extends Controller {
     }
 
     public static Result kontakt() {
-        return ok(kontakt.render());
+        return ok(kontakt.render(null));
     }
 
     public static Result login() {
@@ -74,6 +77,10 @@ public class Verlinkung extends Controller {
 
     public static Result step09() {
         return ok(step09.render());
+    }
+
+    public static Result bestellen() {
+        return ok(bestellen.render());
     }
 
     public static Result warenkorb() {

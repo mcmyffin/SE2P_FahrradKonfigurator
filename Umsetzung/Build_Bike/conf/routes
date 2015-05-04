@@ -20,9 +20,11 @@ GET         /step06              controllers.Verlinkung.step06()
 GET         /step07              controllers.Verlinkung.step07()
 GET         /step08              controllers.Verlinkung.step08()
 GET         /step09              controllers.Verlinkung.step09()
+GET         /bestellen           controllers.Verlinkung.bestellen()
 GET         /warenkorb           controllers.Verlinkung.warenkorb()
 # POST Verlinkungen
 POST        /login               controllers.User.login()
+POST        /kontakt             controllers.Mail.kontaktMail()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)

@@ -1,37 +1,60 @@
 @main("Build your bike for dummies") {
+
 	<div id="timeline-bg">
 		<div id="timeline">
 			<table height="50px" width="850px">
 				<colgroup>
-				<?php
-			$count=8; //auslesen der Datein auch Namen mit php
-			for($i=0; $i < $count; $i++){
-				echo "<col>";
-					echo "<col width=\"6px\">
-						";
-						}
-						?>
+		@for(i <- 0 to 8) {
+			@Html("<col>")
+			@Html("<col width=\\\"6px\\\">")
+		}
 				</colgroup>
 				<tr>
-				<?php
-			for($i=0; $i < $count; $i++){
-				echo "<td align=\"center\"> <b class=\"text\">test</b> </td>";
-					echo "<td><img alt=\"|\" height=\"41px\" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-						";
-						}
-						?>
+			<td align="center"> <b class="text">Typ</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+			<td align="center"> <b class="text">Farbe</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+			<td align="center"> <b class="text">Größe</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+			<td align="center"> <b class="text">Gabel</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+			<td align="center"> <b class="text">Reifen</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+			<td align="center"> <b class="text">Schaltung</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+			<td align="center"> <b class="text">Sattel</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+			<td align="center"> <b class="text">Licht</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
+			<td align="center"> <b class="text">Zubehör</b> </td>
+			<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
+
 				</tr>
 			</table>
 		</div>
 	</div>
 	<div id="view-bg">
-		<div id="view"></div>
+		<div id="view"><img alt="$php" height="366px" src="@routes.Assets.at("images/stadtrad/stadtrad-blau.png")" width="591px"/></div>
 	</div>
 	<div id="infobox-bg">
-		<div id="infobox"></div>
+		<div id="infobox">
+			<b>Fahrradtyp:</b><br /><br />
+			Sie haben die Auswahl zwischen:<br /><br />
+			- <a href="">Crossrad</a><br />
+			- <a href="">Mountainbike</a><br />
+			- <a href="">Stadtrad</a><br /><br />
+			Im <a href="step02">nächsten Schritt</a> wählen Sie die Rahmenfarbe aus.<br /><br />
+		</div>
 	</div>
 	<div id="menu">
-		<div id="last"><a href="konfigurator"><img alt="Last" src="@routes.Assets.at("images/last.png")" /></a></div>
 		<div id="info">
 			<div id="info-bg-left"></div>
 			<div id="info-bg-center"><div class="info">Aktueller Preis: php€</div></div>

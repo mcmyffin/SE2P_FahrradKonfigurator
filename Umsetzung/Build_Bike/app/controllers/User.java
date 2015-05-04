@@ -2,13 +2,12 @@ package controllers;
 
 import models.Kunde.IKunde;
 import models.Kunde.Kunde;
+import models.Mailer.*;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
-
-import java.util.Map;
 
 /**
  * Created by dima on 29.04.15.

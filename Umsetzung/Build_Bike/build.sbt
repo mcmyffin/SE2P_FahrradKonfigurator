@@ -11,5 +11,5 @@ libraryDependencies ++= Seq(
   javaEbean,
   cache,
   javaWs,
-  "com.typesafe.play" %% "play-mailer" % "3.0.0-M1"
+  "com.typesafe.play" %% "play-mailer" % "2.4.0"
 )
