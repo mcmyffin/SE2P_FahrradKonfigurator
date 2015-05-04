@@ -1,84 +1,87 @@
-<div class="content">
-	<div class="headline">Bestellübersicht</div><br />
-	<div class="text"><b>Hier steht Ihr Traumrad:</b></div><br />
-	<div class="text"><img alt="Ihr Traumrad" height="200px" src="de/get/stadtrad/stadtrad-blau.png" style="outline: 1px solid #bbb;" width="323px" /><br />
-	Ist es nicht einfach wunderschön :))))))) ?!?!<br /><br /><br /><br /><br /></div>
-	<div class="text" style="margin-left: 300px; position: absolute; top: 90px;">
-		<table>
-			<tr>
-				<td align="right" width="180px"><b>Artikel</b></td>
-				<td width="30px"></td>
-				<td width="200px"><b>Auswahl</b></td>
-				<td width="200px"><b>Preis</b></td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Rahmentyp:</td>
-				<td width="30px"></td>
-				<td>Stadtrad</td>
-				<td>400€</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Rahmenfarbe:</td>
-				<td width="30px"></td>
-				<td>Blau</td>
-				<td>gratis</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Rahmengröße:</td>
-				<td width="30px"></td>
-				<td>S43-46</td>
-				<td>gratis</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Fahrradgabel:</td>
-				<td width="30px"></td>
-				<td>Federgabel</td>
-				<td>50€</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Reifen:</td>
-				<td width="30px"></td>
-				<td>unplattbar</td>
-				<td>15€</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Schlatungstyp:</td>
-				<td width="30px"></td>
-				<td>fiktiv 3</td>
-				<td>250€</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Sattel:</td>
-				<td width="30px"></td>
-				<td>Sport</td>
-				<td>30€</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Beleuchtung:</td>
-				<td width="30px"></td>
-				<td>kompl. Lichtanlange</td>
-				<td>70€</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Zubehör:</td>
-				<td width="30px"></td>
-				<td>Fahrradhelm</td>
-				<td>40€</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px">Zubehör:</td>
-				<td width="30px"></td>
-				<td>Fahrradschloss</td>
-				<td>25€</td>
-			</tr>
-			<tr>
-				<td align="right" width="180px"></td>
-				<td width="30px"></td>
-				<td align="right"><b>Summe: &nbsp; &nbsp;</b></td>
-				<td><b>880€</b></td>
-			</tr>
-		</table>
-	</div>
-	<div class="text"><input id="submit" style="width: 250px;" type="submit" value="Jetzt in den Warenkorb" /></div>
-</div>
+@main("Build Your Bike For Dummies") {
+    <div class="content">
+        <div class="headline">Bestellübersicht</div><br />
+        <div class="text"><b>Hier steht Ihr Traumrad:</b></div><br />
+        <div class="text"><img alt="Ihr Traumrad" height="200px" src="@routes.Assets.at("images/stadtrad/stadtrad-blau.png")" style="outline: 1px solid #bbb;" width="323px" /><br />
+            Ist es nicht einfach wunderschön :))))))) ?!?!<br /><br /><br /><br /><br /></div>
+        <div class="text" style="margin-left: 300px; position: absolute; top: 90px;">
+            <table>
+                <tr>
+                    <td align="right" width="180px"><b>Artikel</b></td>
+                    <td width="30px"></td>
+                    <td width="200px"><b>Auswahl</b></td>
+                    <td width="200px"><b>Preis</b></td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Rahmentyp:</td>
+                    <td width="30px"></td>
+                    <td>Stadtrad</td>
+                    <td>400€</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Rahmenfarbe:</td>
+                    <td width="30px"></td>
+                    <td>Blau</td>
+                    <td>gratis</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Rahmengröße:</td>
+                    <td width="30px"></td>
+                    <td>S43-46</td>
+                    <td>gratis</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Fahrradgabel:</td>
+                    <td width="30px"></td>
+                    <td>Federgabel</td>
+                    <td>50€</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Reifen:</td>
+                    <td width="30px"></td>
+                    <td>unplattbar</td>
+                    <td>15€</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Schlatungstyp:</td>
+                    <td width="30px"></td>
+                    <td>fiktiv 3</td>
+                    <td>250€</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Sattel:</td>
+                    <td width="30px"></td>
+                    <td>Sport</td>
+                    <td>30€</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Beleuchtung:</td>
+                    <td width="30px"></td>
+                    <td>kompl. Lichtanlange</td>
+                    <td>70€</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Zubehör:</td>
+                    <td width="30px"></td>
+                    <td>Fahrradhelm</td>
+                    <td>40€</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px">Zubehör:</td>
+                    <td width="30px"></td>
+                    <td>Fahrradschloss</td>
+                    <td>25€</td>
+                </tr>
+                <tr>
+                    <td align="right" width="180px"></td>
+                    <td width="30px"></td>
+                    <td align="right"><b>Summe: &nbsp; &nbsp;</b></td>
+                    <td><b>880€</b></td>
+                </tr>
+            </table>
+        </div>
+        <div class="text"><input id="submit" style="width: 250px;" type="submit" value="Jetzt in den Warenkorb" /></div>
+    </div>
 
+
+}
