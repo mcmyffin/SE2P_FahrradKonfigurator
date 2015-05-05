@@ -17,7 +17,7 @@ public interface IDBKunde {
     /**
     * Methode zum erhalten von einen Kunden aus der DB
     * @param id id vom Kunden
-    * @result Kunde
+    * @result KundenKomponente
     * */
     public List<String> getKundeByID(int id);
 
@@ -93,7 +93,7 @@ public interface IDBKunde {
      * @param vorname vorname des Kunden
      * @param nachname Nachname des Kunden
      * @param telefonnummer Telefonnummer des Kunden
-     * @param strasse Straße, wo der Kunde wohnt
+     * @param strasse Straße, wo der KundenKomponente wohnt
      * @param hausnummer Hausnummer des kunden
      * @param adresszusatz Adresszusatz vom Kunden
      * @param plz Plz der Stadt des Kunden
