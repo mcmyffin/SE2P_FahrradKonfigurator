@@ -1,6 +1,8 @@
 package models.DatenBank;
 
 
+import org.mariadb.jdbc.*;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -17,10 +19,9 @@ public class DataC implements IDatenBank {
 
     @Override
     public boolean isKundeExistByMail(String mailadr) {
-        List<String> kudArr = new ArrayList<String>();
         try {
             Statement stmt = _con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT K_email from KundeT where K_email = '"+mailadr+"';");
+            ResultSet rs = stmt.executeQuery("SELECT K_email from KundeT where K_email = '" + mailadr + "';");
             stmt.close();
             while (rs.next()){
                 return true;

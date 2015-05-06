@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 23. Apr 2015 um 13:19
+-- Erstellungszeit: 06. Mai 2015 um 15:04
 -- Server Version: 10.0.17-MariaDB-1~trusty-log
 -- PHP-Version: 5.5.9-1ubuntu4.9
 
@@ -34,7 +34,15 @@ CREATE TABLE IF NOT EXISTS `AdresseT` (
   `A_Stadt` varchar(32) NOT NULL,
   `A_adresszusatz` varchar(63) NOT NULL,
   PRIMARY KEY (`A_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+--
+-- Daten für Tabelle `AdresseT`
+--
+
+INSERT INTO `AdresseT` (`A_ID`, `A_strasse`, `A_hausnummer`, `A_plz`, `A_Stadt`, `A_adresszusatz`) VALUES
+(1, 'Dada Straße', 1, 10000, 'Dadamstadt', 'Damnit!'),
+(4, 'Ja...hm.. Berliner tor glaub ich', 234, 20223, 'HambuuuuuuuurgNicht!', 'UzUz2');
 
 -- --------------------------------------------------------
 
@@ -89,10 +97,20 @@ CREATE TABLE IF NOT EXISTS `KundeT` (
   `K_email` varchar(63) NOT NULL,
   `K_adresse` int(11) NOT NULL,
   `K_telefon` int(11) NOT NULL,
+  `K_gebdatum` varchar(11) NOT NULL,
+  `K_anrede` varchar(12) NOT NULL,
   PRIMARY KEY (`K_ID`),
   UNIQUE KEY `K_email` (`K_email`),
   KEY `K_adresse` (`K_adresse`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Daten für Tabelle `KundeT`
+--
+
+INSERT INTO `KundeT` (`K_ID`, `K_vorname`, `K_nachname`, `K_passwort`, `K_email`, `K_adresse`, `K_telefon`, `K_gebdatum`, `K_anrede`) VALUES
+(1, 'Dada', 'Dumdum', 'kenntKeiner', 'dada@dumdum.de', 1, 123, '', ''),
+(2, 'Herbert', 'Lappen', 'wie Passwort?', 'MeineMail@Da.bitte', 4, 2147483647, '', '');
 
 -- --------------------------------------------------------
 
@@ -104,7 +122,8 @@ CREATE TABLE IF NOT EXISTS `MantelT` (
   `M_ID` int(11) NOT NULL AUTO_INCREMENT,
   `M_bild` varchar(127) NOT NULL,
   `M_BESCH` int(11) NOT NULL,
-  PRIMARY KEY (`M_ID`)
+  PRIMARY KEY (`M_ID`),
+  KEY `M_BESCH` (`M_BESCH`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -120,7 +139,8 @@ CREATE TABLE IF NOT EXISTS `RahmenT` (
   `R_reifengröße` int(3) NOT NULL,
   `R_bild` varchar(127) NOT NULL,
   `R_BESCH` int(11) NOT NULL,
-  PRIMARY KEY (`R_ID`)
+  PRIMARY KEY (`R_ID`),
+  KEY `R_BESCH` (`R_BESCH`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -133,7 +153,8 @@ CREATE TABLE IF NOT EXISTS `SattelT` (
   `S_ID` int(11) NOT NULL AUTO_INCREMENT,
   `S_bild` varchar(127) NOT NULL,
   `S_BESCH` int(11) NOT NULL,
-  PRIMARY KEY (`S_ID`)
+  PRIMARY KEY (`S_ID`),
+  KEY `S_BESCH` (`S_BESCH`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -146,7 +167,8 @@ CREATE TABLE IF NOT EXISTS `TeileT` (
   `T_ID` int(11) NOT NULL AUTO_INCREMENT,
   `T_bild` varchar(127) NOT NULL,
   `T_BESCH` int(11) NOT NULL,
-  PRIMARY KEY (`T_ID`)
+  PRIMARY KEY (`T_ID`),
+  KEY `T_BESCH` (`T_BESCH`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -159,7 +181,8 @@ CREATE TABLE IF NOT EXISTS `VorbauT` (
   `V_ID` int(11) NOT NULL AUTO_INCREMENT,
   `V_bild` varchar(127) NOT NULL,
   `V_BESCH` int(11) NOT NULL,
-  PRIMARY KEY (`V_ID`)
+  PRIMARY KEY (`V_ID`),
+  KEY `V_BESCH` (`V_BESCH`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -182,7 +205,37 @@ ALTER TABLE `GabelT`
 -- Constraints der Tabelle `KundeT`
 --
 ALTER TABLE `KundeT`
-  ADD CONSTRAINT `KundeT_ibfk_1` FOREIGN KEY (`K_adresse`) REFERENCES `AdresseT` (`A_ID`);
+  ADD CONSTRAINT `KundeT_ibfk_1` FOREIGN KEY (`K_adresse`) REFERENCES `AdresseT` (`A_ID`) ON DELETE CASCADE;
+
+--
+-- Constraints der Tabelle `MantelT`
+--
+ALTER TABLE `MantelT`
+  ADD CONSTRAINT `MantelT_ibfk_1` FOREIGN KEY (`M_BESCH`) REFERENCES `BeschreibungT` (`B_ID`);
+
+--
+-- Constraints der Tabelle `RahmenT`
+--
+ALTER TABLE `RahmenT`
+  ADD CONSTRAINT `RahmenT_ibfk_1` FOREIGN KEY (`R_BESCH`) REFERENCES `BeschreibungT` (`B_ID`);
+
+--
+-- Constraints der Tabelle `SattelT`
+--
+ALTER TABLE `SattelT`
+  ADD CONSTRAINT `SattelT_ibfk_1` FOREIGN KEY (`S_BESCH`) REFERENCES `BeschreibungT` (`B_ID`);
+
+--
+-- Constraints der Tabelle `TeileT`
+--
+ALTER TABLE `TeileT`
+  ADD CONSTRAINT `TeileT_ibfk_1` FOREIGN KEY (`T_BESCH`) REFERENCES `BeschreibungT` (`B_ID`);
+
+--
+-- Constraints der Tabelle `VorbauT`
+--
+ALTER TABLE `VorbauT`
+  ADD CONSTRAINT `VorbauT_ibfk_1` FOREIGN KEY (`V_BESCH`) REFERENCES `BeschreibungT` (`B_ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

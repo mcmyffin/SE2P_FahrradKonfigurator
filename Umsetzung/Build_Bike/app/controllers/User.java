@@ -45,8 +45,6 @@ public class User extends Controller {
         String plz = registrierenData.get("plz");
         String stadt = registrierenData.get("stadt");
 
-        System.out.println("Joging bis hier");
-
         // Typ umwandeln
         int hNr = Integer.parseInt(hausNr);
         int postLeitZahl = Integer.parseInt(plz);
