@@ -116,18 +116,21 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname, int telefonummer, String strasse, int hausnummer, String adresszusatz, int plz, String stadt) {
+    public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname, String gebDatum, String telefonummer, String strasse, int hausnummer, String adresszusatz, int plz, String stadt) {
         List<String> adrArr = new ArrayList<String>();
         try {
             Statement stmt = _con.createStatement();
-            stmt.execute("INSERT INTO AdresseT (A_adresszusatz, A_hausnummer, A_plz, A_Stadt, A_strasse)\n" +
-                    "VALUES ('"+adresszusatz+"', "+hausnummer+", "+plz+",'"+stadt+"', '"+strasse+"');\n" +
-                    "INSERT INTO KundeT (K_adresse, K_email, K_nachname, K_passwort, K_telefon, K_vorname)\n" +
-                    "VALUES ((SELECT LAST_INSERT_ID()),'"+email+"', '"+nachname+"', '"+passwort+"', "+telefonummer+", '"+vorname+"')");
+            stmt.execute("INSERT INTO AdresseT (A_adresszusatz, A_hausnummer, A_plz, A_Stadt, A_strasse)" +
+                    "VALUES ('" + adresszusatz + "', " + hausnummer + ", " + plz + ",'" + stadt + "', '" + strasse + "');");
+            ResultSet rs = stmt.executeQuery("SELECT MAX( A_ID ) AS A_ID FROM AdresseT;");
+            rs.next();
+            String adressindex = rs.getString("A_ID");
+            stmt.execute("INSERT INTO KundeT (K_adresse, K_email, K_nachname, K_passwort, K_telefon, K_vorname, K_gebdatum)" +
+                    " VALUES ("+adressindex+",'"+email+"', '"+nachname+"', '"+passwort+"', '"+telefonummer+"', '"+vorname+"','"+gebDatum+"');");
             stmt.close();
             return true;
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return false;
     }

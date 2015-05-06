@@ -24,7 +24,7 @@ public class KundenKomponente implements IKundenKomponente {
     }
 
     @Override
-    public int registrieren(String email, String passwort, String vorname, String nachname, String gebDatum, int telefonNr,
+    public int registrieren(String email, String passwort, String vorname, String nachname, String gebDatum, String telefonNr,
                             String strasse, int hausnummer, String adressZs, int plz, String stadt) {
 
         // precondition
@@ -43,7 +43,7 @@ public class KundenKomponente implements IKundenKomponente {
         // Adresszusatz darf leer sein. Man muss ueberpfruefen ob dieser nicht null ist
         adressZs = (adressZs == null ? "" : adressZs);
 
-        if(_db.setNeuerKunde(email,passwort,vorname,nachname,telefonNr,strasse,hausnummer,adressZs,plz,stadt)){
+        if(_db.setNeuerKunde(email,passwort,vorname,nachname,gebDatum,telefonNr,strasse,hausnummer,adressZs,plz,stadt)){
             return 0;
         }else{
             return 2;

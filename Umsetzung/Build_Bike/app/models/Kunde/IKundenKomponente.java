@@ -44,6 +44,6 @@ public interface IKundenKomponente {
      *
      * @return
      */
-    public int registrieren(String email, String passwort, String vorname, String nachname, String gebDatum, int telefonNr,
+    public int registrieren(String email, String passwort, String vorname, String nachname, String gebDatum, String telefonNr,
                                 String strasse, int hausnummer, String adressZs, int plz, String stadt);
 }

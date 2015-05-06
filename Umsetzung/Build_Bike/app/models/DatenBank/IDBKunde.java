@@ -100,7 +100,7 @@ public interface IDBKunde {
      * @param stadt Stadt des Kunden
      * @return Erfolgreich eingetragen -> True
      */
-    public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname,
-                                 int telefonnummer, String strasse, int hausnummer, String adresszusatz,
+    public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname, String gebDatum,
+                                 String telefonnummer, String strasse, int hausnummer, String adresszusatz,
                                  int plz, String stadt);
 }

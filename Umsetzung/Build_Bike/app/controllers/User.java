@@ -45,13 +45,14 @@ public class User extends Controller {
         String plz = registrierenData.get("plz");
         String stadt = registrierenData.get("stadt");
 
+        System.out.println("Joging bis hier");
+
         // Typ umwandeln
-        int telNr = Integer.parseInt(telefonNr);
         int hNr = Integer.parseInt(hausNr);
         int postLeitZahl = Integer.parseInt(plz);
 
         IKundenKomponente kKomponente = new KundenKomponente();
-        int bericht = kKomponente.registrieren(email,passwort,vorname,nachname,gebDatum,telNr,strasse,hNr,adressZs,postLeitZahl,stadt);
+        int bericht = kKomponente.registrieren(email,passwort,vorname,nachname,gebDatum,telefonNr,strasse,hNr,adressZs,postLeitZahl,stadt);
 
         // -1 = email schon registriert
         //  0 = erfolgreich registriert
