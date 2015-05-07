@@ -84,7 +84,9 @@
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
-$(document).ready(function() {
-  $("#animate-bike").animate({"left": "+=500px", "opacity": "+=0.5"}, 3000);
-}); 
+	var audioElement = document.createElement('audio');
+	audioElement.setAttribute('src', 'de/get/fahrradklingel.mp3');
+	$(document).ready(function() {
+		$("#animate-bike").animate({"left": "+=500px", "opacity": "+=0.5"}, 3000, function(){audioElement.play();});
+	}); 
 </script>
