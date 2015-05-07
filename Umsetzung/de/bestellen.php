@@ -1,8 +1,9 @@
 <div class="content">
 	<div class="headline">Bestellübersicht</div><br />
 	<div class="text"><b>Hier steht Ihr Traumrad:</b></div><br />
-	<div class="text"><img alt="Ihr Traumrad" height="200px" src="de/get/stadtrad/stadtrad-blau.png" style="outline: 1px solid #bbb;" width="323px" /><br />
+	<div class="text"><img alt="Ihr Traumrad" height="200px" src="de/get/stadtrad/stadtrad-blau.png" style="opacity: 0.5; outline: 1px solid #bbb;" width="323px" /><br />
 	Ist es nicht einfach wunderschön :))))))) ?!?!<br /><br /><br /><br /><br /></div>
+	<img alt="Ihr Traumrad" height="200px" id="animate-bike" src="de/get/stadtrad/stadtrad-blau.png" style="left: -500px; opacity: 0; position: absolute; top: 93px;" width="323px" />
 	<div class="text" style="margin-left: 300px; position: absolute; top: 90px;">
 		<table>
 			<tr>
@@ -81,4 +82,9 @@
 	</div>
 	<div class="text"><input id="submit" style="width: 250px;" type="submit" value="Jetzt in den Warenkorb" /></div>
 </div>
-
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+$(document).ready(function() {
+  $("#animate-bike").animate({"left": "+=500px", "opacity": "+=0.5"}, 3000);
+}); 
+</script>
