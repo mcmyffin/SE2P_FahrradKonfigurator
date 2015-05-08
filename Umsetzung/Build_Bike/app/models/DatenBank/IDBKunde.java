@@ -1,5 +1,7 @@
 package models.DatenBank;
 
+import models.Exception.DatabaseException;
+
 import java.util.List;
 
 /**
@@ -11,7 +13,7 @@ public interface IDBKunde {
 * @param mailadr Emailadresse
 * @result vorhanden -> true
 * */
-    public boolean isKundeExistByMail(String mailadr);
+    public boolean isKundeExistByMail(String mailadr) throws DatabaseException;
 
 
     /**
@@ -19,7 +21,7 @@ public interface IDBKunde {
     * @param id id vom Kunden
     * @result KundenKomponente
     * */
-    public List<String> getKundeByID(int id);
+    public List<String> getKundeByID(int id) throws DatabaseException;
 
 
     /**
@@ -28,7 +30,7 @@ public interface IDBKunde {
     * @param pass passwort des Kunden
     * @result id des Kunden
     * */
-    public int getKundeIDByLogin(String mail, String pass);
+    public int getKundeIDByLogin(String mail, String pass) throws DatabaseException;
 
 
     /**
@@ -37,7 +39,7 @@ public interface IDBKunde {
     * @result Adresse des Kunden
     *
     * */
-    public List<String> getAdressByID(int id);
+    public List<String> getAdressByID(int id) throws DatabaseException;
 
 
     /**
@@ -46,7 +48,7 @@ public interface IDBKunde {
     * @param vorname neuer Vorname
     * @result Erfolg -> true
     * */
-    public boolean setVorname(int id, String vorname);
+    public boolean setVorname(int id, String vorname) throws DatabaseException;
 
 
     /**
@@ -56,7 +58,7 @@ public interface IDBKunde {
     * @result Erfolg -> true
     *
     * */
-    public boolean setNachname(int id, String nachname);
+    public boolean setNachname(int id, String nachname) throws DatabaseException;
 
 
     /**
@@ -65,7 +67,7 @@ public interface IDBKunde {
     * @param adresse Neue adresse des Kunden
     * @result Erfolg -> true
     * */
-    public boolean setAdresse(int id, List<String> adresse);
+    public boolean setAdresse(int id, List<String> adresse) throws DatabaseException;
 
 
     /**
@@ -74,7 +76,7 @@ public interface IDBKunde {
     * @param email Neue Emailadresse des Kunden
     * @result Erfolg -> true
     * */
-    public boolean setEMail(int id, String email);
+    public boolean setEMail(int id, String email) throws DatabaseException;
 
 
     /**
@@ -84,7 +86,7 @@ public interface IDBKunde {
     * @result Erfolg -> true
     *
     * */
-    public boolean setPasswort(int id, String passwort);
+    public boolean setPasswort(int id, String passwort) throws DatabaseException;
 
     /**
      * Methode zum neuregistrieren eines Kunden
@@ -102,5 +104,5 @@ public interface IDBKunde {
      */
     public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname, String gebDatum,
                                  String telefonnummer, String strasse, int hausnummer, String adresszusatz,
-                                 int plz, String stadt);
+                                 int plz, String stadt) throws DatabaseException;
 }

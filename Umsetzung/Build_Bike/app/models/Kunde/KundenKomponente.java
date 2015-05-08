@@ -16,10 +16,14 @@ public class KundenKomponente implements IKundenKomponente {
 
     @Override
     public boolean anmelden(String email, String pw) {
-
+    try {
         if(_db.isKundeExistByMail(email)){
             return (_db.getKundeIDByLogin(email,pw) == 0 ? false : true);
         }
+    } catch (Exception e){
+        e.printStackTrace();
+    }
+
         return false;
     }
 
@@ -38,19 +42,19 @@ public class KundenKomponente implements IKundenKomponente {
         if(sindEingabenLeer || sindEingabenUndefiniert) return 1;
 
         // prüfe auf vorhandene E-Mail Adresse
-        if(_db.isKundeExistByMail(email)) return -1;
+        try {
+            if (_db.isKundeExistByMail(email)) return -1;
 
         // Adresszusatz darf leer sein. Man muss ueberpfruefen ob dieser nicht null ist
-        adressZs = (adressZs == null ? "" : adressZs);
+            adressZs = (adressZs == null ? "" : adressZs);
 
-        if(_db.setNeuerKunde(email,passwort,vorname,nachname,gebDatum,telefonNr,strasse,hausnummer,adressZs,plz,stadt)){
-            return 0;
-        }else{
-            return 2;
+            if(_db.setNeuerKunde(email, passwort, vorname, nachname, gebDatum, telefonNr, strasse, hausnummer, adressZs, plz, stadt)){
+                return 0;
+            }
+        } catch (Exception e){
+            e.printStackTrace();
         }
 
-
-
-
+        return 2;
     }
 }

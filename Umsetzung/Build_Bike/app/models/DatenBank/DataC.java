@@ -1,6 +1,7 @@
 package models.DatenBank;
 
 
+import models.Exception.DatabaseException;
 import org.mariadb.jdbc.*;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ public class DataC implements IDatenBank {
     Connection _con = DB.getConnection();
 
     @Override
-    public boolean isKundeExistByMail(String mailadr) {
+    public boolean isKundeExistByMail(String mailadr) throws DatabaseException {
         try {
             Statement stmt = _con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT K_email from KundeT where K_email = '" + mailadr + "';");
@@ -26,14 +27,14 @@ public class DataC implements IDatenBank {
             while (rs.next()){
                 return true;
             }
+            return false;
         } catch (Exception e) {
-
+            throw new DatabaseException(1);
         }
-        return false;
     }
 
     @Override
-    public List<String> getKundeByID(int id) {
+    public List<String> getKundeByID(int id) throws DatabaseException {
         List<String> kudArr = new ArrayList<String>();
         try {
             Statement stmt = _con.createStatement();
@@ -48,13 +49,12 @@ public class DataC implements IDatenBank {
             }
             return kudArr;
         } catch (Exception e) {
-
+            throw new DatabaseException(1);
         }
-        return kudArr;
     }
 
     @Override
-    public int getKundeIDByLogin(String mail, String pass) {
+    public int getKundeIDByLogin(String mail, String pass) throws DatabaseException {
         int uID = 0;
         try {
             Statement stmt = _con.createStatement();
@@ -65,13 +65,12 @@ public class DataC implements IDatenBank {
             }
             return uID;
         } catch (Exception e) {
-
+            throw new DatabaseException(1);
         }
-        return uID;
     }
 
     @Override
-    public List<String> getAdressByID(int id) {
+    public List<String> getAdressByID(int id) throws DatabaseException {
         List<String> adrArr = new ArrayList<String>();
         try {
             Statement stmt = _con.createStatement();
@@ -86,38 +85,37 @@ public class DataC implements IDatenBank {
             }
             return adrArr;
         } catch (Exception e) {
-
+            throw new DatabaseException(1);
         }
-        return adrArr;
     }
 
     @Override
-    public boolean setVorname(int id, String vorname) {
+    public boolean setVorname(int id, String vorname) throws DatabaseException {
         return false;
     }
 
     @Override
-    public boolean setNachname(int id, String nachname) {
+    public boolean setNachname(int id, String nachname) throws DatabaseException {
         return false;
     }
 
     @Override
-    public boolean setAdresse(int id, List<String> adresse) {
+    public boolean setAdresse(int id, List<String> adresse) throws DatabaseException {
         return false;
     }
 
     @Override
-    public boolean setEMail(int id, String email) {
+    public boolean setEMail(int id, String email) throws DatabaseException {
         return false;
     }
 
     @Override
-    public boolean setPasswort(int id, String passwort) {
+    public boolean setPasswort(int id, String passwort) throws DatabaseException {
         return false;
     }
 
     @Override
-    public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname, String gebDatum, String telefonummer, String strasse, int hausnummer, String adresszusatz, int plz, String stadt) {
+    public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname, String gebDatum, String telefonummer, String strasse, int hausnummer, String adresszusatz, int plz, String stadt) throws DatabaseException {
         List<String> adrArr = new ArrayList<String>();
         try {
             Statement stmt = _con.createStatement();
@@ -131,9 +129,8 @@ public class DataC implements IDatenBank {
             stmt.close();
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new DatabaseException(2);
         }
-        return false;
     }
 
 }

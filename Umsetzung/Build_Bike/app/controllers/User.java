@@ -45,25 +45,28 @@ public class User extends Controller {
         String plz = registrierenData.get("plz");
         String stadt = registrierenData.get("stadt");
 
-        // Typ umwandeln
-        int hNr = Integer.parseInt(hausNr);
-        int postLeitZahl = Integer.parseInt(plz);
-
-        IKundenKomponente kKomponente = new KundenKomponente();
-        int bericht = kKomponente.registrieren(email,passwort,vorname,nachname,gebDatum,telefonNr,strasse,hNr,adressZs,postLeitZahl,stadt);
-
         // -1 = email schon registriert
         //  0 = erfolgreich registriert
         //  1 = fehlerhafte Eingabe
         //  2 = Registrieren zurzeit nicht möglich
         String statusMeldung = "Registrierung zurzeit nicht möglich";
 
-        if(bericht == -1){
-            statusMeldung = "diese E-Mail Adresse ist bereits vergeben";
-        }else if(bericht == 1){
+        // Typ umwandeln
+        try {
+            int hNr = Integer.parseInt(hausNr);
+            int postLeitZahl = Integer.parseInt(plz);
+
+
+            IKundenKomponente kKomponente = new KundenKomponente();
+            int bericht = kKomponente.registrieren(email,passwort,vorname,nachname,gebDatum,telefonNr,strasse,hNr,adressZs,postLeitZahl,stadt);
+
+            if(bericht == -1){
+                statusMeldung = "diese E-Mail Adresse ist bereits vergeben";
+            }else if(bericht == 0) {
+                statusMeldung = "erfolgreich registriert";
+            }
+        } catch (Exception e){
             statusMeldung = "ueberpruefen Sie die Eingaben";
-        }else if(bericht == 0){
-            statusMeldung = "erfolgreich registriert";
         }
 
         return ok(registrieren.render(statusMeldung));
