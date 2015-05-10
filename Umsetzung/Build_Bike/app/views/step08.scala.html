@@ -3,39 +3,18 @@
 		<div id="timeline">
 			<table height="50px" width="850px">
 				<colgroup>
+				<colgroup>
 				@for(i <- 0 to 8) {
 					@Html("<col>")
 					@Html("<col width=\\\"6px\\\">")
 				}
+
 				</colgroup>
 				<tr>
-					<td align="center"> <b class="text">Typ</b> </td>
+				@for(p <- Array("Typ","Farbe","Größe","Gabel","Reifen","Schaltung","Sattel","Licht","Zubehör")){
+					<td align="center"> <b class="text">@p</b> </td>
 					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
-					<td align="center"> <b class="text">Farbe</b> </td>
-					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
-					<td align="center"> <b class="text">Größe</b> </td>
-					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
-					<td align="center"> <b class="text">Gabel</b> </td>
-					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
-					<td align="center"> <b class="text">Reifen</b> </td>
-					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
-					<td align="center"> <b class="text">Schaltung</b> </td>
-					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
-					<td align="center"> <b class="text">Sattel</b> </td>
-					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
-					<td align="center"> <b class="text">Licht</b> </td>
-					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
-					<td align="center"> <b class="text">Zubehör</b> </td>
-					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
-
+				}
 				</tr>
 			</table>
 		</div>
