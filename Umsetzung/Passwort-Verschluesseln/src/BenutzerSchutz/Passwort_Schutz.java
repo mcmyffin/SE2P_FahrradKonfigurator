@@ -3,13 +3,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
 
-public class Passwort_Schutz {
-	
-		   
-		private static  Formatter formatter;
+
+/* die Klasse Passwort_Schutz, die das Interface IPasswort_Schutz einbindet */
+   public class Passwort_Schutz implements IPasswort_Schutz {	   
+		
+	   private static  Formatter formatter;
 		
 
-		public static  String Verschluesseln (String Passwort) throws NoSuchAlgorithmException{
+		public String Verschluesseln (String Passwort) throws NoSuchAlgorithmException{
 			/**
 			 * MessageDigest ist das Klasse  Verschlüsseln übernimmt,
 			 * Wir holen uns mittels der Methode getInstance(String algorithm) eine Instanz mit unserem gewünschten Algorithmus 
@@ -40,7 +41,7 @@ public class Passwort_Schutz {
 			
 			return formatter.toString();
 		}
-			
+				
 		
 	 }
 			
