@@ -14,7 +14,7 @@ public class VerschluesselnTest {
 		/**
 		 * Passwort ist hier ein leererer String
 		 */
-		String output=Passwort_Schutz.Verschluesseln("");
+		String output=test.Verschluesseln("");
 		/**
 		 * Der SHA-512-Wert eines leeren Strings
 		 */
