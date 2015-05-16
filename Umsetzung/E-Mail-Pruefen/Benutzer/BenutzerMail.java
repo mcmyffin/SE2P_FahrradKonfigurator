@@ -40,7 +40,8 @@ public  class BenutzerMail implements IBenutzerMail {
 		if(EMail==null){
 		return false;
 	}
-		Pattern p = Pattern.compile("[a-z0-9]+@[a-z0-9]+\\.[a-z]+"); 
+		Pattern p = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"); 
         Matcher m = p.matcher((CharSequence) EMail); 
         return m.matches(); 
 	}
