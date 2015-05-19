@@ -40,6 +40,9 @@ public class Verlinkung extends Controller {
     }
 
     public static Result login() {
+
+        if(User.prufeUserSession()) return ok(account.render());
+
         return ok(login.render(null));
     }
 

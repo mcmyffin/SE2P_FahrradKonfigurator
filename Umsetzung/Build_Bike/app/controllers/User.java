@@ -39,7 +39,7 @@ public class User extends Controller {
             session(TIME,Long.toString(System.currentTimeMillis()));
         }
 
-        return ok(login.render(loginResult+""));
+        return ok(account.render());
     }
 
     public static Result registrieren(){
@@ -92,6 +92,6 @@ public class User extends Controller {
     public static Result logout(){
         session().remove(USER);
         session().remove(TIME);
-        return ok(index.render());
+        return redirect("/login");
     }
 }
