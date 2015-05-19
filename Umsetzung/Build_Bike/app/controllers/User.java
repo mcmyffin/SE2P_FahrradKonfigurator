@@ -14,6 +14,15 @@ import views.html.*;
 public class User extends Controller {
 
 
+    public static final String USER = "user";
+    public static final String TIME = "time";
+
+
+    public static boolean prufeUserSession(){
+
+        return (session(USER) != null);
+    }
+
     public static Result anmelden(){
 
         DynamicForm loginData = Form.form().bindFromRequest();
@@ -22,7 +31,15 @@ public class User extends Controller {
         String passwort = loginData.get("password");
 
         IKundenKomponente kunde = new KundenKomponente();
-        return ok(login.render(kunde.anmelden(email, passwort)+""));
+        boolean loginResult = kunde.anmelden(email, passwort);
+
+        // setzte Session
+        if(loginResult){
+            session(USER,email);
+            session(TIME,Long.toString(System.currentTimeMillis()));
+        }
+
+        return ok(login.render(loginResult+""));
     }
 
     public static Result registrieren(){
@@ -73,7 +90,8 @@ public class User extends Controller {
     }
 
     public static Result logout(){
-        // todo
-        return null;
+        session().remove(USER);
+        session().remove(TIME);
+        return ok(index.render());
     }
 }
