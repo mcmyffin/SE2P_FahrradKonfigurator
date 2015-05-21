@@ -23,21 +23,16 @@
 	</div>
 	<div id="infobox-bg">
 		<div id="infobox">
-			<b>Rahmenfarbe:</b><br /><br />
+			<b>Schaltungstyp:</b><br /><br />
 			Sie haben die Auswahl zwischen:<br /><br />
-			<table style="border-spacing: 0px;">
-				<tr>
-					<td align="center" bgcolor="#fa842b" height="50px" width="85px"></td>
-					<td align="center" bgcolor="#48a43f" height="50px" width="85px"></td>
-					<td align="center" bgcolor="#3481b9" height="50px" width="85px"></td>
-				</tr>
-				<tr>
-					<td align="center" bgcolor="#f3e03b" height="50px" width="85px"></td>
-					<td align="center" bgcolor="#f4f8f4" height="50px" width="85px"></td>
-					<td align="center" bgcolor="#0a0a0d" height="50px" width="85px"></td>
-				</tr>
-			</table><br />
-			Im <a href="step03">nächsten Schritt</a> wählen Sie die Rahmengröße aus.<br /><br />
+			<form action="step06#form">
+				<select size="1">
+					<option>fiktiv 1</option>
+					<option>fiktiv 2</option>
+					<option>fiktiv 3</option>
+				</select><br /><br />
+			</form>
+			Im <a href="step07">nächsten Schritt</a> wählen Sie den Sattel aus.<br /><br />
 		</div>
 	</div>
 	<div id="menu">
@@ -46,6 +41,6 @@
 			<div id="info-bg-center"><div class="info">Aktueller Preis: php€</div></div>
 			<div id="info-bg-right"></div>
 		</div>
-		<div id="next"><a href="step03"><img alt="Next" src="@routes.Assets.at("images/next.png")" /></a></div>
+		<div id="next"><a href="step07"><img alt="Next" src="@routes.Assets.at("images/next.png")" /></a></div>
 	</div>
 }
