@@ -13,9 +13,6 @@ public interface IBenutzerMail {
 	 * @param EMail
 	 * @return Ob E-Mail Adresse gültig oder nicht
 	 */
-	   public static boolean GueltigeEMail(String EMail) {
-		return false;
-	}
 	  
 
 }
