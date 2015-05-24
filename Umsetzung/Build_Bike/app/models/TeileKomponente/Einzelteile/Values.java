@@ -34,4 +34,12 @@ public class Values {
     public static Zubehoer createZubehoer(int id, int beschreibungID, int preis, int formTyp, int formTypID, String bild, String name, boolean zusatzBelegt){
         return null;
     }
+
+    public static Gabel createGabel(int id, int beschreibungID, int fromTyp, int formTypID, int schaftslaenge, int steuersatz,
+                                    int reifengroesse, int preis, boolean felgenbremse, boolean scheibenbremse, boolean licht,
+                                    String bild, String name){
+
+        return Gabel.getValue(id,beschreibungID,fromTyp,formTypID,schaftslaenge,steuersatz,reifengroesse,preis,
+                felgenbremse,scheibenbremse,licht,bild,name);
+    }
 }
