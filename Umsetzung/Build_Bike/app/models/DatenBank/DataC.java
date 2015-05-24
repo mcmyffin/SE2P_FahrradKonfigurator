@@ -18,12 +18,21 @@ import play.db.*;
 public class DataC implements IDatenBank {
     Connection _con = DB.getConnection();
 
+    private ResultSet getDataFormDB(String sqlStmt) throws DatabaseException{
+        try {
+            Statement stmt = _con.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlStmt);
+            stmt.close();
+            return rs;
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
     @Override
     public boolean isKundeExistByMail(String mailadr) throws DatabaseException {
         try {
-            Statement stmt = _con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT K_email from KundeT where K_email = '" + mailadr + "';");
-            stmt.close();
+            ResultSet rs = getDataFormDB("SELECT K_email from KundeT where K_email = '" + mailadr + "';");
             while (rs.next()){
                 return true;
             }
@@ -36,17 +45,9 @@ public class DataC implements IDatenBank {
     @Override
     public List<String> getKundeByID(int id) throws DatabaseException {
         List<String> kudArr = new ArrayList<String>();
+
         try {
-            Statement stmt = _con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT K_adresse, K_email, K_nachname, K_telefon, K_vorname from KundeT where K_ID ="+id+";");
-            stmt.close();
-            while (rs.next()){
-                kudArr.add(rs.getString("K_adresse"));
-                kudArr.add(rs.getString("K_email"));
-                kudArr.add(rs.getString("K_nachname"));
-                kudArr.add(rs.getString("K_telefon"));
-                kudArr.add(rs.getString("K_vorname"));
-            }
+            ResultSet rs = getDataFormDB("SELECT K_adresse, K_email, K_nachname, K_telefon, K_vorname from KundeT where K_ID ="+id+";");
             return kudArr;
         } catch (Exception e) {
             throw new DatabaseException(1);
@@ -57,9 +58,7 @@ public class DataC implements IDatenBank {
     public int getKundeIDByLogin(String mail, String pass) throws DatabaseException {
         int uID = 0;
         try {
-            Statement stmt = _con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT K_ID from KundeT where K_email = '"+mail+"' AND K_passwort = '"+pass+"';");
-            stmt.close();
+            ResultSet rs = getDataFormDB("SELECT K_ID from KundeT where K_email = '"+mail+"' AND K_passwort = '"+pass+"';");
             while (rs.next()){
                 uID = rs.getInt("K_ID");
             }
@@ -73,9 +72,7 @@ public class DataC implements IDatenBank {
     public List<String> getAdressByID(int id) throws DatabaseException {
         List<String> adrArr = new ArrayList<String>();
         try {
-            Statement stmt = _con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT A_strasse, A_hausnummer, A_plz, A_Stadt, A_adresszusatz from KundeT,AdresseT where K_ID ="+id+" AND A_ID = K_adresse;");
-            stmt.close();
+            ResultSet rs = getDataFormDB("SELECT A_strasse, A_hausnummer, A_plz, A_Stadt, A_adresszusatz from KundeT,AdresseT where K_ID ="+id+" AND A_ID = K_adresse;");
             while (rs.next()){
                 adrArr.add(rs.getString("A_strasse"));
                 adrArr.add(rs.getString("A_hausnummer"));
@@ -133,4 +130,336 @@ public class DataC implements IDatenBank {
         }
     }
 
+    @Override
+    public List<String> getFelgeByID(int id) throws DatabaseException{
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getAllFelgen() throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getFelgeByFormTyp(int formTyp) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<Integer> getFormTypTabelleByFelgeID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getBeschreibungByFelgeID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getGabelnByID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getAllGabel() throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getGabelByFormTyp(int formTyp) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<Integer> getFormTypTabelleByGabelID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getBeschreibungByGabelID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getMantelByID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getAllMantel() throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getMantelByFormTyp(int formTyp) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<Integer> getFormTypTabelleByMantelID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getBeschreibungByMantelID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getRahmenByFormtyp(int formTyp) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getRahmenByID(int rID) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getBeschreibungByRahmenID(int rID) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<Integer> getFormTypTabelleByRahmenID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getAllRahmen() throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getSattelByID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getAllSattel() throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getSattelByFormTyp(int formTyp) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<Integer> getFormTypTabelleBySattelID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getBeschreibungBySattelID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getTeileByID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getAllTeile() throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getTeileByFormTyp(int formTyp) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<Integer> getFormTypTabelleByTeileID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getBeschreibungByTeileID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getVorbauByID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getAllVorbau() throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<List<String>> getVorbauByFormTyp(int formTyp) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<Integer> getFormTypTabelleByVorbauID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getBeschreibungByVorbauID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<String> getBeschreibungByID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
+
+    @Override
+    public List<Integer> getFormTypTabelleByID(int id) throws DatabaseException {
+        try {
+
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+    }
 }
