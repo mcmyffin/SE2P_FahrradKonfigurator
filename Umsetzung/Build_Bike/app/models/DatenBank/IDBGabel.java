@@ -1,6 +1,7 @@
 package models.DatenBank;
 
 import models.Exception.DatabaseException;
+import models.TeileKomponente.Einzelteile.Gabel;
 
 import java.util.List;
 
@@ -14,20 +15,20 @@ public interface IDBGabel extends ITeileTabellen {
      * @param id id der Gabel
      * @return Die Gabel als List<String>
      */
-    public List<String> getGabelnByID(int id) throws DatabaseException;
+    public Gabel getGabelnByID(int id) throws DatabaseException;
 
     /**
      * Methode zum auslesen aller Gabeln
      * @return Alle Gabeln als List<List<String>>
      */
-    public List<List<String>> getAllGabel() throws DatabaseException;
+    public List<Gabel> getAllGabel() throws DatabaseException;
 
     /**
      * Methode zum auslesen der Gabeln mit einen bestimmte Formtyp
      * @param formTyp Formtyp der Gabeln
      * @return Eine Liste aller Gabeln mit den gegebenen Formtyp
      */
-    public List<List<String>> getGabelByFormTyp(int formTyp) throws DatabaseException;
+    public List<Gabel> getGabelByFormTyp(int formTyp) throws DatabaseException;
 
     /**
      * Methode zum auslesen der FormtypTabelle einer Gabel

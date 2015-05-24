@@ -1,6 +1,7 @@
 package models.DatenBank;
 
 import models.Exception.DatabaseException;
+import models.TeileKomponente.Einzelteile.Mantel;
 
 import java.util.List;
 
@@ -14,20 +15,20 @@ public interface IDBMantel extends ITeileTabellen {
      * @param id id des Mantels
      * @return Den Mantels als List<String>
      */
-    public List<String> getMantelByID(int id) throws DatabaseException;
+    public Mantel getMantelByID(int id) throws DatabaseException;
 
     /**
      * Methode zum auslesen aller Mäntel
      * @return Alle Mäntel als List<List<String>>
      */
-    public List<List<String>> getAllMantel() throws DatabaseException;
+    public List<Mantel> getAllMantel() throws DatabaseException;
 
     /**
      * Methode zum auslesen der Mäntel mit einen bestimmte Formtyp
      * @param formTyp Formtyp der Mäntel
      * @return Eine Liste aller Mäntel mit den gegebenen Formtyp
      */
-    public List<List<String>> getMantelByFormTyp(int formTyp) throws DatabaseException;
+    public List<Mantel> getMantelByFormTyp(int formTyp) throws DatabaseException;
 
     /**
      * Methode zum auslesen der FormtypTabelle eines Mantels

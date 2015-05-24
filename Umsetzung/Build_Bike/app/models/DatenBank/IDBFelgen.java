@@ -1,6 +1,7 @@
 package models.DatenBank;
 
 import models.Exception.DatabaseException;
+import models.TeileKomponente.Einzelteile.Felge;
 
 import java.util.List;
 
@@ -14,20 +15,20 @@ public interface IDBFelgen extends ITeileTabellen {
      * @param id id der Felge
      * @return Die Felge als List<String>
      */
-    public List<String> getFelgeByID(int id) throws DatabaseException;
+    public Felge getFelgeByID(int id) throws DatabaseException;
 
     /**
      * Methode zum auslesen aller Felgen
      * @return Alle Felgen als List<List<String>>
      */
-    public List<List<String>> getAllFelgen() throws DatabaseException;
+    public List<Felge> getAllFelgen() throws DatabaseException;
 
     /**
      * Methode zum auslesen der Felgen mit einen bestimmte Formtyp
      * @param formTyp Formtyp der Felgen
      * @return Eine Liste aller Felgen mit den gegebenen Formtyp
      */
-    public List<List<String>> getFelgeByFormTyp(int formTyp) throws DatabaseException;
+    public List<Felge> getFelgeByFormTyp(int formTyp) throws DatabaseException;
 
     /**
      * Methode zum auslesen der FormtypTabelle einer Flge

@@ -1,6 +1,7 @@
 package models.DatenBank;
 
 import models.Exception.DatabaseException;
+import models.TeileKomponente.Einzelteile.Sattel;
 
 import java.util.List;
 
@@ -14,20 +15,20 @@ public interface IDBSattel extends ITeileTabellen {
      * @param id id des Sattels
      * @return Den Sattel als List<String>
      */
-    public List<String> getSattelByID(int id) throws DatabaseException;
+    public Sattel getSattelByID(int id) throws DatabaseException;
 
     /**
      * Methode zum auslesen aller Sättel
      * @return Alle Sättel als List<List<String>>
      */
-    public List<List<String>> getAllSattel() throws DatabaseException;
+    public List<Sattel> getAllSattel() throws DatabaseException;
 
     /**
      * Methode zum auslesen der Sättel mit einen bestimmte Formtyp
      * @param formTyp Formtyp der Sättel
      * @return Eine Liste aller Sättel mit den gegebenen Formtyp
      */
-    public List<List<String>> getSattelByFormTyp(int formTyp) throws DatabaseException;
+    public List<Sattel> getSattelByFormTyp(int formTyp) throws DatabaseException;
 
     /**
      * Methode zum auslesen der FormtypTabelle eines Sattels
