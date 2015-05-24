@@ -1,26 +1,28 @@
-package models.TeileKomponente;
+package models.TeileKomponente.Einzelteile;
 
 /**
  * Created by dima on 19.05.15.
  */
-public class Sattel {
+public class Zubehoer {
+
     private int id;
-    private int beschreibungId;
-    private int name;
+    private int beschreibungID;
     private int preis;
     private int formTyp;
     private int formTypID;
     private String bild;
+    private String name;
+    private boolean zusatzBelegt;
 
-    public Sattel(int id, int name, int beschreibungId, int preis, int formTyp, int formTypID, String bild) {
-
+    public Zubehoer(int id, int beschreibungID, int preis, int formTyp, int formTypID, String bild, String name, boolean zusatzBelegt) {
         this.id = id;
-        this.name = name;
-        this.beschreibungId = beschreibungId;
+        this.beschreibungID = beschreibungID;
         this.preis = preis;
         this.formTyp = formTyp;
         this.formTypID = formTypID;
         this.bild = bild;
+        this.name = name;
+        this.zusatzBelegt = zusatzBelegt;
     }
 
     /**
@@ -37,17 +39,8 @@ public class Sattel {
      * Eine eindeutige Nummer der Beschreibung
      * @return beschreibungID
      */
-    public int getBeschreibungId() {
-        return beschreibungId;
-    }
-
-    /**
-     * Get Name
-     * representiert den Namen des Objekts
-     * @return name
-     */
-    public int getName() {
-        return name;
+    public int getBeschreibungID() {
+        return beschreibungID;
     }
 
     /**
@@ -84,5 +77,23 @@ public class Sattel {
      */
     public String getBild() {
         return bild;
+    }
+
+    /**
+     * Get Name
+     * representiert den Namen des Objekts
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Get ZusatzBelegt
+     *  TODO
+     * @return TODO
+     */
+    public boolean isZusatzBelegt() {
+        return zusatzBelegt;
     }
 }

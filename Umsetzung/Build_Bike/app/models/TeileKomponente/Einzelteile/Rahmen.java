@@ -1,4 +1,4 @@
-package models.TeileKomponente;
+package models.TeileKomponente.Einzelteile;
 
 /**
  * Created by dima on 19.05.15.

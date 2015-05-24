@@ -1,31 +1,30 @@
-package models.TeileKomponente;
+package models.TeileKomponente.Einzelteile;
 
 /**
  * Created by dima on 19.05.15.
  */
-public class Felge {
+public class Mantel {
 
     private int id;
     private int beschreibungID;
-    private int preis;
-    private int reifengroesse;
     private int formTyp;
     private int formTypID;
+    private int durchmesser;
+    private int reifengroesse;
+    private int preis;
     private String bild;
     private String name;
-    private boolean narbendynamo;
 
-    public Felge(int id, int beschrID, int preis, int reifGr, int formT, int formTID, String bild, String name, boolean narbendynamo){
-
+    public Mantel(int id, int beschreibungID, int formTyp, int formTypID, int durchmesser, int reifengroesse, int preis, String bild, String name) {
         this.id = id;
-        this.beschreibungID = beschrID;
+        this.beschreibungID = beschreibungID;
+        this.formTyp = formTyp;
+        this.formTypID = formTypID;
+        this.durchmesser = durchmesser;
+        this.reifengroesse = reifengroesse;
         this.preis = preis;
-        this.reifengroesse = reifGr;
-        this.formTyp = formT;
-        this.formTypID = formTID;
         this.bild = bild;
         this.name = name;
-        this.narbendynamo = narbendynamo;
     }
 
     /**
@@ -47,24 +46,6 @@ public class Felge {
     }
 
     /**
-     * Get Preis
-     * Aktueller Preis dieses Objektes
-     * @return preis
-     */
-    public int getPreis() {
-        return preis;
-    }
-
-    /**
-     * Get Reifengroesse
-     * Reifengroesse in cm
-     * @return reifengroesse
-     */
-    public int getReifengroesse() {
-        return reifengroesse;
-    }
-
-    /**
      * Get FormTyp
      * FormTyp wird anhand einer Nummer
      * @return formtyp
@@ -83,6 +64,33 @@ public class Felge {
     }
 
     /**
+     * Get Durchmesser
+     * Durchmesser in cm des Objekts
+     * @return durchmesser
+     */
+    public int getDurchmesser() {
+        return durchmesser;
+    }
+
+    /**
+     * Get Reifengroesse
+     * Reifengroesse in zoll
+     * @return reifengroesse in zoll
+     */
+    public int getReifengroesse() {
+        return reifengroesse;
+    }
+
+    /**
+     * Get Preis
+     * Aktueller Preis dieses Objektes
+     * @return preis
+     */
+    public int getPreis() {
+        return preis;
+    }
+
+    /**
      * Get Bild
      * Bild ist eine Referenz auf den Speicherort des Bildes
      * @return bildspeicherort
@@ -98,14 +106,5 @@ public class Felge {
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * Is Narbendynamo
-     * Wenn ein Narbendynamo im Objekt eingebaut, dann true
-     * @return boolean
-     */
-    public boolean isNarbendynamo() {
-        return narbendynamo;
     }
 }
