@@ -1,5 +1,7 @@
 package models.TeileKomponente.Einzelteile;
 
+import models.TeileKomponente.EinzelTeileTyp;
+
 /**
  * Created by dima on 19.05.15.
  */
@@ -14,7 +16,9 @@ public class Zubehoer {
     private String name;
     private boolean zusatzBelegt;
 
-    public Zubehoer(int id, int beschreibungID, int preis, int formTyp, int formTypID, String bild, String name, boolean zusatzBelegt) {
+    private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.ZUBEHOER;
+
+    private Zubehoer(int id, int beschreibungID, int preis, int formTyp, int formTypID, String bild, String name, boolean zusatzBelegt) {
         this.id = id;
         this.beschreibungID = beschreibungID;
         this.preis = preis;
@@ -23,6 +27,11 @@ public class Zubehoer {
         this.bild = bild;
         this.name = name;
         this.zusatzBelegt = zusatzBelegt;
+    }
+
+    static Zubehoer getValue(int id, int beschreibungID, int preis, int formTyp, int formTypID, String bild, String name, boolean zusatzBelegt){
+
+        return new Zubehoer(id,beschreibungID,preis,formTyp,formTypID,bild,name,zusatzBelegt);
     }
 
     /**
@@ -95,5 +104,10 @@ public class Zubehoer {
      */
     public boolean isZusatzBelegt() {
         return zusatzBelegt;
+    }
+
+
+    public EinzelTeileTyp getEinzelTeileTyp() {
+        return einzelTeileTyp;
     }
 }

@@ -1,5 +1,7 @@
 package models.TeileKomponente.Einzelteile;
 
+import models.TeileKomponente.EinzelTeileTyp;
+
 /**
  * Created by dima on 19.05.15.
  */
@@ -14,6 +16,8 @@ public class Felge {
     private String bild;
     private String name;
     private boolean narbendynamo;
+
+    private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.FELGE;
 
     private Felge(int id, int beschrID, int preis, int reifGr, int formT, int formTID, String bild, String name, boolean narbendynamo){
 
@@ -112,5 +116,9 @@ public class Felge {
      */
     public boolean isNarbendynamo() {
         return narbendynamo;
+    }
+
+    public EinzelTeileTyp getEinzelTeileTyp() {
+        return einzelTeileTyp;
     }
 }

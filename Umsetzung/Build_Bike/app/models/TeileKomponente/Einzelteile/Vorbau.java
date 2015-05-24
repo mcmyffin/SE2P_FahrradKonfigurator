@@ -1,5 +1,7 @@
 package models.TeileKomponente.Einzelteile;
 
+import models.TeileKomponente.EinzelTeileTyp;
+
 /**
  * Created by dima on 19.05.15.
  */
@@ -12,7 +14,9 @@ public class Vorbau {
     private int formTypID;
     private String bild;
 
-    public Vorbau(int id, int beschreibungID, int preis, int schaftsgroesse, int formTyp, int formTypId, String bild) {
+    private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.VORBAU;
+
+    private Vorbau(int id, int beschreibungID, int preis, int schaftsgroesse, int formTyp, int formTypId, String bild) {
         this.id = id;
         this.beschreibungID = beschreibungID;
         this.preis = preis;
@@ -20,6 +24,11 @@ public class Vorbau {
         this.formTyp = formTyp;
         this.formTypID = formTypId;
         this.bild = bild;
+    }
+
+    static Vorbau getValue(int id, int beschreibungID, int preis, int schaftsgroesse, int formTyp, int formTypId, String bild){
+
+        return new Vorbau(id,beschreibungID,preis,schaftsgroesse,formTyp,formTypId,bild);
     }
 
     /**
@@ -83,5 +92,10 @@ public class Vorbau {
      */
     public String getBild() {
         return bild;
+    }
+
+
+    public EinzelTeileTyp getEinzelTeileTyp() {
+        return einzelTeileTyp;
     }
 }

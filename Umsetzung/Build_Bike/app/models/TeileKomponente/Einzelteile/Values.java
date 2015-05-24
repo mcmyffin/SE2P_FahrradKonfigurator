@@ -13,26 +13,27 @@ public class Values {
     }
 
     public  static Mantel createMantel(int id, int beschreibungID, int formTyp, int formTypID, int durchmesser, int reifengroesse, int preis, String bild, String name){
-        return null;
+        return Mantel.getValue(id,beschreibungID,formTyp,formTypID,durchmesser,reifengroesse,preis,bild,name);
     }
 
     public static Rahmen createRahmen(int id, int hoehe, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
                                       int schaftshoehe, int zusatzbefest, boolean scheibenbremse, boolean felgenbremse, int tretlager,
                                       int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht){
-        return null;
+        return Rahmen.getValue(id,hoehe,form,reifengroesse,bild,beschreibungID,steuersatz,schaftshoehe,zusatzbefest,scheibenbremse,
+                felgenbremse,tretlager,fromTyp,formTypID,name,preis,gepaektraeger,licht);
     }
 
     public static Sattel createSattel(int id, int name, int beschreibungId, int preis, int formTyp, int formTypID, String bild){
 
-        return null;
+        return Sattel.getValue(id,name,beschreibungId,preis,formTyp,formTypID,bild);
     }
 
     public static Vorbau createVorbau(int id, int beschreibungID, int preis, int schaftsgroesse, int formTyp, int formTypId, String bild){
-        return null;
+        return Vorbau.getValue(id,beschreibungID,preis,schaftsgroesse,formTyp,formTypId,bild);
     }
 
     public static Zubehoer createZubehoer(int id, int beschreibungID, int preis, int formTyp, int formTypID, String bild, String name, boolean zusatzBelegt){
-        return null;
+        return Zubehoer.getValue(id,beschreibungID,preis,formTyp,formTypID,bild,name,zusatzBelegt);
     }
 
     public static Gabel createGabel(int id, int beschreibungID, int fromTyp, int formTypID, int schaftslaenge, int steuersatz,

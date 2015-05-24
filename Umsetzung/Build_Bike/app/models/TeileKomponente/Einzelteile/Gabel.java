@@ -1,5 +1,7 @@
 package models.TeileKomponente.Einzelteile;
 
+import models.TeileKomponente.EinzelTeileTyp;
+
 /**
  * Created by dima on 24.05.15.
  */
@@ -18,6 +20,9 @@ public class Gabel {
     private boolean licht;
     private String bild;
     private String name;
+
+    private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.GABEL;
+
 
     private Gabel(int id, int beschreibungID, int fromTyp, int formTypID, int schaftslaenge, int steuersatz,
                  int reifengroesse, int preis, boolean felgenbremse, boolean scheibenbremse, boolean licht,
@@ -98,4 +103,9 @@ public class Gabel {
     public String getName() {
         return name;
     }
+
+    public EinzelTeileTyp getEinzelTeileTyp() {
+        return einzelTeileTyp;
+    }
+
 }

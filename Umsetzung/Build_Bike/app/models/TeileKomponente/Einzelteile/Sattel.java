@@ -1,5 +1,7 @@
 package models.TeileKomponente.Einzelteile;
 
+import models.TeileKomponente.EinzelTeileTyp;
+
 /**
  * Created by dima on 19.05.15.
  */
@@ -12,7 +14,9 @@ public class Sattel {
     private int formTypID;
     private String bild;
 
-    public Sattel(int id, int name, int beschreibungId, int preis, int formTyp, int formTypID, String bild) {
+    private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.SATTEL;
+
+    private Sattel(int id, int name, int beschreibungId, int preis, int formTyp, int formTypID, String bild) {
 
         this.id = id;
         this.name = name;
@@ -21,6 +25,12 @@ public class Sattel {
         this.formTyp = formTyp;
         this.formTypID = formTypID;
         this.bild = bild;
+    }
+
+
+    static Sattel getValue(int id, int name, int beschreibungId, int preis, int formTyp, int formTypID, String bild){
+
+        return new Sattel(id,name,beschreibungId,preis,formTyp,formTypID,bild);
     }
 
     /**
@@ -84,5 +94,11 @@ public class Sattel {
      */
     public String getBild() {
         return bild;
+    }
+
+
+
+    public EinzelTeileTyp getEinzelTeileTyp() {
+        return einzelTeileTyp;
     }
 }

@@ -1,5 +1,7 @@
 package models.TeileKomponente.Einzelteile;
 
+import models.TeileKomponente.EinzelTeileTyp;
+
 /**
  * Created by dima on 19.05.15.
  */
@@ -24,7 +26,9 @@ public class Rahmen {
     private boolean gepaektraeger;
     private boolean licht;
 
-    public Rahmen(int id, int hoehe, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
+    private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.RAHMEN;
+
+    private Rahmen(int id, int hoehe, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
                   int schaftshoehe, int zusatzbefest, boolean scheibenbremse, boolean felgenbremse, int tretlager,
                   int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht) {
 
@@ -46,6 +50,14 @@ public class Rahmen {
         this.preis = preis;
         this.gepaektraeger = gepaektraeger;
         this.licht = licht;
+    }
+
+    static Rahmen getValue(int id, int hoehe, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
+                           int schaftshoehe, int zusatzbefest, boolean scheibenbremse, boolean felgenbremse, int tretlager,
+                           int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht){
+
+        return new Rahmen(id,hoehe,form,reifengroesse,bild,beschreibungID,steuersatz,schaftshoehe,zusatzbefest,scheibenbremse,
+                          felgenbremse,tretlager,fromTyp,formTypID,name,preis,gepaektraeger,licht);
     }
 
     /**
@@ -206,5 +218,10 @@ public class Rahmen {
      */
     public boolean isLicht() {
         return licht;
+    }
+
+
+    public EinzelTeileTyp getEinzelTeileTyp() {
+        return einzelTeileTyp;
     }
 }

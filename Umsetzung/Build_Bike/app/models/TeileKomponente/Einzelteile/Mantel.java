@@ -1,5 +1,7 @@
 package models.TeileKomponente.Einzelteile;
 
+import models.TeileKomponente.EinzelTeileTyp;
+
 /**
  * Created by dima on 19.05.15.
  */
@@ -15,7 +17,10 @@ public class Mantel {
     private String bild;
     private String name;
 
-    public Mantel(int id, int beschreibungID, int formTyp, int formTypID, int durchmesser, int reifengroesse, int preis, String bild, String name) {
+    private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.MANTEL;
+
+
+    private Mantel(int id, int beschreibungID, int formTyp, int formTypID, int durchmesser, int reifengroesse, int preis, String bild, String name) {
         this.id = id;
         this.beschreibungID = beschreibungID;
         this.formTyp = formTyp;
@@ -25,6 +30,11 @@ public class Mantel {
         this.preis = preis;
         this.bild = bild;
         this.name = name;
+    }
+
+
+    static Mantel getValue(int id, int beschreibungID, int formTyp, int formTypID, int durchmesser, int reifengroesse, int preis, String bild, String name){
+        return new Mantel(id,beschreibungID,formTyp,formTypID,durchmesser,reifengroesse,preis,bild,name);
     }
 
     /**
@@ -106,5 +116,10 @@ public class Mantel {
      */
     public String getName() {
         return name;
+    }
+
+
+    public EinzelTeileTyp getEinzelTeileTyp() {
+        return einzelTeileTyp;
     }
 }
