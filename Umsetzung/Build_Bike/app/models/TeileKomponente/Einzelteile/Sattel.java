@@ -7,8 +7,8 @@ import models.TeileKomponente.EinzelTeileTyp;
  */
 public class Sattel {
     private int id;
-    private int beschreibungId;
-    private int name;
+    private int beschreibungID;
+    private String name;
     private int preis;
     private int formTyp;
     private int formTypID;
@@ -16,11 +16,11 @@ public class Sattel {
 
     private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.SATTEL;
 
-    private Sattel(int id, int name, int beschreibungId, int preis, int formTyp, int formTypID, String bild) {
+    private Sattel(int id, String name, int beschreibungID, int preis, int formTyp, int formTypID, String bild) {
 
         this.id = id;
         this.name = name;
-        this.beschreibungId = beschreibungId;
+        this.beschreibungID = beschreibungID;
         this.preis = preis;
         this.formTyp = formTyp;
         this.formTypID = formTypID;
@@ -28,9 +28,9 @@ public class Sattel {
     }
 
 
-    static Sattel getValue(int id, int name, int beschreibungId, int preis, int formTyp, int formTypID, String bild){
+    static Sattel getValue(int id, String name, int beschreibungID, int preis, int formTyp, int formTypID, String bild){
 
-        return new Sattel(id,name,beschreibungId,preis,formTyp,formTypID,bild);
+        return new Sattel(id,name,beschreibungID,preis,formTyp,formTypID,bild);
     }
 
     /**
@@ -47,8 +47,8 @@ public class Sattel {
      * Eine eindeutige Nummer der Beschreibung
      * @return beschreibungID
      */
-    public int getBeschreibungId() {
-        return beschreibungId;
+    public int getBeschreibungID() {
+        return beschreibungID;
     }
 
     /**
@@ -56,7 +56,7 @@ public class Sattel {
      * representiert den Namen des Objekts
      * @return name
      */
-    public int getName() {
+    public String getName() {
         return name;
     }
 
