@@ -1,5 +1,7 @@
 package models.TeileKomponente.DTO;
 
+import models.TeileKomponente.Einzelteile.Beschreibung;
+
 /**
  * Created by dima on 24.05.15.
  */
@@ -13,7 +15,7 @@ public class EinzelteilDTO {
 
     private final String einzelteiletyp;
 
-    public EinzelteilDTO(int id, int preis, String name, String kurzbeschreibung, String werbetext, String einzelteiletyp) {
+    public EinzelteilDTO(int id, int preis, String name, String kurzbeschreibung, String werbetext  , String einzelteiletyp) {
         this.id = id;
         this.preis = preis;
         this.name = name;

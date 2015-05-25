@@ -28,14 +28,14 @@ public class TeileKomponente implements ITeileKomponente{
         // precondition fuer null Objekte
         if(felge == null) return null;
 
-        Pair<String,String> beschreibungsPaar = getBeschreibungen(felge.getBeschreibungID());
+        Beschreibung beschreibung = getBeschreibungen(felge.getBeschreibungID());
 
         EinzelteilDTO einzelteilDTO = new EinzelteilDTO(
                 felge.getId(),
                 felge.getPreis(),
                 felge.getName(),
-                beschreibungsPaar.getKey(),
-                beschreibungsPaar.getValue(),
+                beschreibung.getKurzbeschreibung(),
+                beschreibung.getWerbetext(),
                 felge.getEinzelTeileTyp().getValue()
         );
         return einzelteilDTO;
@@ -47,14 +47,14 @@ public class TeileKomponente implements ITeileKomponente{
         // precondition fuer null Objekte
         if(gabel == null) return null;
 
-        Pair<String,String> beschreibungsPaar = getBeschreibungen(gabel.getBeschreibungID());
+        Beschreibung beschreibung = getBeschreibungen(gabel.getBeschreibungID());
 
         EinzelteilDTO einzelteilDTO = new EinzelteilDTO(
                 gabel.getId(),
                 gabel.getPreis(),
                 gabel.getName(),
-                beschreibungsPaar.getKey(),
-                beschreibungsPaar.getValue(),
+                beschreibung.getKurzbeschreibung(),
+                beschreibung.getWerbetext(),
                 gabel.getEinzelTeileTyp().getValue()
         );
         return einzelteilDTO;
@@ -66,14 +66,14 @@ public class TeileKomponente implements ITeileKomponente{
         // precondition fuer null Objekte
         if(mantel == null) return null;
 
-        Pair<String,String> beschreibungsPaar = getBeschreibungen(mantel.getBeschreibungID());
+        Beschreibung beschreibung = getBeschreibungen(mantel.getBeschreibungID());
 
         EinzelteilDTO einzelteilDTO = new EinzelteilDTO(
                 mantel.getId(),
                 mantel.getPreis(),
                 mantel.getName(),
-                beschreibungsPaar.getKey(),
-                beschreibungsPaar.getValue(),
+                beschreibung.getKurzbeschreibung(),
+                beschreibung.getWerbetext(),
                 mantel.getEinzelTeileTyp().getValue()
         );
         return einzelteilDTO;
@@ -85,14 +85,14 @@ public class TeileKomponente implements ITeileKomponente{
         // precondition fuer null Objekte
         if(rahmen== null) return null;
 
-        Pair<String,String> beschreibungsPaar = getBeschreibungen(rahmen.getBeschreibungID());
+        Beschreibung beschreibung = getBeschreibungen(rahmen.getBeschreibungID());
 
         EinzelteilDTO einzelteilDTO = new EinzelteilDTO(
                 rahmen.getId(),
                 rahmen.getPreis(),
                 rahmen.getName(),
-                beschreibungsPaar.getKey(),
-                beschreibungsPaar.getValue(),
+                beschreibung.getKurzbeschreibung(),
+                beschreibung.getWerbetext(),
                 rahmen.getEinzelTeileTyp().getValue()
         );
         return einzelteilDTO;
@@ -104,14 +104,14 @@ public class TeileKomponente implements ITeileKomponente{
         // precondition fuer null Objekte
         if(sattel == null) return null;
 
-        Pair<String,String> beschreibungsPaar = getBeschreibungen(sattel.getBeschreibungID());
+        Beschreibung beschreibung = getBeschreibungen(sattel.getBeschreibungID());
 
         EinzelteilDTO einzelteilDTO = new EinzelteilDTO(
                 sattel.getId(),
                 sattel.getPreis(),
                 sattel.getName(),
-                beschreibungsPaar.getKey(),
-                beschreibungsPaar.getValue(),
+                beschreibung.getKurzbeschreibung(),
+                beschreibung.getWerbetext(),
                 sattel.getEinzelTeileTyp().getValue()
         );
         return einzelteilDTO;
@@ -123,14 +123,14 @@ public class TeileKomponente implements ITeileKomponente{
         // precondition fuer null Objekte
         if(vorbau == null) return null;
 
-        Pair<String,String> beschreibungsPaar = getBeschreibungen(vorbau.getBeschreibungID());
+        Beschreibung beschreibung = getBeschreibungen(vorbau.getBeschreibungID());
 
         EinzelteilDTO einzelteilDTO = new EinzelteilDTO(
                 vorbau.getId(),
                 vorbau.getPreis(),
                 "",
-                beschreibungsPaar.getKey(),
-                beschreibungsPaar.getValue(),
+                beschreibung.getKurzbeschreibung(),
+                beschreibung.getWerbetext(),
                 vorbau.getEinzelTeileTyp().getValue()
         );
         return einzelteilDTO;
@@ -142,14 +142,14 @@ public class TeileKomponente implements ITeileKomponente{
         // precondition fuer null Objekte
         if(zubehoer == null) return null;
 
-        Pair<String,String> beschreibungsPaar = getBeschreibungen(zubehoer.getBeschreibungID());
+        Beschreibung beschreibung = getBeschreibungen(zubehoer.getBeschreibungID());
 
         EinzelteilDTO einzelteilDTO = new EinzelteilDTO(
                 zubehoer.getId(),
                 zubehoer.getPreis(),
                 zubehoer.getName(),
-                beschreibungsPaar.getKey(),
-                beschreibungsPaar.getValue(),
+                beschreibung.getKurzbeschreibung(),
+                beschreibung.getWerbetext(),
                 zubehoer.getEinzelTeileTyp().getValue()
         );
         return einzelteilDTO;
@@ -222,30 +222,9 @@ public class TeileKomponente implements ITeileKomponente{
     // Erstellt ein Paar mit Beschreibungen.
     // Key = Kurzbeschreibung
     // Value = Werbetext
-    private Pair<String,String> getBeschreibungen(int beschrID){
+    private Beschreibung getBeschreibungen(int beschrID){
 
-        List<String> beschreibungen = null;
-        Pair<String,String> result = null;
-
-        try {
-            beschreibungen = teilePersistenz.getBeschreibungByID(beschrID);
-
-            // preconditon fuer die List laenge
-            if(beschreibungen.size() != LIST_LENGTH) return null;
-
-            String kurzbeschreibung = beschreibungen.get(0);
-            String werbetext        = beschreibungen.get(1);
-
-            // precondition fuer null Objekte
-            if(kurzbeschreibung == null || werbetext == null) return null;
-
-            result = new Pair<String,String>(kurzbeschreibung,werbetext);
-
-        } catch (DatabaseException e) {
-            return null;
-        }
-
-        return result;
+        return alleTeilePersistenz.getBeschreibungByID(beschrID);
     }
 }
 
