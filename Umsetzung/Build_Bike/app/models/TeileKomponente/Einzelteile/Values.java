@@ -81,6 +81,14 @@ public class Values {
     }
 
 
+    public static FormTyp createFormTyp(int id, int gabel, int felge, int vorbau, int mantel, int rahmen, int teile, int sattel) throws ValuesCreateException {
+
+        if(!vorbedingungIDs(id)) throw new ValuesCreateException("Ungueltige ID parameter gefunden");
+
+        return FormTyp.getValue(id,gabel,felge,vorbau,mantel,rahmen,teile,sattel);
+    }
+
+
     /**** Private HilfsMethoden ****/
 
 
