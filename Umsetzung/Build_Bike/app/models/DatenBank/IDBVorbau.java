@@ -21,7 +21,7 @@ public interface IDBVorbau extends ITeileTabellen {
      * Methode zum auslesen aller Vorbäue
       * @return Alle Vorbäue als List<List<String>>
      */
-    public List<Vorbau> getAllVorbau();
+    public List<Vorbau> getAllVorbau() throws DatabaseException;
 
     /**
      * Methode zum auslesen der Vorbäue mit einen bestimmte Formtyp

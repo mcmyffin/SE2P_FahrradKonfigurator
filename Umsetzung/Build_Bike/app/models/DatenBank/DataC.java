@@ -8,9 +8,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import play.db.*;
+
+import models.TeileKomponente.Einzelteile.*;
 
 /**
  * Created by tin on 01.05.15.
@@ -48,6 +51,13 @@ public class DataC implements IDatenBank {
 
         try {
             ResultSet rs = getDataFormDB("SELECT K_adresse, K_email, K_nachname, K_telefon, K_vorname from KundeT where K_ID ="+id+";");
+            while (rs.next()){
+                kudArr.add(rs.getString("K_adresse"));
+                kudArr.add(rs.getString("K_email"));
+                kudArr.add(rs.getString("K_nachname"));
+                kudArr.add(rs.getString("K_telefon"));
+                kudArr.add(rs.getString("K_vorname"));
+            }
             return kudArr;
         } catch (Exception e) {
             throw new DatabaseException(1);
@@ -131,27 +141,42 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public List<String> getFelgeByID(int id) throws DatabaseException{
+    public Felge getFelgeByID(int id) throws DatabaseException {
         try {
+            ResultSet rs = getDataFormDB("SELECT F_BESCH, F_bild, F_formTyp, F_formTypID, F_ID, F_name, F_narbendynamo, F_preis, F_reifengrosse from FelgenT where F_id ="+id+";");
+            while (rs.next()){
+                return Values.createFelge(rs.getInt("F_ID"),rs.getInt("F_BESCH"), rs.getInt("F_preis"), rs.getInt("F_reifengroesse"), rs.getInt("F_formTyp"), rs.getInt("F_formTypID"), rs.getString("F_bild"), rs.getString("F_name"), rs.getBoolean("F_narbendynamo"));
+            }
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
 
+        return null;
+    }
+
+    @Override
+    public List<Felge> getAllFelgen() throws DatabaseException {
+        List<Felge> felList = new LinkedList<Felge>();
+        try {
+            ResultSet rs = getDataFormDB("SELECT F_BESCH, F_bild, F_formTyp, F_formTypID, F_ID, F_name, F_narbendynamo, F_preis, F_reifengrosse from FelgenT;");
+            while (rs.next()){
+                 felList.add(Values.createFelge(rs.getInt("F_ID"), rs.getInt("F_BESCH"), rs.getInt("F_preis"), rs.getInt("F_reifengroesse"), rs.getInt("F_formTyp"), rs.getInt("F_formTypID"), rs.getString("F_bild"), rs.getString("F_name"), rs.getBoolean("F_narbendynamo")));
+            }
+            return felList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
     }
 
     @Override
-    public List<List<String>> getAllFelgen() throws DatabaseException {
+    public List<Felge> getFelgeByFormTyp(int formTyp) throws DatabaseException {
+        List<Felge> felList = new LinkedList<Felge>();
         try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getFelgeByFormTyp(int formTyp) throws DatabaseException {
-        try {
-
+            ResultSet rs = getDataFormDB("SELECT F_BESCH, F_bild, F_formTyp, F_formTypID, F_ID, F_name, F_narbendynamo, F_preis, F_reifengrosse from FelgenT WHERE F_formTyp ="+formTyp+";");
+            while (rs.next()){
+                felList.add(Values.createFelge(rs.getInt("F_ID"), rs.getInt("F_BESCH"), rs.getInt("F_preis"), rs.getInt("F_reifengroesse"), rs.getInt("F_formTyp"), rs.getInt("F_formTypID"), rs.getString("F_bild"), rs.getString("F_name"), rs.getBoolean("F_narbendynamo")));
+            }
+            return felList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
@@ -159,44 +184,59 @@ public class DataC implements IDatenBank {
 
     @Override
     public List<Integer> getFormTypTabelleByFelgeID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<String> getBeschreibungByFelgeID(int id) throws DatabaseException {
-        try {
+        return null;
+    }
 
+    @Override
+    public Gabel getGabelnByID(int id) throws DatabaseException {
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from GabelT where G_ID ="+id+";");
+            while (rs.next()){
+                return Values.createGabel(rs.getInt("G_ID"),rs.getInt("G_BESCH"), rs.getInt("G_formTyp"), rs.getInt("G_formTypID"), rs.getInt("G_schaftlaenge"), rs.getInt("G_steuersatz"), rs.getInt("G_reifengroesse"), rs.getInt("G_preis"), rs.getBoolean("G_felgenBrems"), rs.getBoolean("G_scheibenbrems"), rs.getBoolean("G_licht"), rs.getString("G_bild"), rs.getString("name"));
+            }
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Gabel> getAllGabel() throws DatabaseException {
+        List<Gabel> gabList = new LinkedList<Gabel>();
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from GabelT where G_ID;");
+            while (rs.next()){
+                gabList.add(Values.createGabel(rs.getInt("G_ID"), rs.getInt("G_BESCH"), rs.getInt("G_formTyp"),
+                        rs.getInt("G_formTypID"), rs.getInt("G_schaftlaenge"), rs.getInt("G_steuersatz"),
+                        rs.getInt("G_reifengroesse"), rs.getInt("G_preis"), rs.getBoolean("G_felgenBrems"),
+                        rs.getBoolean("G_scheibenbrems"), rs.getBoolean("G_licht"), rs.getString("G_bild"),
+                        rs.getString("G_name")));
+            }
+            return gabList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
     }
 
     @Override
-    public List<String> getGabelnByID(int id) throws DatabaseException {
+    public List<Gabel> getGabelByFormTyp(int formTyp) throws DatabaseException {
+        List<Gabel> gabList = new LinkedList<Gabel>();
         try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getAllGabel() throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getGabelByFormTyp(int formTyp) throws DatabaseException {
-        try {
-
+            ResultSet rs = getDataFormDB("SELECT * from GabelT where G_formTyp ="+formTyp+";");
+            while (rs.next()){
+                gabList.add(Values.createGabel(rs.getInt("G_ID"), rs.getInt("G_BESCH"), rs.getInt("G_formTyp"),
+                        rs.getInt("G_formTypID"), rs.getInt("G_schaftlaenge"), rs.getInt("G_steuersatz"),
+                        rs.getInt("G_reifengroesse"), rs.getInt("G_preis"), rs.getBoolean("G_felgenBrems"),
+                        rs.getBoolean("G_scheibenbrems"), rs.getBoolean("G_licht"), rs.getString("G_bild"),
+                        rs.getString("G_name")));
+            }
+            return gabList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
@@ -204,44 +244,51 @@ public class DataC implements IDatenBank {
 
     @Override
     public List<Integer> getFormTypTabelleByGabelID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<String> getBeschreibungByGabelID(int id) throws DatabaseException {
-        try {
+        return null;
+    }
 
+    @Override
+    public Mantel getMantelByID(int id) throws DatabaseException {
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from MantelT where M_ID ="+id+";");
+            while (rs.next()){
+                return Values.createMantel(rs.getInt("M_ID"), rs.getInt("M_BESCH"), rs.getInt("M_formTyp"), rs.getInt("M_formTypID"), rs.getInt("M_durchm"), rs.getInt("M_reifengroesse"), rs.getInt("M_preis"), rs.getString("M_bild"), rs.getString("M_name"));
+            }
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Mantel> getAllMantel() throws DatabaseException {
+        List<Mantel> manList = new LinkedList<Mantel>();
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from MantelT;");
+            while (rs.next()){
+                manList.add(Values.createMantel(rs.getInt("M_ID"), rs.getInt("M_BESCH"), rs.getInt("M_formTyp"), rs.getInt("M_formTypID"), rs.getInt("M_durchm"), rs.getInt("M_reifengroesse"), rs.getInt("M_preis"), rs.getString("M_bild"), rs.getString("M_name")));
+            }
+            return manList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
     }
 
     @Override
-    public List<String> getMantelByID(int id) throws DatabaseException {
+    public List<Mantel> getMantelByFormTyp(int formTyp) throws DatabaseException {
+        List<Mantel> manList = new LinkedList<Mantel>();
         try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getAllMantel() throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getMantelByFormTyp(int formTyp) throws DatabaseException {
-        try {
-
+            ResultSet rs = getDataFormDB("SELECT * from MantelT where M_formTyp ="+formTyp+";");
+            while (rs.next()){
+                manList.add(Values.createMantel(rs.getInt("M_ID"),rs.getInt("M_BESCH"), rs.getInt("M_formTyp"), rs.getInt("M_formTypID"), rs.getInt("M_durchm"), rs.getInt("M_reifengroesse"), rs.getInt("M_preis"), rs.getString("M_bild"), rs.getString("M_name")));
+            }
+            return manList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
@@ -249,89 +296,120 @@ public class DataC implements IDatenBank {
 
     @Override
     public List<Integer> getFormTypTabelleByMantelID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<String> getBeschreibungByMantelID(int id) throws DatabaseException {
-        try {
+        return null;
+    }
 
+    @Override
+    public List<Rahmen> getRahmenByFormtyp(int formTyp) throws DatabaseException {
+        List<Rahmen> rahList = new LinkedList<Rahmen>();
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from RahmenT where R_formTyp ="+formTyp+";");
+            while (rs.next()){
+                 rahList.add(Values.createRahmen(rs.getInt("R_ID"), rs.getInt("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
+                         rs.getString("R_bild"), rs.getInt("R_BESCH"), rs.getInt("R_steuersatz"),
+                         rs.getInt("R_schafthoehe"), rs.getInt("R_zusatzbefest"),
+                         rs.getBoolean("R_scheibenbrems"), rs.getBoolean("R_felgenbrems"),
+                         rs.getInt("R_tretlager"), rs.getInt("R_formTyp"), rs.getInt("R_formTypID"),
+                         rs.getString("R_name"), rs.getInt("R_preis"), rs.getBoolean("R_gepaektraeger"),
+                         rs.getBoolean("R_licht")));
+            }
+            return rahList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
     }
 
     @Override
-    public List<List<String>> getRahmenByFormtyp(int formTyp) throws DatabaseException {
+    public Rahmen getRahmenByID(int rID) throws DatabaseException {
         try {
-
+            ResultSet rs = getDataFormDB("SELECT * from RahmenT where R_formTyp ="+rID+";");
+            while (rs.next()){
+                return Values.createRahmen(rs.getInt("R_ID"), rs.getInt("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
+                        rs.getString("R_bild"), rs.getInt("R_BESCH"), rs.getInt("R_steuersatz"),
+                        rs.getInt("R_schafthoehe"), rs.getInt("R_zusatzbefest"),
+                        rs.getBoolean("R_scheibenbrems"), rs.getBoolean("R_felgenbrems"),
+                        rs.getInt("R_tretlager"), rs.getInt("R_formTyp"), rs.getInt("R_formTypID"),
+                        rs.getString("R_name"), rs.getInt("R_preis"), rs.getBoolean("R_gepaektraeger"),
+                        rs.getBoolean("R_licht"));
+            }
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
-    }
-
-    @Override
-    public List<String> getRahmenByID(int rID) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<String> getBeschreibungByRahmenID(int rID) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<Integer> getFormTypTabelleByRahmenID(int id) throws DatabaseException {
-        try {
+        return null;
+    }
 
+    @Override
+    public List<Rahmen> getAllRahmen() throws DatabaseException {
+        List<Rahmen> rahList = new LinkedList<Rahmen>();
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from RahmenT;");
+            while (rs.next()){
+                rahList.add(Values.createRahmen(rs.getInt("R_ID"), rs.getInt("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
+                        rs.getString("R_bild"), rs.getInt("R_BESCH"), rs.getInt("R_steuersatz"),
+                        rs.getInt("R_schafthoehe"), rs.getInt("R_zusatzbefest"),
+                        rs.getBoolean("R_scheibenbrems"), rs.getBoolean("R_felgenbrems"),
+                        rs.getInt("R_tretlager"), rs.getInt("R_formTyp"), rs.getInt("R_formTypID"),
+                        rs.getString("R_name"), rs.getInt("R_preis"), rs.getBoolean("R_gepaektraeger"),
+                        rs.getBoolean("R_licht")));
+            }
+            return rahList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
     }
 
     @Override
-    public List<List<String>> getAllRahmen() throws DatabaseException {
+    public Sattel getSattelByID(int id) throws DatabaseException {
         try {
+            ResultSet rs = getDataFormDB("SELECT * from SattelT WHERE S_ID ="+id+";");
+            while (rs.next()){
+                return Values.createSattel(rs.getInt("S_ID"), rs.getString("S_name"), rs.getInt("S_BESCH"), rs.getInt("S_preis"), rs.getInt("S_formTyp"), rs.getInt("S_formTypID"), rs.getString("S_bild"));
+            }
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
 
+        return null;
+    }
+
+    @Override
+    public List<Sattel> getAllSattel() throws DatabaseException {
+        List<Sattel> satList = new LinkedList<Sattel>();
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from SattelT;");
+            while (rs.next()){
+                satList.add(Values.createSattel(rs.getInt("S_ID"), rs.getString("S_name"), rs.getInt("S_BESCH"), rs.getInt("S_preis"), rs.getInt("S_formTyp"), rs.getInt("S_formTypID"), rs.getString("S_bild")));
+            }
+            return satList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
     }
 
     @Override
-    public List<String> getSattelByID(int id) throws DatabaseException {
+    public List<Sattel> getSattelByFormTyp(int formTyp) throws DatabaseException {
+        List<Sattel> satList = new LinkedList<Sattel>();
         try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getAllSattel() throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getSattelByFormTyp(int formTyp) throws DatabaseException {
-        try {
-
+            ResultSet rs = getDataFormDB("SELECT * from SattelT WHERE S_formtyp ="+formTyp+";");
+            while (rs.next()){
+                satList.add(Values.createSattel(rs.getInt("S_ID"), rs.getString("S_name"), rs.getInt("S_BESCH"), rs.getInt("S_preis"), rs.getInt("S_formTyp"), rs.getInt("S_formTypID"), rs.getString("S_bild")));
+            }
+            return satList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
@@ -339,44 +417,51 @@ public class DataC implements IDatenBank {
 
     @Override
     public List<Integer> getFormTypTabelleBySattelID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<String> getBeschreibungBySattelID(int id) throws DatabaseException {
-        try {
+        return null;
+    }
 
+    @Override
+    public Zubehoer getTeileByID(int id) throws DatabaseException {
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from TeileT WHERE T_ID ="+id+";");
+            while (rs.next()){
+                return Values.createZubehoer(rs.getInt("T_ID"), rs.getInt("T_BESCH"), rs.getInt("T_preis"), rs.getInt("T_formTyp"), rs.getInt("T_formTypID"), rs.getString("T_bild"), rs.getString("T_name"), rs.getBoolean("T_zusatzBelegt"));
+            }
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Zubehoer> getAllTeile() throws DatabaseException {
+        List<Zubehoer> zubList = new LinkedList<Zubehoer>();
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from TeileT;");
+            while (rs.next()){
+                zubList.add(Values.createZubehoer(rs.getInt("T_ID"), rs.getInt("T_BESCH"), rs.getInt("T_preis"), rs.getInt("T_formTyp"), rs.getInt("T_formTypID"), rs.getString("T_bild"), rs.getString("T_name"), rs.getBoolean("T_zusatzBelegt")));
+            }
+            return zubList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
     }
 
     @Override
-    public List<String> getTeileByID(int id) throws DatabaseException {
+    public List<Zubehoer> getTeileByFormTyp(int formTyp) throws DatabaseException {
+        List<Zubehoer> zubList = new LinkedList<Zubehoer>();
         try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getAllTeile() throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getTeileByFormTyp(int formTyp) throws DatabaseException {
-        try {
-
+            ResultSet rs = getDataFormDB("SELECT * from TeileT WHERE T_formtyp ="+formTyp+";");
+            while (rs.next()){
+                zubList.add(Values.createZubehoer(rs.getInt("T_ID"), rs.getInt("T_BESCH"), rs.getInt("T_preis"), rs.getInt("T_formTyp"), rs.getInt("T_formTypID"), rs.getString("T_bild"), rs.getString("T_name"), rs.getBoolean("T_zusatzBelegt")));
+            }
+            return zubList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
@@ -384,44 +469,51 @@ public class DataC implements IDatenBank {
 
     @Override
     public List<Integer> getFormTypTabelleByTeileID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<String> getBeschreibungByTeileID(int id) throws DatabaseException {
-        try {
+        return null;
+    }
 
+    @Override
+    public Vorbau getVorbauByID(int id) throws DatabaseException {
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from VorbauT WHERE V_ID ="+id+";");
+            while (rs.next()){
+                return Values.createVorbau(rs.getInt("V_ID"), rs.getInt("V_BESCH"), rs.getInt("V_preis"), rs.getInt("V_schaftgroesse"), rs.getInt("V_formtyp"), rs.getInt("V_formTypID"), rs.getString("V_bild"));
+            }
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Vorbau> getAllVorbau() throws DatabaseException {
+        List<Vorbau> vorList = new LinkedList<Vorbau>();
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from VorbauT;");
+            while (rs.next()){
+                vorList.add(Values.createVorbau(rs.getInt("V_ID"), rs.getInt("V_BESCH"), rs.getInt("V_preis"), rs.getInt("V_schaftgroesse"), rs.getInt("V_formtyp"), rs.getInt("V_formTypID"), rs.getString("V_bild")));
+            }
+            return vorList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
     }
 
     @Override
-    public List<String> getVorbauByID(int id) throws DatabaseException {
+    public List<Vorbau> getVorbauByFormTyp(int formTyp) throws DatabaseException {
+        List<Vorbau> vorList = new LinkedList<Vorbau>();
         try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getAllVorbau() throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
-    }
-
-    @Override
-    public List<List<String>> getVorbauByFormTyp(int formTyp) throws DatabaseException {
-        try {
-
+            ResultSet rs = getDataFormDB("SELECT * from VorbauT WHERE V_formtyp="+formTyp+";");
+            while (rs.next()){
+                vorList.add(Values.createVorbau(rs.getInt("V_ID"), rs.getInt("V_BESCH"), rs.getInt("V_preis"), rs.getInt("V_schaftgroesse"), rs.getInt("V_formtyp"), rs.getInt("V_formTypID"), rs.getString("V_bild")));
+            }
+            return vorList;
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
@@ -429,37 +521,21 @@ public class DataC implements IDatenBank {
 
     @Override
     public List<Integer> getFormTypTabelleByVorbauID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<String> getBeschreibungByVorbauID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<String> getBeschreibungByID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 
     @Override
     public List<Integer> getFormTypTabelleByID(int id) throws DatabaseException {
-        try {
-
-        } catch (Exception e) {
-            throw new DatabaseException(1);
-        }
+        return null;
     }
 }
