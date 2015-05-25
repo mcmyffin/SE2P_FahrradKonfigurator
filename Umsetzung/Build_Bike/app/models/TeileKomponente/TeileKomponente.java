@@ -1,6 +1,7 @@
 package models.TeileKomponente;
 
 import models.DatenBank.DataC;
+import models.DatenBank.IDBAlleTeile;
 import models.DatenBank.ITeileTabellen;
 import models.DatenTypen.Pair;
 import models.Exception.DatabaseException;
@@ -17,6 +18,7 @@ public class TeileKomponente implements ITeileKomponente{
 
     private final int LIST_LENGTH = 2;
     private ITeileTabellen teilePersistenz = new DataC();
+    private IDBAlleTeile alleTeilePersistenz = new DataC();
 
 
 
@@ -153,6 +155,73 @@ public class TeileKomponente implements ITeileKomponente{
         return einzelteilDTO;
     }
 
+
+    @Override
+    public List<Felge> getFelgeList() {
+        try {
+            return alleTeilePersistenz.getAllFelgen();
+        } catch (DatabaseException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Gabel> getGabelList() {
+
+        try {
+            return alleTeilePersistenz.getAllGabel();
+        } catch (DatabaseException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Mantel> getMaentelList() {
+        try {
+            return alleTeilePersistenz.getAllMantel();
+        } catch (DatabaseException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Rahmen> getRahmenList() {
+        try {
+            return alleTeilePersistenz.getAllRahmen();
+        } catch (DatabaseException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Sattel> getSattelList() {
+        try {
+            return alleTeilePersistenz.getAllSattel();
+        } catch (DatabaseException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Vorbau> getVorbauList() {
+        return alleTeilePersistenz.getAllVorbau();
+    }
+
+    @Override
+    public List<Zubehoer> getZubehoerList() {
+        try {
+            return alleTeilePersistenz.getAllTeile();
+        } catch (DatabaseException e) {
+            return null;
+        }
+    }
+
+
+    /*** private Hilfsmethoden ***/
+
+    // Erstellt ein Paar mit Beschreibungen.
+    // Key = Kurzbeschreibung
+    // Value = Werbetext
     private Pair<String,String> getBeschreibungen(int beschrID){
 
         List<String> beschreibungen = null;
@@ -175,7 +244,7 @@ public class TeileKomponente implements ITeileKomponente{
         } catch (DatabaseException e) {
             return null;
         }
-        
+
         return result;
     }
 }

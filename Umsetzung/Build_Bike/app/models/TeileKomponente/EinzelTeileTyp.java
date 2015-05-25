@@ -27,6 +27,9 @@ public enum EinzelTeileTyp {
 
     public static EinzelTeileTyp getEinzelteileTypByString(String value) throws EinzelteileTypException{
 
+        // precondition fuer null Werte
+        if(value == null) throw new EinzelteileTypException("Die Eingabe darf nicht null sein");
+
         if(RAHMEN.getValue().equals(value))     return RAHMEN;
         if(FELGE.getValue().equals(value))      return FELGE;
         if(MANTEL.getValue().equals(value))     return MANTEL;

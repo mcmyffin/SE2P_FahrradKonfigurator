@@ -7,11 +7,11 @@ public class EinzelteileTypException extends Exception {
 
     private String message;
 
-    public EinzelteileTypException() throws EinzelteileTypException{
+    public EinzelteileTypException(){
 
     }
 
-    public EinzelteileTypException(String message) throws EinzelteileTypException{
+    public EinzelteileTypException(String message){
         this.message = message;
     }
 
