@@ -183,12 +183,12 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public List<Integer> getFormTypTabelleByFelgeID(int id) throws DatabaseException {
+    public FormTyp getFormTypTabelleByFelgeID(int id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<String> getBeschreibungByFelgeID(int id) throws DatabaseException {
+    public Beschreibung getBeschreibungByFelgeID(int id) throws DatabaseException {
         return null;
     }
 
@@ -243,12 +243,12 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public List<Integer> getFormTypTabelleByGabelID(int id) throws DatabaseException {
+    public FormTyp getFormTypTabelleByGabelID(int id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<String> getBeschreibungByGabelID(int id) throws DatabaseException {
+    public Beschreibung getBeschreibungByGabelID(int id) throws DatabaseException {
         return null;
     }
 
@@ -295,12 +295,12 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public List<Integer> getFormTypTabelleByMantelID(int id) throws DatabaseException {
+    public FormTyp getFormTypTabelleByMantelID(int id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<String> getBeschreibungByMantelID(int id) throws DatabaseException {
+    public Beschreibung getBeschreibungByMantelID(int id) throws DatabaseException {
         return null;
     }
 
@@ -344,12 +344,12 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public List<String> getBeschreibungByRahmenID(int rID) throws DatabaseException {
+    public Beschreibung getBeschreibungByRahmenID(int rID) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<Integer> getFormTypTabelleByRahmenID(int id) throws DatabaseException {
+    public FormTyp getFormTypTabelleByRahmenID(int id) throws DatabaseException {
         return null;
     }
 
@@ -416,12 +416,12 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public List<Integer> getFormTypTabelleBySattelID(int id) throws DatabaseException {
+    public FormTyp getFormTypTabelleBySattelID(int id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<String> getBeschreibungBySattelID(int id) throws DatabaseException {
+    public Beschreibung getBeschreibungBySattelID(int id) throws DatabaseException {
         return null;
     }
 
@@ -468,12 +468,12 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public List<Integer> getFormTypTabelleByTeileID(int id) throws DatabaseException {
+    public FormTyp getFormTypTabelleByTeileID(int id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<String> getBeschreibungByTeileID(int id) throws DatabaseException {
+    public Beschreibung getBeschreibungByTeileID(int id) throws DatabaseException {
         return null;
     }
 
@@ -520,22 +520,22 @@ public class DataC implements IDatenBank {
     }
 
     @Override
-    public List<Integer> getFormTypTabelleByVorbauID(int id) throws DatabaseException {
+    public FormTyp getFormTypTabelleByVorbauID(int id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<String> getBeschreibungByVorbauID(int id) throws DatabaseException {
+    public Beschreibung getBeschreibungByVorbauID(int id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<String> getBeschreibungByID(int id) throws DatabaseException {
+    public Beschreibung getBeschreibungByID(int id) throws DatabaseException {
         return null;
     }
 
     @Override
-    public List<Integer> getFormTypTabelleByID(int id) throws DatabaseException {
+    public FormTyp getFormTypTabelleByID(int id) throws DatabaseException {
         return null;
     }
 }

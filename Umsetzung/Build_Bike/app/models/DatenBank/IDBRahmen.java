@@ -1,6 +1,8 @@
 package models.DatenBank;
 
 import models.Exception.DatabaseException;
+import models.TeileKomponente.Einzelteile.Beschreibung;
+import models.TeileKomponente.Einzelteile.FormTyp;
 import models.TeileKomponente.Einzelteile.Rahmen;
 
 import java.util.List;
@@ -30,14 +32,14 @@ public interface IDBRahmen extends ITeileTabellen {
      * @param rID ID des Rahmens
      * @return Beschreibung des Rahmens
      */
-    public List<String> getBeschreibungByRahmenID(int rID) throws DatabaseException;
+    public Beschreibung getBeschreibungByRahmenID(int rID) throws DatabaseException;
 
     /**
      * Methode zum auslesen der FormTypTabelle mittels der Rahmen ID
      * @param id ID des Rahmens
      * @return FormTypTabelle des Rahmens
      */
-    public List<Integer> getFormTypTabelleByRahmenID(int id) throws DatabaseException;
+    public FormTyp getFormTypTabelleByRahmenID(int id) throws DatabaseException;
 
     /**
      * Methode zum auslesen ALLER Rahmen aus der Datenbank

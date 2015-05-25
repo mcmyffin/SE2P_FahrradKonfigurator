@@ -1,6 +1,8 @@
 package models.DatenBank;
 
 import models.Exception.DatabaseException;
+import models.TeileKomponente.Einzelteile.Beschreibung;
+import models.TeileKomponente.Einzelteile.FormTyp;
 import models.TeileKomponente.Einzelteile.Gabel;
 
 import java.util.List;
@@ -35,7 +37,7 @@ public interface IDBGabel extends ITeileTabellen {
      * @param id ID der Gabel
      * @return Tabelle des Formtypes der Gabel
      */
-    public List<Integer> getFormTypTabelleByGabelID(int id) throws DatabaseException;
+    public FormTyp getFormTypTabelleByGabelID(int id) throws DatabaseException;
 
 
     /**
@@ -43,5 +45,5 @@ public interface IDBGabel extends ITeileTabellen {
      * @param id ID der Gabel
      * @return Eine Liste der Beschreibungen der Gabel
      */
-    public List<String> getBeschreibungByGabelID(int id) throws DatabaseException;
+    public Beschreibung getBeschreibungByGabelID(int id) throws DatabaseException;
 }

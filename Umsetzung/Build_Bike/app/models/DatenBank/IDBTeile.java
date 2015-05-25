@@ -1,6 +1,8 @@
 package models.DatenBank;
 
 import models.Exception.DatabaseException;
+import models.TeileKomponente.Einzelteile.Beschreibung;
+import models.TeileKomponente.Einzelteile.FormTyp;
 import models.TeileKomponente.Einzelteile.Zubehoer;
 
 import java.util.List;
@@ -35,7 +37,7 @@ public interface IDBTeile extends ITeileTabellen {
      * @param id ID des Teils
      * @return Tabelle des Formtypes des Teils
      */
-    public List<Integer> getFormTypTabelleByTeileID(int id) throws DatabaseException;
+    public FormTyp getFormTypTabelleByTeileID(int id) throws DatabaseException;
 
 
     /**
@@ -43,5 +45,5 @@ public interface IDBTeile extends ITeileTabellen {
      * @param id ID des Teils
      * @return Eine Liste der Beschreibungen des Teils
      */
-    public List<String> getBeschreibungByTeileID(int id) throws DatabaseException;
+    public Beschreibung getBeschreibungByTeileID(int id) throws DatabaseException;
 }

@@ -1,7 +1,9 @@
 package models.DatenBank;
 
 import models.Exception.DatabaseException;
+import models.TeileKomponente.Einzelteile.Beschreibung;
 import models.TeileKomponente.Einzelteile.Felge;
+import models.TeileKomponente.Einzelteile.FormTyp;
 
 import java.util.List;
 
@@ -35,7 +37,7 @@ public interface IDBFelgen extends ITeileTabellen {
      * @param id ID der Felge
      * @return Tabelle des Formtypes der Felge
      */
-    public List<Integer> getFormTypTabelleByFelgeID(int id) throws DatabaseException;
+    public FormTyp getFormTypTabelleByFelgeID(int id) throws DatabaseException;
 
 
     /**
@@ -43,5 +45,5 @@ public interface IDBFelgen extends ITeileTabellen {
      * @param id ID der Felge
      * @return Eine Liste der Beschreibungen der Felge
      */
-    public List<String> getBeschreibungByFelgeID(int id) throws DatabaseException;
+    public Beschreibung getBeschreibungByFelgeID(int id) throws DatabaseException;
 }
