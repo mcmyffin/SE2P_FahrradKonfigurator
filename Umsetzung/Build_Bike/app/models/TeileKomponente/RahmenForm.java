@@ -1,6 +1,6 @@
 package models.TeileKomponente;
 
-import models.Exception.RahmenFormTypException;
+import models.Exception.RahmenFormException;
 
 /**
  * Created by dima on 24.05.15.
@@ -21,11 +21,11 @@ public enum RahmenForm {
         return this.value;
     }
 
-    public RahmenForm getFormTypByInt(int value) throws RahmenFormTypException {
+    public RahmenForm getFormTypByInt(int value) throws RahmenFormException {
 
         if(HERREN_FORM.getValue() == value) return HERREN_FORM;
         if(DAMEN_FORM.getValue() == value)  return DAMEN_FORM;
         if(TRAPETZ_FORM.getValue() == value)  return TRAPETZ_FORM;
-        else throw new RahmenFormTypException("Kein RahmenTyp konnte anhand '"+value+"' indentifiziert werden");
+        else throw new RahmenFormException("Kein RahmenTyp konnte anhand '"+value+"' indentifiziert werden");
     }
 }
