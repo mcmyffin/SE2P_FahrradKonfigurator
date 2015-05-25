@@ -5,15 +5,15 @@ import models.Exception.RahmenFormTypException;
 /**
  * Created by dima on 24.05.15.
  */
-public enum RahmenFormTyp {
+public enum RahmenForm {
 
     HERREN_FORM(0),
     DAMEN_FORM(1),
-    SPORT_FORM(2);
+    TRAPETZ_FORM(2);
 
     private int value;
 
-    RahmenFormTyp(int value){
+    RahmenForm(int value){
         this.value = value;
     }
 
@@ -21,11 +21,11 @@ public enum RahmenFormTyp {
         return this.value;
     }
 
-    public RahmenFormTyp getFormTypByInt(int value) throws RahmenFormTypException {
+    public RahmenForm getFormTypByInt(int value) throws RahmenFormTypException {
 
         if(HERREN_FORM.getValue() == value) return HERREN_FORM;
         if(DAMEN_FORM.getValue() == value)  return DAMEN_FORM;
-        if(SPORT_FORM.getValue() == value)  return SPORT_FORM;
+        if(TRAPETZ_FORM.getValue() == value)  return TRAPETZ_FORM;
         else throw new RahmenFormTypException("Kein RahmenTyp konnte anhand '"+value+"' indentifiziert werden");
     }
 }

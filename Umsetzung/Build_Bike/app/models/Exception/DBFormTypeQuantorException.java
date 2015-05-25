@@ -1,17 +1,18 @@
 package models.Exception;
 
 /**
- * Created by dima on 24.05.15.
+ * Created by dima on 25.05.15.
  */
-public class RahmenFormTypException extends Exception{
+public class DBFormTypeQuantorException extends Exception {
 
     private String message;
 
-    public RahmenFormTypException(){}
+    public DBFormTypeQuantorException(){}
 
-    public RahmenFormTypException(String message){
+    public DBFormTypeQuantorException(String message){
         this.message = message;
     }
+
 
     @Override
     public String getMessage() {
