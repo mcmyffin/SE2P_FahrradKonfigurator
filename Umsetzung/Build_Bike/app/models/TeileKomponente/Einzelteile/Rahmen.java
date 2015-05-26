@@ -7,24 +7,24 @@ import models.TeileKomponente.EinzelTeileTyp;
  */
 public class Rahmen {
 
-    private int id;
+    private int id; //
     private int hoehe;
     private int form;
-    private int reifengroesse;
+    private int reifengroesse; //
     private int beschreibungID;
-    private int steuersatz;
-    private int schaftshoehe;
-    private int zusatzbefest;
+    private int steuersatz; //
+    private int schaftshoehe; //
+    private int zusatzbefest; //
     private int tretlager;
     private int fromTyp;
-    private int formTypID;
-    private int preis;
-    private String name;
+    private int formTypID; //
+    private int preis; //
+    private String name; //
     private String bild;
-    private boolean scheibenbremse;
-    private boolean felgenbremse;
-    private boolean gepaektraeger;
-    private boolean licht;
+    private boolean scheibenbremse; //
+    private boolean felgenbremse; //
+    private boolean gepaektraeger; //
+    private boolean licht; //
 
     private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.RAHMEN;
 
