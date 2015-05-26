@@ -1,5 +1,6 @@
 package models.KonfigurationKomponente;
 
+import models.KonfigurationKomponente.DTO.KonfigurationDTO;
 import models.TeileKomponente.Einzelteile.*;
 
 import java.util.List;
@@ -24,6 +25,8 @@ public interface IKofigurationKomponente {
     public List<Vorbau> filterVorbauByKonfiguration(IKonfiguration konfiguration, List<Vorbau> vorbauList);
 
     public List<Zubehoer> filterZubehoerByKonfiguration(IKonfiguration konfiguration, List<Zubehoer> zubehoerList);
+
+    public IKonfiguration fromKonfigurtionDTO(KonfigurationDTO konfigurationDTO);
 
     /*****************/
     // TODO step 1 TYP
