@@ -131,4 +131,17 @@ public interface ITeileKomponente {
 
 
 
+    public Felge getFelgeByID(int id);
+
+    public Gabel getGabelByID(int id);
+
+    public Mantel getMantelByID(int id);
+
+    public Rahmen getRahmenByID(int id);
+
+    public Sattel getSattelByID(int id);
+
+    public Vorbau getVorbauByID(int id);
+
+    public Zubehoer getZubehoerByID(int id);
 }

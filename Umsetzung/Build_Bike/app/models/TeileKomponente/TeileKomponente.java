@@ -204,7 +204,12 @@ public class TeileKomponente implements ITeileKomponente{
 
     @Override
     public List<Vorbau> getVorbauList() {
-        return alleTeilePersistenz.getAllVorbau();
+
+        try {
+            return alleTeilePersistenz.getAllVorbau();
+        } catch (DatabaseException e) {
+            return null;
+        }
     }
 
     @Override
@@ -216,6 +221,96 @@ public class TeileKomponente implements ITeileKomponente{
         }
     }
 
+    @Override
+    public Felge getFelgeByID(int id) {
+
+        Felge felge = null;
+
+        try {
+            felge = alleTeilePersistenz.getFelgeByID(id);
+        } catch (DatabaseException e) {
+            return felge;
+        }
+        return felge;
+    }
+
+    @Override
+    public Gabel getGabelByID(int id) {
+        Gabel gabel = null;
+
+        try {
+            gabel = alleTeilePersistenz.getGabelnByID(id);
+        } catch (DatabaseException e) {
+            return gabel;
+        }
+        return gabel;
+    }
+
+    @Override
+    public Mantel getMantelByID(int id) {
+
+        Mantel mantel = null;
+
+        try {
+            mantel = alleTeilePersistenz.getMantelByID(id);
+        } catch (DatabaseException e) {
+            return mantel;
+        }
+        return mantel;
+    }
+
+    @Override
+    public Rahmen getRahmenByID(int id) {
+
+        Rahmen rahmen = null;
+
+        try {
+            rahmen = alleTeilePersistenz.getRahmenByID(id);
+        } catch (DatabaseException e) {
+            return rahmen;
+        }
+        return rahmen;
+    }
+
+    @Override
+    public Sattel getSattelByID(int id) {
+
+        Sattel sattel = null;
+
+        try {
+            sattel = alleTeilePersistenz.getSattelByID(id);
+        } catch (DatabaseException e) {
+            return sattel;
+        }
+        return sattel;
+    }
+
+    @Override
+    public Vorbau getVorbauByID(int id) {
+
+        Vorbau vorbau = null;
+
+        try {
+            vorbau = alleTeilePersistenz.getVorbauByID(id);
+        } catch (DatabaseException e) {
+            return vorbau;
+        }
+        return vorbau;
+    }
+
+    @Override
+    public Zubehoer getZubehoerByID(int id) {
+
+        Zubehoer zubehoer = null;
+
+        try {
+            zubehoer = alleTeilePersistenz.getTeileByID(id);
+        } catch (DatabaseException e) {
+            return zubehoer;
+        }
+        return zubehoer;
+    }
+
 
     /*** private Hilfsmethoden ***/
 
@@ -224,7 +319,11 @@ public class TeileKomponente implements ITeileKomponente{
     // Value = Werbetext
     private Beschreibung getBeschreibungen(int beschrID){
 
-        return alleTeilePersistenz.getBeschreibungByID(beschrID);
+        try {
+            return alleTeilePersistenz.getBeschreibungByID(beschrID);
+        } catch (DatabaseException e) {
+            return null;
+        }
     }
 }
 
