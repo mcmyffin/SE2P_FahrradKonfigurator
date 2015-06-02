@@ -11,7 +11,7 @@
 
 				</colgroup>
 				<tr>
-				@for(p <- Array("Typ","Farbe","Größe","Gabel","Reifen","Schaltung","Sattel","Licht","Zubehör")){
+				@for(p <- Array("Typ","Rahmen","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
 					<td align="center"> <b class="text">@p</b> </td>
 					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
 				}
@@ -24,29 +24,62 @@
 	</div>
 	<div id="infobox-bg">
 		<div id="infobox">
-			<b>Beleuchtung:</b><br /><br />
-			Sie haben die Auswahl zwischen:<br /><br />
-			<form action="step03#form">
-				<table style="border-spacing : 0 px ;">
-					<tr>
-						<td align="center" height="20px" width="200px"><b>Belechtungsart</b></td>
-						<td align="left" height="20px" width="40px"><b>✓</b></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="200px">keine</td>
-						<td align="left" height="20px" width="40px"><input name="Rahmengroesse" type="radio" value="35-38cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="200px">Stecklicher</td>
-						<td align="left" height="20px" width="40px"><input name="Rahmengroesse" type="radio" value="38-41cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="200px">kompl. Lichtanlage</td>
-						<td align="left" height="20px" width="40px"><input checked="checked" name="Rahmengroesse" type="radio" value="41-43cm" /></td>
-					</tr>
-				</table><br />
-			</form>
-			Im <a href="step09">nächsten Schritt</a> wählen Sie das Zubehör aus.<br /><br />
+
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="überschriftEins">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseEins" aria-expanded="true" aria-controls="collapseEins">
+								<b>Beleuchtung</b>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseEins" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="überschriftEins">
+						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
+
+							Sie haben die Auswahl zwischen:<br /><br />
+							<form action="step03#form">
+								<table style="overflow: auto; height: 150px; background-color: #f4efff">
+									<tr>
+										<td align="center" height="4px" width="200px"><b>Belechtungsart</b></td>
+										<td align="left" height="4px" width="40px"><b>✓</b></td>
+									</tr>
+									<tr>
+										<td align="center" height="4px" width="200px">keine</td>
+										<td align="left" height="4px" width="40px"><input name="Rahmengroesse" type="radio" value="35-38cm" /></td>
+									</tr>
+									<tr>
+										<td align="center" height="4px" width="200px">Stecklicher</td>
+										<td align="left" height="4px" width="40px"><input name="Rahmengroesse" type="radio" value="38-41cm" /></td>
+									</tr>
+									<tr>
+										<td align="center" height="4px" width="200px">kompl. Lichtanlage</td>
+										<td align="left" height="4px" width="40px"><input checked="checked" name="Rahmengroesse" type="radio" value="41-43cm" /></td>
+									</tr>
+								</table><br />
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="überschriftZwei">
+						<h4 class="panel-title">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseZwei" aria-expanded="false" aria-controls="collapseZwei">
+								<b>Beschreibung</b>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftZwei">
+						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
+							Fahrrad fahrrad FAHRRAD  Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 	<div id="menu">

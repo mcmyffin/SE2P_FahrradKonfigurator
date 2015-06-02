@@ -10,7 +10,7 @@
 
 				</colgroup>
 				<tr>
-				@for(p <- Array("Typ","Farbe","Größe","Gabel","Reifen","Schaltung","Sattel","Licht","Zubehör")){
+				@for(p <- Array("Typ","Rahmen","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
 					<td align="center"> <b class="text">@p</b> </td>
 					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
 				}
@@ -23,15 +23,52 @@
 	</div>
 	<div id="infobox-bg">
 		<div id="infobox">
-			<b>Fahrradgabel:</b><br /><br />
-			Sie haben die Auswahl zwischen:<br /><br />
-			<form action="step04#form">
-				<select size="1">
-					<option>Stargabel</option>
-					<option>Federgabel</option>
-				</select><br /><br />
-			</form>
-			Im <a href="step05">nächsten Schritt</a> wählen Sie den Reifen aus.<br /><br />
+
+
+
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="überschriftEins">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseEins" aria-expanded="true" aria-controls="collapseEins">
+								<b>Felge</b>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseEins" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="überschriftEins">
+						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
+
+							Sie haben die Auswahl zwischen:<br /><br />
+							<form action="step04#form">
+								<select size="1">
+									<option>Felge 1</option>
+									<option>Felge 2</option>
+								</select><br /><br />
+							</form>
+
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="überschriftZwei">
+						<h4 class="panel-title">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseZwei" aria-expanded="false" aria-controls="collapseZwei">
+								<b>Beschreibung</b>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftZwei">
+						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
+							Fahrrad fahrrad FAHRRAD  Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+						</div>
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
 	<div id="menu">

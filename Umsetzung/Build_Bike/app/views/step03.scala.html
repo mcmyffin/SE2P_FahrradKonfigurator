@@ -10,7 +10,7 @@
 
 				</colgroup>
 				<tr>
-				@for(p <- Array("Typ","Farbe","Größe","Gabel","Reifen","Schaltung","Sattel","Licht","Zubehör")){
+				@for(p <- Array("Typ","Rahmen","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
 					<td align="center"> <b class="text">@p</b> </td>
 					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
 				}
@@ -23,58 +23,51 @@
 	</div>
 	<div id="infobox-bg">
 		<div id="infobox">
-			<b>Rahmengröße:</b><br /><br />
-			Sie haben die Auswahl zwischen:<br /><br />
-			<form action="step03#form">
-				<table style="border-spacing : 0 px ;">
-					<tr>
-						<td align="center" height="20px" width="115px"><b>Körpergröße</b></td>
-						<td align="center" height="20px" width="115px"><b>Rahmengröße</b></td>
-						<td align="center" height="20px" width="10px"><b>✓</b></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="115px">155 - 165 cm</td>
-						<td align="center" height="20px" width="115px">35 - 38 cm</td>
-						<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="35-38cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="115px">165 - 170 cm</td>
-						<td align="center" height="20px" width="115px">38 - 41 cm</td>
-						<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="38-41cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="115px">170 - 175 cm</td>
-						<td align="center" height="20px" width="115px">41 - 43 cm</td>
-						<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="41-43cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="115px">175 - 180 cm</td>
-						<td align="center" height="20px" width="115px">43 - 46 cm</td>
-						<td align="center" height="20px" width="10px"><input checked="checked" name="Rahmengroesse" type="radio" value="43-46cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="115px">180 - 185 cm</td>
-						<td align="center" height="20px" width="115px">46 - 48 cm</td>
-						<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="46-48cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="115px">185 - 190 cm</td>
-						<td align="center" height="20px" width="115px">48 - 53 cm</td>
-						<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="48-53cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="115px">190 - 195 cm</td>
-						<td align="center" height="20px" width="115px">53 - 56 cm</td>
-						<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="53-56cm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="115px">195 - 200 cm</td>
-						<td align="center" height="20px" width="115px">56 - 58 cm</td>
-						<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="56-58cm" /></td>
-					</tr>
-				</table><br />
-			</form>
-			Im <a href="step04">nächsten Schritt</a> wählen Sie die Fahrradgabel aus.<br /><br />
+
+
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="überschriftEins">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseEins" aria-expanded="true" aria-controls="collapseEins">
+								<b>Fahrradgabel</b>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseEins" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="überschriftEins">
+						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
+
+							Sie haben die Auswahl zwischen:<br /><br />
+							<form action="step03#form">
+								<select size="1">
+									<option>Stargabel</option>
+									<option>Federgabel</option>
+								</select><br /><br />
+							</form>
+
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="überschriftZwei">
+						<h4 class="panel-title">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseZwei" aria-expanded="false" aria-controls="collapseZwei">
+								<b>Beschreibung</b>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftZwei">
+						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
+							Fahrrad fahrrad FAHRRAD  Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+						</div>
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
 	<div id="menu">

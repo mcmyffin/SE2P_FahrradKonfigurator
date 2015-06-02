@@ -9,7 +9,7 @@
 				}
 				</colgroup>
 				<tr>
-				@for(p <- Array("Typ","Farbe","Größe","Gabel","Reifen","Schaltung","Sattel","Licht","Zubehör")){
+				@for(p <- Array("Typ","Rahmen","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
 					<td align="center"> <b class="text">@p</b> </td>
 					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
 				}
@@ -22,34 +22,66 @@
 	</div>
 	<div id="infobox-bg">
 		<div id="infobox">
-			<b>Zubehör:</b><br /><br />
-			Sie haben die Auswahl zwischen:<br /><br />
-			<form action="step09#form">
-				<table style="border-spacing : 0 px ;">
-					<tr>
-						<td align="center" height="20px" width="200px"><b>Artikel</b></td>
-						<td align="left" height="20px" width="40px"><b>✓</b></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="200px">Fahrradhelm</td>
-						<td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradhelm" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="200px">Fahrradschloss</td>
-						<td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradschloss" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="200px">Fahrradpumpe</td>
-						<td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradpumpe" /></td>
-					</tr>
-					<tr>
-						<td align="center" height="20px" width="200px">Fahrradklingel</td>
-						<td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradklingel" /></td>
-					</tr>
-				</table><br />
-			</form>
-			Im <a href="bestellen">letzten Schritt</a>
-			können Sie abschließend Ihre Konfiguration ansehen und direkt bestellen.<br /><br />
+
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="überschriftEins">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseEins" aria-expanded="true" aria-controls="collapseEins">
+								<b>Zubehör</b>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseEins" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="überschriftEins">
+						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
+
+							Sie haben die Auswahl zwischen:<br /><br />
+							<form action="step09#form">
+								<table style="border-spacing : 0 px ;">
+									<tr>
+										<td align="center" height="20px" width="200px"><b>Artikel</b></td>
+										<td align="left" height="20px" width="40px"><b>✓</b></td>
+									</tr>
+									<tr>
+										<td align="center" height="20px" width="200px">Fahrradhelm</td>
+										<td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradhelm" /></td>
+									</tr>
+									<tr>
+										<td align="center" height="20px" width="200px">Fahrradschloss</td>
+										<td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradschloss" /></td>
+									</tr>
+									<tr>
+										<td align="center" height="20px" width="200px">Fahrradpumpe</td>
+										<td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradpumpe" /></td>
+									</tr>
+									<tr>
+										<td align="center" height="20px" width="200px">Fahrradklingel</td>
+										<td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradklingel" /></td>
+									</tr>
+								</table><br />
+							</form>
+
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="überschriftZwei">
+						<h4 class="panel-title">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseZwei" aria-expanded="false" aria-controls="collapseZwei">
+								<b>Beschreibung</b>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftZwei">
+						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
+							Fahrrad fahrrad FAHRRAD  Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div id="menu">
