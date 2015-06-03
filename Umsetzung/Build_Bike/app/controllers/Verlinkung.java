@@ -82,6 +82,10 @@ public class Verlinkung extends Controller {
         return ok(step09.render());
     }
 
+    public static Result step10() {
+        return ok(step10.render());
+    }
+
     public static Result bestellen() {
         return ok(bestellen.render());
     }

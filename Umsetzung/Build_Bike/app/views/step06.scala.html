@@ -10,7 +10,7 @@
 
 				</colgroup>
 				<tr>
-				@for(p <- Array("Typ","Rahmen","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
+				@for(p <- Array("Typ","Rahmen","Farbe/ Höhe","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
 					<td align="center"> <b class="text">@p</b> </td>
 					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
 				}
@@ -30,7 +30,7 @@
 					<div class="panel-heading" role="tab" id="überschriftEins">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion" href="#collapseEins" aria-expanded="true" aria-controls="collapseEins">
-								<b>Vorbau</b>
+								<b class="text">Mantel</b>
 							</a>
 						</h4>
 					</div>
@@ -40,9 +40,8 @@
 							Sie haben die Auswahl zwischen:<br /><br />
 							<form action="step06#form">
 								<select size="1">
-									<option>Vorbau 1</option>
-									<option>Vorbau 2</option>
-									<option>Vorbau 3</option>
+									<option>Mantel 1</option>
+									<option>Mantel 2</option>
 								</select><br /><br />
 							</form>
 						</div>
@@ -52,7 +51,7 @@
 					<div class="panel-heading" role="tab" id="überschriftZwei">
 						<h4 class="panel-title">
 							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseZwei" aria-expanded="false" aria-controls="collapseZwei">
-								<b>Beschreibung</b>
+								<b class="text">Beschreibung</b>
 							</a>
 						</h4>
 					</div>

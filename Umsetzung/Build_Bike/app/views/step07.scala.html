@@ -10,7 +10,7 @@
 
 				</colgroup>
 				<tr>
-				@for(p <- Array("Typ","Rahmen","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
+				@for(p <- Array("Typ","Rahmen","Farbe/ Höhe","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
 					<td align="center"> <b class="text">@p</b> </td>
 					<td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
 				}
@@ -24,12 +24,13 @@
 	<div id="infobox-bg">
 		<div id="infobox">
 
+
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="panel panel-default">
 					<div class="panel-heading" role="tab" id="überschriftEins">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion" href="#collapseEins" aria-expanded="true" aria-controls="collapseEins">
-								<b>Sattel</b>
+								<b class="text">Vorbau</b>
 							</a>
 						</h4>
 					</div>
@@ -39,8 +40,9 @@
 							Sie haben die Auswahl zwischen:<br /><br />
 							<form action="step07#form">
 								<select size="1">
-									<option>Bequem</option>
-									<option>Sport</option>
+									<option>Vorbau 1</option>
+									<option>Vorbau 2</option>
+									<option>Vorbau 3</option>
 								</select><br /><br />
 							</form>
 						</div>
@@ -50,7 +52,7 @@
 					<div class="panel-heading" role="tab" id="überschriftZwei">
 						<h4 class="panel-title">
 							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseZwei" aria-expanded="false" aria-controls="collapseZwei">
-								<b>Beschreibung</b>
+								<b class="text">Beschreibung</b>
 							</a>
 						</h4>
 					</div>
@@ -63,6 +65,7 @@
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 		</div>
