@@ -3,10 +3,15 @@ package models.TeileKomponente.Einzelteile;
 import models.Exception.ValuesCreateException;
 import models.TeileKomponente.Einzelteile.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by dima on 24.05.15.
  */
 public class Values {
+
+    private static final String STRINGSEPERATOR = "#";
 
 
     /**
@@ -86,7 +91,7 @@ public class Values {
      * @require tretlager >= 0 & formTyp >= 0
      *
      * @param id
-     * @param hoehe
+     * @param hoehen
      * @param form
      * @param reifengroesse
      * @param bild
@@ -103,6 +108,7 @@ public class Values {
      * @param preis
      * @param gepaektraeger
      * @param licht
+     * @param farben
      * @return DatenTyp Rahmen
      *
      * @throws ValuesCreateException
@@ -112,19 +118,30 @@ public class Values {
      *          1) Vorbedingungen verletzt
      *          2) name parameter null ist
      *          3) bild parameter null ist
+     *          4) heohen parameter null ist
+     *          5) farben parameter null ist
+     *          6) keine hoehen vorhanden sind
+     *          7) keine farben vorhanden sind
      */
-    public static Rahmen createRahmen(int id, int hoehe, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
+    public static Rahmen createRahmen(int id, String hoehen, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
                                       int schaftshoehe, int zusatzbefest, boolean scheibenbremse, boolean felgenbremse, int tretlager,
-                                      int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht) throws ValuesCreateException {
+                                      int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht, String farben) throws ValuesCreateException {
 
         // Vorbedingungen
         if(!vorbedingungIDs(id,beschreibungID,formTypID)) throw new ValuesCreateException("Ungueltige ID parameter gefunden");
         if(bild == null) throw new ValuesCreateException("Der Parameter 'bild' darf nicht null sein! ");
         if(name == null) throw new ValuesCreateException("Der Parameter 'name' darf nicht null sein! ");
-        // TODO gemaess Doc erweitern
 
-        return Rahmen.getValue(id,hoehe,form,reifengroesse,bild,beschreibungID,steuersatz,schaftshoehe,zusatzbefest,scheibenbremse,
-                felgenbremse,tretlager,fromTyp,formTypID,name,preis,gepaektraeger,licht);
+        List<String> farbenListe = createFarbListe(farben);
+        List<Integer> hoehenListe = createHoehenListe(hoehen);
+
+        if(farbenListe == null) throw new ValuesCreateException("Der Parameter 'farben' darf nicht null sein! ");
+        if(hoehenListe == null) throw new ValuesCreateException("Der Parameter 'hoehen' darf nicht null sein! ");
+        if(hoehenListe.isEmpty()) throw new ValuesCreateException("Es muss eine gewisse Anzahl der Hoehen gegeben sein! ");
+        if(farbenListe.isEmpty()) throw new ValuesCreateException("Es muss eine gewisse Anzahl der Farben gegeben sein! ");
+
+        return Rahmen.getValue(id,hoehenListe,form,reifengroesse,bild,beschreibungID,steuersatz,schaftshoehe,zusatzbefest,scheibenbremse,
+                felgenbremse,tretlager,fromTyp,formTypID,name,preis,gepaektraeger,licht,farbenListe);
     }
 
 
@@ -317,5 +334,35 @@ public class Values {
         }else{
             return true;
         }
+    }
+
+    private static List<String> createFarbListe(String farben){
+
+        if(farben == null) return null;
+
+        List<String> farbenListe = new ArrayList();
+        for(String eineFarbe : farben.split(STRINGSEPERATOR)){
+
+            farbenListe.add(eineFarbe);
+        }
+        return farbenListe;
+    }
+
+    private static List<Integer> createHoehenListe(String hoehen){
+
+        if(hoehen == null) return null;
+
+        List<Integer> hoehenListe = new ArrayList();
+        for(String eineHoehe : hoehen.split(STRINGSEPERATOR)){
+
+            try{
+
+                int hoehe = Integer.parseInt(eineHoehe);
+                hoehenListe.add(hoehe);
+            }catch (NumberFormatException ex){
+
+            }
+        }
+        return hoehenListe;
     }
 }

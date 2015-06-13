@@ -36,7 +36,8 @@ public class TeileKomponente implements ITeileKomponente{
                 felge.getName(),
                 beschreibung.getKurzbeschreibung(),
                 beschreibung.getWerbetext(),
-                felge.getEinzelTeileTyp().getValue()
+                felge.getEinzelTeileTyp().getValue(),
+                felge.getBild()
         );
         return einzelteilDTO;
     }
@@ -55,7 +56,8 @@ public class TeileKomponente implements ITeileKomponente{
                 gabel.getName(),
                 beschreibung.getKurzbeschreibung(),
                 beschreibung.getWerbetext(),
-                gabel.getEinzelTeileTyp().getValue()
+                gabel.getEinzelTeileTyp().getValue(),
+                gabel.getBild()
         );
         return einzelteilDTO;
     }
@@ -74,7 +76,8 @@ public class TeileKomponente implements ITeileKomponente{
                 mantel.getName(),
                 beschreibung.getKurzbeschreibung(),
                 beschreibung.getWerbetext(),
-                mantel.getEinzelTeileTyp().getValue()
+                mantel.getEinzelTeileTyp().getValue(),
+                mantel.getBild()
         );
         return einzelteilDTO;
     }
@@ -93,7 +96,8 @@ public class TeileKomponente implements ITeileKomponente{
                 rahmen.getName(),
                 beschreibung.getKurzbeschreibung(),
                 beschreibung.getWerbetext(),
-                rahmen.getEinzelTeileTyp().getValue()
+                rahmen.getEinzelTeileTyp().getValue(),
+                rahmen.getBild()
         );
         return einzelteilDTO;
     }
@@ -112,7 +116,8 @@ public class TeileKomponente implements ITeileKomponente{
                 sattel.getName(),
                 beschreibung.getKurzbeschreibung(),
                 beschreibung.getWerbetext(),
-                sattel.getEinzelTeileTyp().getValue()
+                sattel.getEinzelTeileTyp().getValue(),
+                sattel.getBild()
         );
         return einzelteilDTO;
     }
@@ -131,7 +136,8 @@ public class TeileKomponente implements ITeileKomponente{
                 "",
                 beschreibung.getKurzbeschreibung(),
                 beschreibung.getWerbetext(),
-                vorbau.getEinzelTeileTyp().getValue()
+                vorbau.getEinzelTeileTyp().getValue(),
+                vorbau.getBild()
         );
         return einzelteilDTO;
     }
@@ -150,7 +156,8 @@ public class TeileKomponente implements ITeileKomponente{
                 zubehoer.getName(),
                 beschreibung.getKurzbeschreibung(),
                 beschreibung.getWerbetext(),
-                zubehoer.getEinzelTeileTyp().getValue()
+                zubehoer.getEinzelTeileTyp().getValue(),
+                zubehoer.getBild()
         );
         return einzelteilDTO;
     }

@@ -2,13 +2,15 @@ package models.TeileKomponente.Einzelteile;
 
 import models.TeileKomponente.EinzelTeileTyp;
 
+import java.util.List;
+
 /**
  * Created by dima on 19.05.15.
  */
 public class Rahmen {
 
     private int id; //
-    private int hoehe;
+    private List<Integer> hoehen;
     private int form;
     private int reifengroesse; //
     private int beschreibungID;
@@ -25,15 +27,17 @@ public class Rahmen {
     private boolean felgenbremse; //
     private boolean gepaektraeger; //
     private boolean licht; //
+    private List<String> farben;
+
 
     private EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.RAHMEN;
 
-    private Rahmen(int id, int hoehe, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
+    private Rahmen(int id, List<Integer> hoehen, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
                   int schaftshoehe, int zusatzbefest, boolean scheibenbremse, boolean felgenbremse, int tretlager,
-                  int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht) {
+                  int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht, List<String> farben) {
 
         this.id = id;
-        this.hoehe = hoehe;
+        this.hoehen = hoehen;
         this.form = form;
         this.reifengroesse = reifengroesse;
         this.bild = bild;
@@ -50,14 +54,15 @@ public class Rahmen {
         this.preis = preis;
         this.gepaektraeger = gepaektraeger;
         this.licht = licht;
+        this.farben = farben;
     }
 
-    static Rahmen getValue(int id, int hoehe, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
+    static Rahmen getValue(int id, List<Integer> hoehen, int form, int reifengroesse, String bild, int beschreibungID, int steuersatz,
                            int schaftshoehe, int zusatzbefest, boolean scheibenbremse, boolean felgenbremse, int tretlager,
-                           int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht){
+                           int fromTyp, int formTypID, String name, int preis, boolean gepaektraeger, boolean licht, List<String> farben){
 
-        return new Rahmen(id,hoehe,form,reifengroesse,bild,beschreibungID,steuersatz,schaftshoehe,zusatzbefest,scheibenbremse,
-                          felgenbremse,tretlager,fromTyp,formTypID,name,preis,gepaektraeger,licht);
+        return new Rahmen(id,hoehen,form,reifengroesse,bild,beschreibungID,steuersatz,schaftshoehe,zusatzbefest,scheibenbremse,
+                          felgenbremse,tretlager,fromTyp,formTypID,name,preis,gepaektraeger,licht,farben);
     }
 
     /**
@@ -70,11 +75,11 @@ public class Rahmen {
 
     /**
      * Get Hoehe
-     * Hoehe des Objekts in cm
+     * Hoehen des Objekts in cm
      * @return hoehe
      */
-    public int getHoehe() {
-        return hoehe;
+    public List<Integer> getHoehen() {
+        return hoehen;
     }
 
     /**
@@ -221,7 +226,17 @@ public class Rahmen {
     }
 
 
+    /**
+     * Get Rahmenfarben
+     * Gibt die möglichen Rahmenfarben dieses Objektes als Liste an
+     * @return
+     */
+    public List<String> getFarben() {
+        return farben;
+    }
+
     public EinzelTeileTyp getEinzelTeileTyp() {
         return einzelTeileTyp;
     }
+
 }
