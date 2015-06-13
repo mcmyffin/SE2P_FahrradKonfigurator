@@ -7,13 +7,12 @@ import models.Exception.UngueltigerStepException;
 import models.KonfigurationKomponente.DTO.*;
 import models.KonfigurationKomponente.Step.IStep_1;
 import models.KonfigurationKomponente.Step.IStep_2;
-import models.KonfigurationKomponente.Step.IStep_3;
 import models.TeileKomponente.EinzelTeileTyp;
 import models.TeileKomponente.Einzelteile.*;
-import models.TeileKomponente.ITeileKomponente;
 import models.TeileKomponente.RahmenFormTyp;
-import models.TeileKomponente.TeileKomponente;
+import views.html.konfigurator;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -159,16 +158,15 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
             }
         }
 
-        StepDTO step3 = konfigurationDTO.getStep_3();
+        StepRahmenFarbeHoehe step3 = konfigurationDTO.getStep_3();
         if(step3 != null){
 
-            try {
-                int id = step3.getId();
-                EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.getEinzelteileTypByString(step3.getEinzelteileTyp());
-                konfiguration.setStep3(id, einzelTeileTyp);
+            try{
+                String rahmenfarbe = step3.getRamenfarbe();
+                int rahmenhoehe = step3.getRahmenhoehe();
+                konfiguration.setStep3(rahmenfarbe,rahmenhoehe);
 
-            } catch (EinzelteileTypException|UngueltigerStepException|KonfigurationException e) {
-                // TODO
+            } catch (UngueltigerStepException|KonfigurationException e) {
                 e.printStackTrace();
             }
         }
@@ -229,25 +227,39 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
             }
         }
 
-        StepLichtDTO step8 = konfigurationDTO.getStep_8();
+        StepDTO step8 = konfigurationDTO.getStep_8();
         if(step8 != null){
 
             try {
-                konfiguration.setStep8(step8.isGefragt(),step8.isSteckLicht(),step8.isFestLicht());
+                int id = step8.getId();
+                EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.getEinzelteileTypByString(step8.getEinzelteileTyp());
+                konfiguration.setStep8(id, einzelTeileTyp);
+
+            } catch (EinzelteileTypException|UngueltigerStepException|KonfigurationException e) {
+                // TODO
+                e.printStackTrace();
+            }
+        }
+
+        StepLichtDTO step9 = konfigurationDTO.getStep_9();
+        if(step9 != null){
+
+            try {
+                konfiguration.setStep9(step9.isGefragt(), step9.isSteckLicht(), step9.isFestLicht());
             } catch (UngueltigerStepException e) {
                 // TODO
                 e.printStackTrace();
             }
         }
 
-        StepZubehoerDTO step9 = konfigurationDTO.getStep_9();
-        if(step9 != null){
+        StepZubehoerDTO step10 = konfigurationDTO.getStep_10();
+        if(step10 != null){
 
             try {
-                List<Integer> zubehoerList = step9.getZubehoerListe();
-                EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.getEinzelteileTypByString(step9.getEinzelteileTyp());
+                List<Integer> zubehoerList = step10.getZubehoerListe();
+                EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.getEinzelteileTypByString(step10.getEinzelteileTyp());
 
-                konfiguration.setStep9(einzelTeileTyp,zubehoerList);
+                konfiguration.setStep10(einzelTeileTyp, zubehoerList);
 
             } catch (EinzelteileTypException|KonfigurationException|UngueltigerStepException e) {
                 // TODO
@@ -258,4 +270,25 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         return konfiguration;
     }
 
+    @Override
+    public List<String> getRahmenFarbenByKonfiguration(IKonfiguration konfiguration) {
+
+        if(konfiguration.getStep2().getRahmen() != null){
+
+            Rahmen rahmen = konfiguration.getStep2().getRahmen();
+            return rahmen.getFarben();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Integer> getRahmenHoehenByKonfiguration(IKonfiguration konfiguration) {
+
+        if(konfiguration.getStep2().getRahmen() != null){
+
+            Rahmen rahmen = konfiguration.getStep2().getRahmen();
+            return rahmen.getHoehen();
+        }
+        return null;
+    }
 }

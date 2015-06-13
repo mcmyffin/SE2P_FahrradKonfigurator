@@ -1,5 +1,6 @@
 package models.KonfigurationKomponente.Step;
 
+import models.TeileKomponente.Einzelteile.Mantel;
 import models.TeileKomponente.Einzelteile.Vorbau;
 
 /**
@@ -7,5 +8,5 @@ import models.TeileKomponente.Einzelteile.Vorbau;
  */
 public interface IStep_6 {
 
-    public Vorbau getVorbau();
+    public Mantel getMantel();
 }

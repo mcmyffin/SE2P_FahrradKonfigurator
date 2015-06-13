@@ -19,27 +19,36 @@ public class Step implements IStep{
     // Step 2
     private Rahmen rahmen;
 
+
     // Step 3
-    private Gabel gabel;
+    // Farbe orange#bla#lila
+    // Rahmenhöhe 44#12#3234
+    // Paser für bauen
+    private String farbe;
+    private int rahmenHoehe = 0;
 
     // Step 4
-    private Felge felge;
+    private Gabel gabel;
 
     // Step 5
-    private Mantel mantel;
+    private Felge felge;
 
     // Step 6
-    private Vorbau vorbau;
+    private Mantel mantel;
 
     // Step 7
-    private Sattel sattel;
+    private Vorbau vorbau;
+
 
     // Step 8
+    private Sattel sattel;
+
+    // Step 9
     private boolean isGefragt = false;
     private boolean isSteckLicht = false;
     private boolean isFestLicht = false;
 
-    // Step 9
+    // Step 10
     List<Zubehoer> zubehoerList;
 
 
@@ -52,6 +61,12 @@ public class Step implements IStep{
     public Rahmen getRahmen() {
         return rahmen;
     }
+
+    @Override
+    public String getFarbe() { return farbe; }
+
+    @Override
+    public int getRahmenHoehe() { return rahmenHoehe; }
 
     @Override
     public Gabel getGabel() {
@@ -98,6 +113,7 @@ public class Step implements IStep{
         return zubehoerList;
     }
 
+
     /*** SETTER ***/
     @Override
     public void setRahmenFormTyp(RahmenFormTyp rahmenFormTyp) {
@@ -108,6 +124,12 @@ public class Step implements IStep{
     public void setRahmen(Rahmen rahmen) {
         this.rahmen = rahmen;
     }
+
+    @Override
+    public void setRahmenFarbe(String farbe) { this.farbe = farbe; }
+
+    @Override
+    public void setRahmenHoehe(int rahmenHoehe) { this.rahmenHoehe = rahmenHoehe;}
 
     @Override
     public void setGabel(Gabel gabel) {

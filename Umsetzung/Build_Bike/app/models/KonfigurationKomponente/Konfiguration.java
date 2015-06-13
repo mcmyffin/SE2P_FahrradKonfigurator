@@ -73,13 +73,19 @@ public class Konfiguration implements IKonfiguration {
         return (IStep_9) steps;
     }
 
+    @Override
+    public IStep_10 getStep10() { return (IStep_10) steps;}
+
 
     /*** SETTER ***/
     @Override
     public boolean setStep1(RahmenFormTyp rahmenformtyp) throws UngueltigerStepException {
 
+        // precondition
+        if(rahmenformtyp == null) return false;
 
-        return false;
+        steps.setRahmenFormTyp(rahmenformtyp);
+        return true;
     }
 
     @Override
@@ -99,7 +105,19 @@ public class Konfiguration implements IKonfiguration {
     }
 
     @Override
-    public boolean setStep3(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
+    public boolean setStep3(String farbe, int rahmenhoehe) throws UngueltigerStepException, KonfigurationException {
+
+        // precondition
+        if(farbe == null || rahmenhoehe < 0) return false;
+
+        steps.setRahmenFarbe(farbe);
+        steps.setRahmenHoehe(rahmenhoehe);
+
+        return true;
+    }
+
+    @Override
+    public boolean setStep4(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
 
         // precondition
         if(!einzelTeileTyp.equals(EinzelTeileTyp.GABEL)) throw new KonfigurationException("EinzelteileTyp inkompatibel");
@@ -114,7 +132,7 @@ public class Konfiguration implements IKonfiguration {
     }
 
     @Override
-    public boolean setStep4(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
+    public boolean setStep5(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
 
         // precondition
         if(!einzelTeileTyp.equals(EinzelTeileTyp.FELGE)) throw new KonfigurationException("EinzelteileTyp inkompatibel");
@@ -129,7 +147,7 @@ public class Konfiguration implements IKonfiguration {
     }
 
     @Override
-    public boolean setStep5(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
+    public boolean setStep6(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
 
         // precondition
         if(!einzelTeileTyp.equals(EinzelTeileTyp.MANTEL)) throw new KonfigurationException("EinzelteileTyp inkompatibel");
@@ -144,7 +162,7 @@ public class Konfiguration implements IKonfiguration {
     }
 
     @Override
-    public boolean setStep6(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
+    public boolean setStep7(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
 
         // precondition
         if(!einzelTeileTyp.equals(EinzelTeileTyp.VORBAU)) throw new KonfigurationException("EinzelteileTyp inkompatibel");
@@ -159,7 +177,7 @@ public class Konfiguration implements IKonfiguration {
     }
 
     @Override
-    public boolean setStep7(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
+    public boolean setStep8(int id, EinzelTeileTyp einzelTeileTyp) throws UngueltigerStepException, KonfigurationException {
 
         // precondition
         if(!einzelTeileTyp.equals(EinzelTeileTyp.SATTEL)) throw new KonfigurationException("EinzelteileTyp inkompatibel");
@@ -174,7 +192,7 @@ public class Konfiguration implements IKonfiguration {
     }
 
     @Override
-    public boolean setStep8(boolean isGefragt, boolean isStecklicht, boolean isFestlicht) throws UngueltigerStepException {
+    public boolean setStep9(boolean isGefragt, boolean isStecklicht, boolean isFestlicht) throws UngueltigerStepException {
 
         steps.setLicht(isGefragt,isStecklicht,isFestlicht);
 
@@ -182,7 +200,7 @@ public class Konfiguration implements IKonfiguration {
     }
 
     @Override
-    public boolean setStep9(EinzelTeileTyp einzelTeileTyp, List<Integer> ids) throws UngueltigerStepException, KonfigurationException {
+    public boolean setStep10(EinzelTeileTyp einzelTeileTyp, List<Integer> ids) throws UngueltigerStepException, KonfigurationException {
 
         // precondition
         if(!einzelTeileTyp.equals(EinzelTeileTyp.ZUBEHOER)) throw new KonfigurationException("EinzelteileTyp inkompatibel");
@@ -219,72 +237,80 @@ public class Konfiguration implements IKonfiguration {
         }
 
 
-        Gabel gabel   = ((IStep_3) steps).getGabel();
-        StepDTO stepDTO_3 = null;
+        IStep_3 step3 = ((IStep_3) steps);
+        StepRahmenFarbeHoehe stepDTO_3 = null;
 
-        if(gabel != null){
-            stepDTO_3 = new StepDTO(gabel.getId(),gabel.getEinzelTeileTyp().getValue());
+        if(step3.getFarbe() != null && step3.getRahmenHoehe() > 0){
+            stepDTO_3 = new StepRahmenFarbeHoehe(step3.getFarbe(),step3.getRahmenHoehe());
         }
 
 
-        Felge felge   = ((IStep_4) steps).getFelge();
+        Gabel gabel   = ((IStep_4) steps).getGabel();
         StepDTO stepDTO_4 = null;
 
-        if(felge != null){
-            stepDTO_4 = new StepDTO(felge.getId(),felge.getEinzelTeileTyp().getValue());
+        if(gabel != null){
+            stepDTO_4 = new StepDTO(gabel.getId(),gabel.getEinzelTeileTyp().getValue());
         }
 
 
-        Mantel mantel = ((IStep_5) steps).getMantel();
+        Felge felge   = ((IStep_5) steps).getFelge();
         StepDTO stepDTO_5 = null;
 
-        if(mantel != null){
-            stepDTO_5 = new StepDTO(mantel.getId(),mantel.getEinzelTeileTyp().getValue());
+        if(felge != null){
+            stepDTO_5 = new StepDTO(felge.getId(),felge.getEinzelTeileTyp().getValue());
         }
 
 
-        Vorbau vorbau = ((IStep_6) steps).getVorbau();
+        Mantel mantel = ((IStep_6) steps).getMantel();
         StepDTO stepDTO_6 = null;
 
-        if(vorbau != null){
-            stepDTO_6 =  new StepDTO(vorbau.getId(),vorbau.getEinzelTeileTyp().getValue());
+        if(mantel != null){
+            stepDTO_6 = new StepDTO(mantel.getId(),mantel.getEinzelTeileTyp().getValue());
         }
 
 
-        Sattel sattel = ((IStep_7) steps).getSattel();
+        Vorbau vorbau = ((IStep_7) steps).getVorbau();
         StepDTO stepDTO_7 = null;
 
+        if(vorbau != null){
+            stepDTO_7 =  new StepDTO(vorbau.getId(),vorbau.getEinzelTeileTyp().getValue());
+        }
+
+
+        Sattel sattel = ((IStep_8) steps).getSattel();
+        StepDTO stepDTO_8 = null;
+
         if(sattel != null){
-            stepDTO_7 = new StepDTO(sattel.getId(),sattel.getEinzelTeileTyp().getValue());
+            stepDTO_8 = new StepDTO(sattel.getId(),sattel.getEinzelTeileTyp().getValue());
         }
 
-
-        IStep_8 step_8 = (IStep_8) steps;
-        StepLichtDTO stepDTO_8 = null;
-
-        if(step_8.isGefragt()){
-            stepDTO_8  = new StepLichtDTO(step_8.isGefragt(),step_8.isSteckLicht(),step_8.isFestLicht());
-        }
 
         IStep_9 step_9 = (IStep_9) steps;
-        StepZubehoerDTO stepDTO_9 = null;
+        StepLichtDTO stepDTO_9 = null;
 
-        if(step_9.getZubehoerList() != null){
+        if(step_9.isGefragt()){
+            stepDTO_9  = new StepLichtDTO(step_9.isGefragt(),step_9.isSteckLicht(),step_9.isFestLicht());
+        }
+
+        IStep_10 step_10 = (IStep_10) steps;
+        StepZubehoerDTO stepDTO_10 = null;
+
+        if(step_10.getZubehoerList() != null){
 
             List<Integer> zubehoerList = new ArrayList<>();
 
-            for(Zubehoer einZubehoer : step_9.getZubehoerList()){
+            for(Zubehoer einZubehoer : step_10.getZubehoerList()){
 
                 int id = einZubehoer.getId();
                 zubehoerList.add(id);
             }
 
-            stepDTO_9 = new StepZubehoerDTO(zubehoerList,EinzelTeileTyp.ZUBEHOER.getValue());
+            stepDTO_10 = new StepZubehoerDTO(zubehoerList,EinzelTeileTyp.ZUBEHOER.getValue());
         }
 
 
         KonfigurationDTO konfigurationDTO = new KonfigurationDTO(stepDTO_1,stepDTO_2,stepDTO_3,stepDTO_4,stepDTO_5,
-                                                                    stepDTO_6,stepDTO_7,stepDTO_8,stepDTO_9);
+                                                                    stepDTO_6,stepDTO_7,stepDTO_8,stepDTO_9,stepDTO_10);
 
         return konfigurationDTO;
     }

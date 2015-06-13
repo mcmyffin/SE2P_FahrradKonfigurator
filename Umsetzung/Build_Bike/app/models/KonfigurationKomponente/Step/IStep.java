@@ -9,11 +9,15 @@ import java.util.List;
 /**
  * Created by dima on 24.05.15.
  */
-public interface IStep extends IStep_1, IStep_2, IStep_3, IStep_4, IStep_5, IStep_6, IStep_7, IStep_8, IStep_9 {
+public interface IStep extends IStep_1, IStep_2, IStep_3, IStep_4, IStep_5, IStep_6, IStep_7, IStep_8, IStep_9, IStep_10{
 
     public void setRahmenFormTyp(RahmenFormTyp rahmenFormTyp);
 
     public void setRahmen(Rahmen rahmen);
+
+    public void setRahmenFarbe(String farbe);
+
+    public void setRahmenHoehe(int rahmenHoehe);
 
     public void setGabel(Gabel gabel);
 

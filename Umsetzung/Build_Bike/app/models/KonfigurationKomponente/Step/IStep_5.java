@@ -1,5 +1,6 @@
 package models.KonfigurationKomponente.Step;
 
+import models.TeileKomponente.Einzelteile.Felge;
 import models.TeileKomponente.Einzelteile.Mantel;
 
 /**
@@ -7,5 +8,5 @@ import models.TeileKomponente.Einzelteile.Mantel;
  */
 public interface IStep_5 {
 
-    public Mantel getMantel();
+    public Felge getFelge();
 }

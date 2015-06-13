@@ -7,5 +7,7 @@ import models.TeileKomponente.Einzelteile.Gabel;
  */
 public interface IStep_3 {
 
-    public Gabel getGabel();
+    public String getFarbe();
+
+    public int getRahmenHoehe();
 }

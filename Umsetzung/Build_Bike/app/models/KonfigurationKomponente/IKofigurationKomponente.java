@@ -10,8 +10,6 @@ import java.util.List;
  */
 public interface IKofigurationKomponente {
 
-
-
     public List<Felge> filterFelgeByKonfiguration(IKonfiguration konfiguration, List<Felge> felgeList);
 
     public List<Gabel> filterGabelByKonfiguration(IKonfiguration konfiguration, List<Gabel> gabelList);
@@ -25,6 +23,10 @@ public interface IKofigurationKomponente {
     public List<Vorbau> filterVorbauByKonfiguration(IKonfiguration konfiguration, List<Vorbau> vorbauList);
 
     public List<Zubehoer> filterZubehoerByKonfiguration(IKonfiguration konfiguration, List<Zubehoer> zubehoerList);
+
+    public List<String> getRahmenFarbenByKonfiguration(IKonfiguration konfiguration);
+
+    public List<Integer> getRahmenHoehenByKonfiguration(IKonfiguration konfiguration);
 
     public IKonfiguration fromKonfigurtionDTO(KonfigurationDTO konfigurationDTO);
 
