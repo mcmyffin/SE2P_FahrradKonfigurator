@@ -16,10 +16,10 @@ public class ValuesTest {
 
 
 
-    @BeforeClass
-    public void beforeClass(){
-
-    }
+//    @BeforeClass
+//    public void beforeClass(){
+//
+//    }
 
     // Positiver Test auf Uebereinstimmung der EinzelteileTypen
     @Test
@@ -28,7 +28,8 @@ public class ValuesTest {
         int id = 1;
         int formTypID = 1;
         int beschreibungID = 1;
-        int hoehe = 10;
+        String farben = "blau#grün#lila";
+        String hoehen = "12#22#144";
         int form = 1;
         int reifengroesse = 100;
         int steuersatz = 22;
@@ -49,6 +50,7 @@ public class ValuesTest {
         boolean zusatzBeleg = true;
 
 
+
         // Positive Tests
         assertEquals(Values.createFelge(id,beschreibungID,preis,reifengroesse,formTyp,formTypID,bild,name,narbenDynamo).getEinzelTeileTyp() , EinzelTeileTyp.FELGE);
         assertEquals(Values.createGabel(id, beschreibungID, formTyp, formTypID, schaftslaenge, steuersatz, reifengroesse, preis,
@@ -57,8 +59,8 @@ public class ValuesTest {
         assertEquals(Values.createMantel(id, beschreibungID, formTyp, formTypID, durchmesser, reifengroesse, preis, bild,
                 name).getEinzelTeileTyp(), EinzelTeileTyp.MANTEL);
 
-        assertEquals(Values.createRahmen(id, hoehe, form, reifengroesse, bild, beschreibungID, steuersatz, schaftshoehe, zusatzbefest, scheibenbremse,
-                felgenbremse, tretlager, formTyp, formTypID, name, preis, gepaektraeger, licht).getEinzelTeileTyp(), EinzelTeileTyp.RAHMEN);
+        assertEquals(Values.createRahmen(id, hoehen, form, reifengroesse, bild, beschreibungID, steuersatz, schaftshoehe, zusatzbefest, scheibenbremse,
+                felgenbremse, tretlager, formTyp, formTypID, name, preis, gepaektraeger, licht,farben).getEinzelTeileTyp(), EinzelTeileTyp.RAHMEN);
 
         assertEquals(Values.createSattel(id, name, beschreibungID, preis, formTyp, formTypID, bild).getEinzelTeileTyp(), EinzelTeileTyp.SATTEL);
 
@@ -74,7 +76,8 @@ public class ValuesTest {
         int id = 0;
         int formTypID = 0;
         int beschreibungID = 0;
-        int hoehe = 10;
+        String farben = "blau#grün#lila";
+        String hoehen = "12#22#144";
         int form = 1;
         int reifengroesse = 100;
         int steuersatz = 22;
@@ -103,8 +106,8 @@ public class ValuesTest {
         assertEquals(Values.createMantel(id, beschreibungID, formTyp, formTypID, durchmesser, reifengroesse, preis, bild,
                 name).getEinzelTeileTyp(), EinzelTeileTyp.MANTEL);
 
-        assertEquals(Values.createRahmen(id, hoehe, form, reifengroesse, bild, beschreibungID, steuersatz, schaftshoehe, zusatzbefest, scheibenbremse,
-                felgenbremse, tretlager, formTyp, formTypID, name, preis, gepaektraeger, licht).getEinzelTeileTyp(), EinzelTeileTyp.RAHMEN);
+        assertEquals(Values.createRahmen(id, hoehen, form, reifengroesse, bild, beschreibungID, steuersatz, schaftshoehe, zusatzbefest, scheibenbremse,
+                felgenbremse, tretlager, formTyp, formTypID, name, preis, gepaektraeger, licht,farben).getEinzelTeileTyp(), EinzelTeileTyp.RAHMEN);
 
         assertEquals(Values.createSattel(id, name, beschreibungID, preis, formTyp, formTypID, bild).getEinzelTeileTyp(), EinzelTeileTyp.SATTEL);
 
@@ -120,7 +123,8 @@ public class ValuesTest {
         int id = -1;
         int formTypID = -1;
         int beschreibungID = -1;
-        int hoehe = 10;
+        String farben = "blau#grün#lila";
+        String hoehen = "12#22#144";
         int form = 1;
         int reifengroesse = 100;
         int steuersatz = 22;
@@ -149,8 +153,8 @@ public class ValuesTest {
         assertEquals(Values.createMantel(id, beschreibungID, formTyp, formTypID, durchmesser, reifengroesse, preis, bild,
                 name).getEinzelTeileTyp(), EinzelTeileTyp.MANTEL);
 
-        assertEquals(Values.createRahmen(id, hoehe, form, reifengroesse, bild, beschreibungID, steuersatz, schaftshoehe, zusatzbefest, scheibenbremse,
-                felgenbremse, tretlager, formTyp, formTypID, name, preis, gepaektraeger, licht).getEinzelTeileTyp(), EinzelTeileTyp.RAHMEN);
+        assertEquals(Values.createRahmen(id, hoehen, form, reifengroesse, bild, beschreibungID, steuersatz, schaftshoehe, zusatzbefest, scheibenbremse,
+                felgenbremse, tretlager, formTyp, formTypID, name, preis, gepaektraeger, licht,farben).getEinzelTeileTyp(), EinzelTeileTyp.RAHMEN);
 
         assertEquals(Values.createSattel(id, name, beschreibungID, preis, formTyp, formTypID, bild).getEinzelTeileTyp(), EinzelTeileTyp.SATTEL);
 
