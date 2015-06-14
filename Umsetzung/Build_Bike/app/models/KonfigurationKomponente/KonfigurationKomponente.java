@@ -131,6 +131,9 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
 
         IKonfiguration konfiguration = new Konfiguration();
 
+        // Wenn keine Konfiguration vorhanden, dann ertelle eine leere
+        if(konfigurationDTO == null) return konfiguration;
+
         StepRahmenFormTypDTO step1 = konfigurationDTO.getStep_1();
 
         if(step1 != null){
