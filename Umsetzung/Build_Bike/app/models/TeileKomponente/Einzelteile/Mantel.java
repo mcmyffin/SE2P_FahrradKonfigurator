@@ -38,6 +38,19 @@ public class Mantel {
     }
 
     /**
+     * Equals
+     * Vergleich diese Objekte
+     * @return boolean
+     */
+
+    public boolean equals(Object obj){
+        if (obj == this)return true;
+        if (!(obj instanceof Mantel)) return false;
+        Mantel mantelObj = (Mantel)obj;
+        return ((this.id == mantelObj.getId()) && (this.beschreibungID == mantelObj.getBeschreibungID()) && (this.preis == mantelObj.getPreis()) && (this.reifengroesse == mantelObj.getReifengroesse()) && (this.formTyp == mantelObj.getFormTyp()) && (this.formTypID == mantelObj.getFormTypID()) && (this.bild == mantelObj.getBild()) && (this.name == mantelObj.getName()) && (this.durchmesser == mantelObj.getDurchmesser()));
+    }
+
+    /**
      * Get ID
      * Eine eindeutige Nummer dieses Objektes
      * @return id

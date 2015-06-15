@@ -66,6 +66,38 @@ public class Rahmen {
     }
 
     /**
+     * Equals
+     * Vergleich diese Objekte
+     * @return boolean
+     */
+
+    public boolean equals(Object obj){
+        if (obj == this)return true;
+        if (!(obj instanceof Felge)) return false;
+        Rahmen rahmenObj = (Rahmen)obj;
+        return ((this.id == rahmenObj.getId())
+                && (this.beschreibungID == rahmenObj.getBeschreibungID())
+                && (this.preis == rahmenObj.getPreis())
+                && (this.reifengroesse == rahmenObj.getReifengroesse())
+                && (this.fromTyp == rahmenObj.getFromTyp())
+                && (this.formTypID == rahmenObj.getFormTypID())
+                && (this.bild == rahmenObj.getBild())
+                && (this.name == rahmenObj.getName())
+                && (this.felgenbremse == rahmenObj.isFelgenbremse())
+                && (this.gepaektraeger == rahmenObj.isGepaektraeger())
+                && (this.farben == rahmenObj.getFarben())
+                && (this.form == rahmenObj.getForm())
+                && (this.steuersatz == rahmenObj.getSteuersatz())
+                && (this.schaftshoehe == rahmenObj.getSchaftshoehe())
+                && (this.hoehen == rahmenObj.getHoehen())
+                && (this.tretlager == rahmenObj.getTretlager())
+                && (this.scheibenbremse == rahmenObj.isScheibenbremse())
+                && (this.zusatzbefest == rahmenObj.getZusatzbefest())
+                && (this.licht == rahmenObj.isLicht())
+        );
+    }
+
+    /**
      * Get ID
      * @return
      */

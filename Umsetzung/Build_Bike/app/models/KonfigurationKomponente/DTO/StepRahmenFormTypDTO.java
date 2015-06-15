@@ -11,7 +11,6 @@ public class StepRahmenFormTypDTO {
         this.rahmenFormTyp = rahmenFormTyp;
     }
 
-
     public String getRahmenFormTyp() {
         return rahmenFormTyp;
     }

@@ -35,6 +35,19 @@ public class Zubehoer {
     }
 
     /**
+     * Equals
+     * Vergleich diese Objekte
+     * @return boolean
+     */
+
+    public boolean equals(Object obj){
+        if (obj == this)return true;
+        if (!(obj instanceof Zubehoer)) return false;
+        Zubehoer zubObj = (Zubehoer)obj;
+        return ((this.id == zubObj.getId()) && (this.beschreibungID == zubObj.getBeschreibungID()) && (this.preis == zubObj.getPreis()) && (this.formTyp == zubObj.getFormTyp()) && (this.formTypID == zubObj.getFormTypID()) && (this.bild == zubObj.getBild()) && (this.name == zubObj.getName()) && (this.zusatzBelegt == zubObj.isZusatzBelegt()));
+    }
+
+    /**
      * Get ID
      * Eine eindeutige Nummer dieses Objektes
      * @return id

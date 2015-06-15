@@ -34,6 +34,26 @@ public class Sattel {
     }
 
     /**
+     * Equals
+     * Vergleich diese Objekte
+     * @return boolean
+     */
+
+    public boolean equals(Object obj){
+        if (obj == this)return true;
+        if (!(obj instanceof Sattel)) return false;
+        Sattel sattelObj = (Sattel)obj;
+        return ((this.id == sattelObj.getId())
+                && (this.beschreibungID == sattelObj.getBeschreibungID())
+                && (this.preis == sattelObj.getPreis())
+                && (this.formTyp == sattelObj.getFormTyp())
+                && (this.formTypID == sattelObj.getFormTypID())
+                && (this.bild == sattelObj.getBild())
+                && (this.name == sattelObj.getName())
+        );
+    }
+
+    /**
      * Get ID
      * Eine eindeutige Nummer dieses Objektes
      * @return id

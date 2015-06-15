@@ -38,6 +38,19 @@ public class Felge {
 
 
     /**
+     * Equals
+     * Vergleich diese Objekte
+     * @return boolean
+     */
+
+    public boolean equals(Object obj){
+        if (obj == this)return true;
+        if (!(obj instanceof Felge)) return false;
+        Felge felgeObj = (Felge)obj;
+        return ((this.id == felgeObj.getId()) && (this.beschreibungID == felgeObj.getBeschreibungID()) && (this.preis == felgeObj.getPreis()) && (this.reifengroesse == felgeObj.getReifengroesse()) && (this.formTyp == felgeObj.getFormTyp()) && (this.formTypID == felgeObj.getFormTypID()) && (this.bild == felgeObj.getBild()) && (this.name == felgeObj.getName()) && (this.narbendynamo == felgeObj.isNarbendynamo()));
+    }
+
+    /**
      * Get ID
      * Eine eindeutige Nummer dieses Objektes
      * @return id

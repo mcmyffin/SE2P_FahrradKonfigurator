@@ -32,6 +32,26 @@ public class Vorbau {
     }
 
     /**
+     * Equals
+     * Vergleich diese Objekte
+     * @return boolean
+     */
+
+    public boolean equals(Object obj){
+        if (obj == this)return true;
+        if (!(obj instanceof Felge)) return false;
+        Vorbau vorbauObj = (Vorbau)obj;
+        return ((this.id == vorbauObj.getId())
+                && (this.beschreibungID == vorbauObj.getBeschreibungID())
+                && (this.preis == vorbauObj.getPreis())
+                && (this.formTyp == vorbauObj.getFormTyp())
+                && (this.formTypID == vorbauObj.getFormTypID())
+                && (this.bild == vorbauObj.getBild())
+                && (this.schaftsgroesse == vorbauObj.getSchaftsgroesse())
+        );
+    }
+
+    /**
      * Get ID
      * Eine eindeutige Nummer dieses Objektes
      * @return id

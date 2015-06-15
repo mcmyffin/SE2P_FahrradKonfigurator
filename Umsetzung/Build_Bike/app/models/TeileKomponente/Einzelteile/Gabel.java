@@ -51,6 +51,31 @@ public class Gabel {
                 felgenbremse,scheibenbremse,licht,bild,name);
     }
 
+    /**
+     * Equals
+     * Vergleich diese Objekte
+     * @return boolean
+     */
+
+    public boolean equals(Object obj){
+        if (obj == this)return true;
+        if (!(obj instanceof Gabel)) return false;
+        Gabel gabelObj = (Gabel)obj;
+        return ((this.id == gabelObj.getId())
+                && (this.beschreibungID == gabelObj.getBeschreibungID())
+                && (this.preis == gabelObj.getPreis())
+                && (this.reifengroesse == gabelObj.getReifengroesse())
+                && (this.formTypID == gabelObj.getFormTypID())
+                && (this.bild == gabelObj.getBild())
+                && (this.name == gabelObj.getName())
+                && (this.felgenbremse == gabelObj.isFelgenbremse())
+                && (this.steuersatz == gabelObj.getSteuersatz())
+                && (this.scheibenbremse == gabelObj.isScheibenbremse())
+                && (this.licht == gabelObj.isLicht())
+                && (this.reifengroesse == gabelObj.getReifengroesse())
+                && (this.schaftslaenge == gabelObj.getSchaftslaenge())
+        );
+    }
 
     public int getId() {
         return id;
