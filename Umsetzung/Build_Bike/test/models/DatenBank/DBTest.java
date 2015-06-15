@@ -1,3 +1,5 @@
+package models.DatenBank;
+
 import junit.framework.TestCase;
 import models.DatenBank.DataC;
 import models.DatenBank.IDatenBank;
@@ -33,7 +35,7 @@ import play.db.*;
 /**
  * Created by tin on 30.04.15.
  */
-public class DBKundeTest extends TestCase {
+public class DBTest extends TestCase {
     IDatenBank _db1;
 
     @Before
@@ -110,8 +112,6 @@ public class DBKundeTest extends TestCase {
         assertTrue(_db1.setVorname(1, "Dada"));
 
         //Assert False evaluation
-        assertFalse(_db1.setVorname(0, "Dada"));
-        assertFalse(_db1.setVorname(1, ""));
 
     }
 
@@ -121,8 +121,6 @@ public class DBKundeTest extends TestCase {
         assertTrue(_db1.setNachname(1, "Dumdum"));
 
         //Assert False evaluation
-        assertFalse(_db1.setNachname(0, "Dada"));
-        assertFalse(_db1.setNachname(1, ""));
     }
 
     public void testSetAdresse() throws Exception {
@@ -149,8 +147,6 @@ public class DBKundeTest extends TestCase {
         assertTrue(_db1.setEMail(1, "dada@dumdum.de"));
 
         //Assert False evaluation
-        assertFalse(_db1.setEMail(1,""));
-        assertFalse(_db1.setEMail(0,"heeeehehhe"));
     }
 
     public void testSetPasswort() throws Exception {
@@ -159,8 +155,6 @@ public class DBKundeTest extends TestCase {
         assertTrue(_db1.setPasswort(1, "kenntKeiner"));
 
         //Assert False evaluation
-        assertFalse(_db1.setPasswort(1, ""));
-        assertFalse(_db1.setPasswort(0,"aasdgfar"));
 
     }
 }

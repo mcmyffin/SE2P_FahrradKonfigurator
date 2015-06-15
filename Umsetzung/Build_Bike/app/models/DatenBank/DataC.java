@@ -114,17 +114,24 @@ public class DataC implements IDatenBank {
     @Override
     public boolean setVorname(int id, String vorname) throws DatabaseException {
         try {
-
+            Statement stmt = _con.createStatement();
+            stmt.execute("UPDATE KundeT SET K_vorname = '"+ vorname +"' WHERE K_ID ="+id);
+            return true;
         } catch (Exception e){
             throw new DatabaseException(2);
         }
-
-        return false;
     }
 
     @Override
     public boolean setNachname(int id, String nachname) throws DatabaseException {
-        return false;
+        try {
+            Statement stmt = _con.createStatement();
+            stmt.execute("UPDATE KundeT SET K_nachname = '"+ nachname +"' WHERE K_ID ="+id);
+            return true;
+
+        } catch (Exception e){
+            throw new DatabaseException(2);
+        }
     }
 
     @Override
@@ -134,12 +141,24 @@ public class DataC implements IDatenBank {
 
     @Override
     public boolean setEMail(int id, String email) throws DatabaseException {
-        return false;
+        try {
+            Statement stmt = _con.createStatement();
+            stmt.execute("UPDATE KundeT SET K_email = '"+ email +"' WHERE K_ID ="+id);
+            return true;
+        } catch (Exception e){
+            throw new DatabaseException(2);
+        }
     }
 
     @Override
     public boolean setPasswort(int id, String passwort) throws DatabaseException {
-        return false;
+        try {
+            Statement stmt = _con.createStatement();
+            stmt.execute("UPDATE KundeT SET K_passwort = '"+ passwort +"' WHERE K_ID ="+id);
+            return true;
+        } catch (Exception e){
+            throw new DatabaseException(2);
+        }
     }
 
     @Override
@@ -164,7 +183,7 @@ public class DataC implements IDatenBank {
     @Override
     public Felge getFelgeByID(int id) throws DatabaseException {
         try {
-            ResultSet rs = getDataFormDB("SELECT F_BESCH, F_bild, F_formTyp, F_formTypID, F_ID, F_name, F_narbendynamo, F_preis, F_reifengrosse from FelgenT where F_id =" + id + ";");
+            ResultSet rs = getDataFormDB("SELECT * from FelgenT where F_id =" + id + ";");
             while (rs.next()){
                 return Values.createFelge(rs.getInt("F_ID"),rs.getInt("F_BESCH"), rs.getInt("F_preis"), rs.getInt("F_reifengroesse"), rs.getInt("F_formTyp"), rs.getInt("F_formTypID"), rs.getString("F_bild"), rs.getString("F_name"), rs.getBoolean("F_narbendynamo"));
             }
@@ -179,7 +198,7 @@ public class DataC implements IDatenBank {
     public List<Felge> getAllFelgen() throws DatabaseException {
         List<Felge> felList = new LinkedList<Felge>();
         try {
-            ResultSet rs = getDataFormDB("SELECT F_BESCH, F_bild, F_formTyp, F_formTypID, F_ID, F_name, F_narbendynamo, F_preis, F_reifengrosse from FelgenT;");
+            ResultSet rs = getDataFormDB("SELECT * from FelgenT;");
             while (rs.next()){
                  felList.add(Values.createFelge(rs.getInt("F_ID"), rs.getInt("F_BESCH"), rs.getInt("F_preis"), rs.getInt("F_reifengroesse"), rs.getInt("F_formTyp"), rs.getInt("F_formTypID"), rs.getString("F_bild"), rs.getString("F_name"), rs.getBoolean("F_narbendynamo")));
             }
@@ -193,7 +212,7 @@ public class DataC implements IDatenBank {
     public List<Felge> getFelgeByFormTyp(int formTyp) throws DatabaseException {
         List<Felge> felList = new LinkedList<Felge>();
         try {
-            ResultSet rs = getDataFormDB("SELECT F_BESCH, F_bild, F_formTyp, F_formTypID, F_ID, F_name, F_narbendynamo, F_preis, F_reifengrosse from FelgenT WHERE F_formTyp ="+formTyp+";");
+            ResultSet rs = getDataFormDB("SELECT * from FelgenT WHERE F_formTyp ="+formTyp+";");
             while (rs.next()){
                 felList.add(Values.createFelge(rs.getInt("F_ID"), rs.getInt("F_BESCH"), rs.getInt("F_preis"), rs.getInt("F_reifengroesse"), rs.getInt("F_formTyp"), rs.getInt("F_formTypID"), rs.getString("F_bild"), rs.getString("F_name"), rs.getBoolean("F_narbendynamo")));
             }
@@ -218,7 +237,12 @@ public class DataC implements IDatenBank {
         try {
             ResultSet rs = getDataFormDB("SELECT * from GabelT where G_ID ="+id+";");
             while (rs.next()){
-                return Values.createGabel(rs.getInt("G_ID"),rs.getInt("G_BESCH"), rs.getInt("G_formTyp"), rs.getInt("G_formTypID"), rs.getInt("G_schaftlaenge"), rs.getInt("G_steuersatz"), rs.getInt("G_reifengroesse"), rs.getInt("G_preis"), rs.getBoolean("G_felgenBrems"), rs.getBoolean("G_scheibenbrems"), rs.getBoolean("G_licht"), rs.getString("G_bild"), rs.getString("name"));
+                return Values.createGabel(rs.getInt("G_ID"),rs.getInt("G_BESCH"),
+                        rs.getInt("G_formTyp"), rs.getInt("G_formTypID"),
+                        rs.getInt("G_schaftlaenge"), rs.getInt("G_steuersatz"),
+                        rs.getInt("G_reifengroesse"), rs.getInt("G_preis"),
+                        rs.getBoolean("G_felgenBrems"), rs.getBoolean("G_scheibenbrems"),
+                        rs.getBoolean("G_licht"), rs.getString("G_bild"), rs.getString("G_name"));
             }
         } catch (Exception e) {
             throw new DatabaseException(1);
@@ -348,7 +372,7 @@ public class DataC implements IDatenBank {
     @Override
     public Rahmen getRahmenByID(int rID) throws DatabaseException {
         try {
-            ResultSet rs = getDataFormDB("SELECT * from RahmenT where R_formTyp ="+rID+";");
+            ResultSet rs = getDataFormDB("SELECT * from RahmenT where R_ID ="+rID+";");
             while (rs.next()){
                 return Values.createRahmen(rs.getInt("R_ID"), rs.getString("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
                         rs.getString("R_bild"), rs.getInt("R_BESCH"), rs.getInt("R_steuersatz"),
