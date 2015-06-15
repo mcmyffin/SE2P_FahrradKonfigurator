@@ -1,25 +1,23 @@
-package models.DatenBank;
+package DatenBank;
 
 
-import models.Exception.DatabaseException;
-import org.mariadb.jdbc.*;
+import Exception.DatabaseException;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
-import play.db.*;
-
-import models.TeileKomponente.Einzelteile.*;
+import TeileKomponente.Einzelteile.*;
+import org.mariadb.jdbc.*;
 
 /**
  * Created by tin on 01.05.15.
  */
 public class DataC implements IDatenBank {
-    Connection _con = DB.getConnection();
+    Connection _con = getConnection();
 
     private ResultSet getDataFormDB(String sqlStmt) throws DatabaseException{
         try {
@@ -143,7 +141,7 @@ public class DataC implements IDatenBank {
     @Override
     public Felge getFelgeByID(int id) throws DatabaseException {
         try {
-            ResultSet rs = getDataFormDB("SELECT F_BESCH, F_bild, F_formTyp, F_formTypID, F_ID, F_name, F_narbendynamo, F_preis, F_reifengrosse from FelgenT where F_id ="+id+";");
+            ResultSet rs = getDataFormDB("SELECT F_BESCH, F_bild, F_formTyp, F_formTypID, F_ID, F_name, F_narbendynamo, F_preis, F_reifengrosse from FelgenT where F_id =" + id + ";");
             while (rs.next()){
                 return Values.createFelge(rs.getInt("F_ID"),rs.getInt("F_BESCH"), rs.getInt("F_preis"), rs.getInt("F_reifengroesse"), rs.getInt("F_formTyp"), rs.getInt("F_formTypID"), rs.getString("F_bild"), rs.getString("F_name"), rs.getBoolean("F_narbendynamo"));
             }
@@ -310,13 +308,13 @@ public class DataC implements IDatenBank {
         try {
             ResultSet rs = getDataFormDB("SELECT * from RahmenT where R_formTyp ="+formTyp+";");
             while (rs.next()){
-                 rahList.add(Values.createRahmen(rs.getInt("R_ID"), rs.getInt("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
+                 rahList.add(Values.createRahmen(rs.getInt("R_ID"), rs.getString("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
                          rs.getString("R_bild"), rs.getInt("R_BESCH"), rs.getInt("R_steuersatz"),
                          rs.getInt("R_schafthoehe"), rs.getInt("R_zusatzbefest"),
                          rs.getBoolean("R_scheibenbrems"), rs.getBoolean("R_felgenbrems"),
                          rs.getInt("R_tretlager"), rs.getInt("R_formTyp"), rs.getInt("R_formTypID"),
                          rs.getString("R_name"), rs.getInt("R_preis"), rs.getBoolean("R_gepaektraeger"),
-                         rs.getBoolean("R_licht")));
+                         rs.getBoolean("R_licht"),rs.getString("R_farbe")));
             }
             return rahList;
         } catch (Exception e) {
@@ -329,13 +327,13 @@ public class DataC implements IDatenBank {
         try {
             ResultSet rs = getDataFormDB("SELECT * from RahmenT where R_formTyp ="+rID+";");
             while (rs.next()){
-                return Values.createRahmen(rs.getInt("R_ID"), rs.getInt("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
+                return Values.createRahmen(rs.getInt("R_ID"), rs.getString("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
                         rs.getString("R_bild"), rs.getInt("R_BESCH"), rs.getInt("R_steuersatz"),
                         rs.getInt("R_schafthoehe"), rs.getInt("R_zusatzbefest"),
                         rs.getBoolean("R_scheibenbrems"), rs.getBoolean("R_felgenbrems"),
                         rs.getInt("R_tretlager"), rs.getInt("R_formTyp"), rs.getInt("R_formTypID"),
                         rs.getString("R_name"), rs.getInt("R_preis"), rs.getBoolean("R_gepaektraeger"),
-                        rs.getBoolean("R_licht"));
+                        rs.getBoolean("R_licht"),rs.getString("R_farbe"));
             }
         } catch (Exception e) {
             throw new DatabaseException(1);
@@ -359,13 +357,13 @@ public class DataC implements IDatenBank {
         try {
             ResultSet rs = getDataFormDB("SELECT * from RahmenT;");
             while (rs.next()){
-                rahList.add(Values.createRahmen(rs.getInt("R_ID"), rs.getInt("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
+                rahList.add(Values.createRahmen(rs.getInt("R_ID"), rs.getString("R_hoehe"), rs.getInt("R_form"), rs.getInt("R_reifengroesse"),
                         rs.getString("R_bild"), rs.getInt("R_BESCH"), rs.getInt("R_steuersatz"),
                         rs.getInt("R_schafthoehe"), rs.getInt("R_zusatzbefest"),
                         rs.getBoolean("R_scheibenbrems"), rs.getBoolean("R_felgenbrems"),
                         rs.getInt("R_tretlager"), rs.getInt("R_formTyp"), rs.getInt("R_formTypID"),
                         rs.getString("R_name"), rs.getInt("R_preis"), rs.getBoolean("R_gepaektraeger"),
-                        rs.getBoolean("R_licht")));
+                        rs.getBoolean("R_licht"),rs.getString("R_farbe")));
             }
             return rahList;
         } catch (Exception e) {
@@ -536,6 +534,15 @@ public class DataC implements IDatenBank {
 
     @Override
     public FormTyp getFormTypTabelleByID(int id) throws DatabaseException {
+        return null;
+    }
+
+    public Connection getConnection() {
+        try {
+            return DriverManager.getConnection("jdbc:mariadb://localhost/FahrradKonfi","se2","");
+        } catch (Exception e){
+
+        }
         return null;
     }
 }
