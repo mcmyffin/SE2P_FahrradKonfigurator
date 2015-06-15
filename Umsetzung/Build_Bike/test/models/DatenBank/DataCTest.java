@@ -208,47 +208,92 @@ public class DataCTest extends TestCase {
         List<Sattel> myList = _testDB.getAllSattel();
         for (Sattel currSattel : myList){
             Sattel testSattel = _testDB.getSattelByID(currSattel.getId());
-
+            assertEquals(currSattel.getBeschreibungID(),testSattel.getBeschreibungID());
+            assertEquals(currSattel.getBild(),testSattel.getBild());
+            assertEquals(currSattel.getFormTyp(),testSattel.getFormTyp());
+            assertEquals(currSattel.getFormTypID(),testSattel.getFormTypID());
+            assertEquals(currSattel.getId(),testSattel.getId());
+            assertEquals(currSattel.getName(),testSattel.getName());
+            assertEquals(currSattel.getPreis(), testSattel.getPreis());
         }
     }
 
     public void testGetAllSattel() throws Exception {
-
-    }
-
-    public void testGetSattelByFormTyp() throws Exception {
-
+        List<Sattel> myList = _testDB.getAllSattel();
+        assertTrue(!myList.isEmpty());
+        for (Sattel currSattel : myList){
+            assertNotNull(currSattel);
+        }
     }
 
     public void testGetTeileByID() throws Exception {
-
+        List<Zubehoer> myList = _testDB.getAllTeile();
+        for(Zubehoer currZub : myList){
+            Zubehoer testZub = _testDB.getTeileByID(currZub.getId());
+            assertEquals(currZub.getBeschreibungID(),testZub.getBeschreibungID());
+            assertEquals(currZub.getBild(),testZub.getBild());
+            assertEquals(currZub.getFormTyp(),testZub.getFormTyp());
+            assertEquals(currZub.getFormTypID(),testZub.getFormTypID());
+            assertEquals(currZub.getId(),testZub.getId());
+            assertEquals(currZub.getName(),testZub.getName());
+            assertEquals(currZub.getPreis(),testZub.getPreis());
+            assertEquals(currZub.isZusatzBelegt(), testZub.isZusatzBelegt());
+        }
     }
 
     public void testGetAllTeile() throws Exception {
-
-    }
-
-    public void testGetTeileByFormTyp() throws Exception {
-
+        List<Zubehoer> myList = _testDB.getAllTeile();
+        assertTrue(!myList.isEmpty());
+        for (Zubehoer currZub : myList){
+            assertNotNull(currZub);
+        }
     }
 
     public void testGetVorbauByID() throws Exception {
+        List<Vorbau> myList = _testDB.getAllVorbau();
+        for(Vorbau currVorbau : myList ){
+            Vorbau testVorbau = _testDB.getVorbauByID(currVorbau.getId());
 
+            assertEquals(currVorbau.getBeschreibungID(),testVorbau.getBeschreibungID());
+            assertEquals(currVorbau.getBild(),testVorbau.getBild());
+            assertEquals(currVorbau.getFormTyp(),testVorbau.getFormTyp());
+            assertEquals(currVorbau.getFormTypID(),testVorbau.getFormTypID());
+            assertEquals(currVorbau.getId(),testVorbau.getId());
+            assertEquals(currVorbau.getPreis(),testVorbau.getPreis());
+            assertEquals(currVorbau.getSchaftsgroesse(), testVorbau.getSchaftsgroesse());
+        }
     }
 
     public void testGetAllVorbau() throws Exception {
-
+        List<Vorbau> myList = _testDB.getAllVorbau();
+        assertTrue(!myList.isEmpty());
+        for (Vorbau currVorbau : myList){
+            assertNotNull(currVorbau);
+        }
     }
 
     public void testGetVorbauByFormTyp() throws Exception {
+        int FIRST_KONST = 1;
+        int SECOND_KONST = 18;
+        int THIRD_KONST = -1;
+        List<Vorbau> myList = _testDB.getVorbauByFormTyp(FIRST_KONST);
+        assertTrue(!myList.isEmpty());
+        for (Vorbau currVorbau : myList){
+            assertEquals(FIRST_KONST,currVorbau.getFormTyp());
+        }
 
+        myList = _testDB.getVorbauByFormTyp(SECOND_KONST);
+        assertTrue(!myList.isEmpty());
+        for (Vorbau currVorbau : myList){
+            assertEquals(SECOND_KONST,currVorbau.getFormTyp());
+        }
+
+        myList = _testDB.getVorbauByFormTyp(THIRD_KONST);
+        assertTrue(myList.isEmpty());
     }
 
     public void testGetBeschreibungByID() throws Exception {
-
-    }
-
-    public void testGetFormTypTabelleByID() throws Exception {
-
+        Beschreibung besch = _testDB.getBeschreibungByID(5);
+        assertNotNull(besch);
     }
 }

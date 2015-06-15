@@ -576,7 +576,14 @@ public class DataC implements IDatenBank {
 
     @Override
     public Beschreibung getBeschreibungByID(int id) throws DatabaseException {
-        return null;
+        try {
+            ResultSet rs = getDataFormDB("SELECT * from BeschreibungT WHERE B_ID="+id+";");
+            rs.next();
+
+            return new Beschreibung(rs.getString("B_text"),rs.getString("B_kurzbesch"));
+        } catch (Exception e) {
+            throw new DatabaseException(1);
+        }
     }
 
     @Override
