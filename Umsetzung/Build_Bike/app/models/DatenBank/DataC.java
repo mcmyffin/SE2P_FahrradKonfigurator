@@ -1,7 +1,7 @@
-package DatenBank;
+package models.DatenBank;
 
 
-import Exception.DatabaseException;
+import models.Exception.DatabaseException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,14 +10,31 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import TeileKomponente.Einzelteile.*;
+import models.TeileKomponente.Einzelteile.*;
 import org.mariadb.jdbc.*;
+import play.db.DB;
 
 /**
  * Created by tin on 01.05.15.
  */
 public class DataC implements IDatenBank {
-    Connection _con = getConnection();
+    Connection _con;
+
+    public DataC(){
+        _con = DB.getConnection();
+    }
+
+    private DataC(Connection con){
+        _con = con;
+    }
+
+    public static IDatenBank setTestEnv() throws DatabaseException{
+        try {
+            return new DataC(DriverManager.getConnection("jdbc:mariadb://localhost/FahrradKonfi", "se2", ""));
+        } catch (Exception e) {
+            throw new DatabaseException("Konnte keine verbindung aufbauen",1);
+        }
+    }
 
     private ResultSet getDataFormDB(String sqlStmt) throws DatabaseException{
         try {
@@ -96,6 +113,12 @@ public class DataC implements IDatenBank {
 
     @Override
     public boolean setVorname(int id, String vorname) throws DatabaseException {
+        try {
+
+        } catch (Exception e){
+            throw new DatabaseException(2);
+        }
+
         return false;
     }
 
@@ -534,15 +557,6 @@ public class DataC implements IDatenBank {
 
     @Override
     public FormTyp getFormTypTabelleByID(int id) throws DatabaseException {
-        return null;
-    }
-
-    public Connection getConnection() {
-        try {
-            return DriverManager.getConnection("jdbc:mariadb://localhost/FahrradKonfi","se2","");
-        } catch (Exception e){
-
-        }
         return null;
     }
 }

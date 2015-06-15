@@ -34,10 +34,11 @@ import play.db.*;
  * Created by tin on 30.04.15.
  */
 public class DBKundeTest extends TestCase {
-    IDatenBank _db1 = new DataC();
+    IDatenBank _db1;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Exception{
+        _db1 = DataC.setTestEnv();
     }
 
     public void testIsKundeExistByMail() throws Exception {
