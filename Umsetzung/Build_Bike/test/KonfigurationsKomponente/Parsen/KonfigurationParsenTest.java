@@ -19,27 +19,27 @@ public class KonfigurationParsenTest {
 
     private static IKofigurationKomponente kofigurationKomponente;
 
-    @Before
-    public void Before(){
-        kofigurationKomponente = new KonfigurationKomponente();
-    }
-
-    @Test
-    public void testKonfigurationZumDTO_Parsen_00(){
-
-        // Leere Konfiguration
+//    @Before
+//    public void Before(){
+//        kofigurationKomponente = new KonfigurationKomponente();
+//    }
+//
+//    @Test
+//    public void testKonfigurationZumDTO_Parsen_00(){
+//
+//        // Leere Konfiguration
 //        IKonfiguration konfiguration = new Konfiguration();
-//
-//        // zum DTO
+////
+////        // zum DTO
 //        KonfigurationDTO dto = konfiguration.asDTO();
-//
-//        // und wieder zurueck
+////
+////        // und wieder zurueck
 //        IKonfiguration konfiguration_fromDTO = kofigurationKomponente.fromKonfigurtionDTO(dto);
-
-        IStep_2 step2 = new Step();
-        IStep_2 step2_1 = new Step();
-
-        assertEquals(step2,step2_1);
-
-    }
+//
+//        IStep_2 step2 = new Step();
+//        IStep_2 step2_1 = new Step();
+//
+//        assertEquals(step2,step2_1);
+//
+//    }
 }
