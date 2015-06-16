@@ -194,8 +194,15 @@ public class Step implements IStep {
         boolean ergebnis = (equalsStep1(this.getRahmenFormTyp(),aStep.getRahmenFormTyp()))&&
                             (equalsStep2(this.getRahmen(),aStep.getRahmen())) &&
                             (equalsStep3(this.getFarbe(),this.getRahmenHoehe(),aStep.getFarbe(),aStep.getRahmenHoehe())) &&
-                            (equalsStep4(this.getGabel(),aStep.getGabel()));
+                            (equalsStep4(this.getGabel(),aStep.getGabel())) &&
+                            (equalsStep5(this.getFelge(),aStep.getFelge())) &&
+                            (equalsStep6(this.getMantel(),aStep.getMantel())) &&
+                            (equalsStep7(this.getVorbau(),aStep.getVorbau())) &&
+                            (equalsStep8(this.getSattel(),aStep.getSattel())) &&
+                            (equalsStep9(this.isGefragt,this.isSteckLicht,this.isFestLicht,aStep.isGefragt,aStep.isSteckLicht,aStep.isFestLicht)) &&
+                            (equalsStep10(this.getZubehoerList(),aStep.getZubehoerList()));
 
+        return ergebnis;
     }
 
     private boolean equalsStep1(RahmenFormTyp rft1,RahmenFormTyp rft2){
@@ -203,10 +210,7 @@ public class Step implements IStep {
         if(rft1 ==  null && rft2 == null) return true;
         if(rft2 != null && rft2 != null){
 
-            boolean ergebnis = true;
-            ergebnis &= rft1.getBezeichnung().equals(rft2.getBezeichnung());
-            ergebnis &= rft1.getNummer() == rft2.getNummer();
-            return ergebnis;
+            return rft1.equals(rft2);
 
         }else{
             return false;
@@ -218,29 +222,7 @@ public class Step implements IStep {
         if(rahmen1 ==  null && rahmen2== null) return true;
         if(rahmen1 != null && rahmen2 != null){
 
-            boolean ergebnis = true;
-            ergebnis &= rahmen1.isFelgenbremse() == rahmen2.isFelgenbremse();
-            ergebnis &= rahmen1.isGepaektraeger() == rahmen2.isGepaektraeger();
-            ergebnis &= rahmen1.isLicht() == rahmen2.isLicht();
-            ergebnis &= rahmen1.isScheibenbremse() == rahmen2.isScheibenbremse();
-            ergebnis &= rahmen1.getBeschreibungID() == rahmen2.getBeschreibungID();
-            ergebnis &= rahmen1.getBild().equals(rahmen2.getBild());
-            ergebnis &= rahmen1.getEinzelTeileTyp().equals(rahmen2.getEinzelTeileTyp());
-            ergebnis &= rahmen1.getFarben().equals(rahmen2.getFarben());
-            ergebnis &= rahmen1.getForm() == rahmen2.getForm();
-            ergebnis &= rahmen1.getFormTypID() == rahmen2.getFormTypID();
-            ergebnis &= rahmen1.getFromTyp() == rahmen2.getFromTyp();
-            ergebnis &= rahmen1.getHoehen().equals(rahmen2.getHoehen());
-            ergebnis &= rahmen1.getId() == rahmen2.getId();
-            ergebnis &= rahmen1.getName().equals(rahmen2.getName());
-            ergebnis &= rahmen1.getPreis() == rahmen2.getPreis();
-            ergebnis &= rahmen1.getReifengroesse() == rahmen2.getReifengroesse();
-            ergebnis &= rahmen1.getSchaftshoehe() == rahmen2.getSchaftshoehe();
-            ergebnis &= rahmen1.getSteuersatz() == rahmen2.getSteuersatz();
-            ergebnis &= rahmen1.getTretlager() == rahmen2.getTretlager();
-            ergebnis &= rahmen1.getZusatzbefest() == rahmen2.getZusatzbefest();
-
-            return ergebnis;
+           return rahmen1.equals(rahmen2);
 
         }else{
             return false;
@@ -263,40 +245,72 @@ public class Step implements IStep {
         if(gabel1 ==  null && gabel2 == null) return true;
         if(gabel1 != null && gabel2 != null){
 
-            boolean ergebnis = true;
-
-            ergebnis &= gabel1.isFelgenbremse() == gabel2.isFelgenbremse();
-            ergebnis &= gabel1.isLicht() == gabel2.isLicht();
-            ergebnis &= gabel1.isScheibenbremse() == gabel2.isScheibenbremse();
-            ergebnis &= gabel1.getBeschreibungID() == gabel2.getBeschreibungID();
-            ergebnis &= gabel1.getBild().equals(gabel2.getBild());
-            ergebnis &= gabel1.getEinzelTeileTyp().equals(gabel2.getEinzelTeileTyp());
-            ergebnis &= gabel1.getFormTypID() == gabel2.getFormTypID();
-            ergebnis &= gabel1.getFromTyp() == gabel2.getFromTyp();
-            ergebnis &= gabel1.getId() == gabel2.getId();
-            ergebnis &= gabel1.getName().equals(gabel2.getName());
-            ergebnis &= gabel1.getPreis() == gabel2.getPreis();
-            ergebnis &= gabel1.getReifengroesse() == gabel2.getReifengroesse();
-            ergebnis &= gabel1.getSchaftslaenge() == gabel2.getSchaftslaenge();
-            ergebnis &= gabel1.getSteuersatz() == gabel2.getSteuersatz();
-
-            return ergebnis;
+            return gabel1.equals(gabel2);
 
         }else{
             return false;
         }
     }
 
-//    private boolean equalsStep5(Felge felge1, Felge felge2){
-//
-//        if(felge1 ==  null && felge2 == null) return true;
-//        if(felge1 != null && felge2 != null){
-//
-//
-//        }else{
-//            return false;
-//        }
-//    }
+    private boolean equalsStep5(Felge felge1, Felge felge2){
 
+        if(felge1 ==  null && felge2 == null) return true;
+        if(felge1 != null && felge2 != null){
+
+            return felge1.equals(felge2);
+        }else{
+            return false;
+        }
+    }
+
+    private boolean equalsStep6(Mantel mantel1, Mantel mantel2){
+
+        if(mantel1 ==  null && mantel2 == null) return true;
+        if(mantel1 != null && mantel2 != null){
+
+            return mantel1.equals(mantel2);
+        }else{
+            return false;
+        }
+    }
+
+    private boolean equalsStep7(Vorbau vorbau1, Vorbau vorbau2){
+
+        if(vorbau1 ==  null && vorbau2 == null) return true;
+        if(vorbau1 != null && vorbau2 != null){
+
+            return vorbau1.equals(vorbau2);
+        }else{
+            return false;
+        }
+    }
+
+    private boolean equalsStep8(Sattel sattel1, Sattel sattel2){
+
+        if(sattel1 ==  null && sattel2== null) return true;
+        if(sattel1 != null && sattel2 != null){
+
+            return sattel1.equals(sattel2);
+        }else{
+            return false;
+        }
+    }
+
+    private boolean equalsStep9(boolean isGefragt1, boolean isSteckLicht1, boolean isFestLicht1, boolean isGefragt2, boolean isSteckLicht2, boolean isFestLicht2){
+
+        return (isGefragt1 == isGefragt2) && (isSteckLicht1 == isSteckLicht2) && (isFestLicht1 == isFestLicht2);
+    }
+
+    private boolean equalsStep10(List<Zubehoer> zubehoerList1, List<Zubehoer> zubehoerList2){
+
+        if(zubehoerList1 == null && zubehoerList2 == null) return true;
+        if(zubehoerList1.size() != zubehoerList2.size()) return false;
+        for(Zubehoer einZubehoer : zubehoerList1){
+
+            if(!zubehoerList2.contains(einZubehoer)) return false;
+        }
+
+        return true;
+    }
 
 }
