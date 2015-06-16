@@ -1,10 +1,7 @@
 package controllers;
 
-import models.Exception.ValuesCreateException;
 import models.KonfigurationKomponente.DTO.*;
-import models.KonfigurationKomponente.IKonfiguration;
 import models.TeileKomponente.EinzelTeileTyp;
-import models.TeileKomponente.Einzelteile.Values;
 import models.TeileKomponente.RahmenFormTyp;
 import org.junit.Test;
 
@@ -379,7 +376,7 @@ public class KonfigurationSessionTest {
         StepDTO              step6DTO = new StepDTO(4,EinzelTeileTyp.MANTEL.getValue());
         StepDTO              step7DTO = new StepDTO(4,EinzelTeileTyp.VORBAU.getValue());
         StepDTO              step8DTO = new StepDTO(4,EinzelTeileTyp.SATTEL.getValue());
-        StepLichtDTO         step9DTO = new StepLichtDTO(true,true,false);
+        StepLichtDTO         step9DTO = new StepLichtDTO(1,1,1);
         KonfigurationDTO konfigurationDTO = new KonfigurationDTO(step1DTO,step2DTO,step3DTO,step4DTO,step5DTO,step6DTO,step7DTO,step8DTO,step9DTO,null);
 
         // In Session speichern
@@ -412,9 +409,9 @@ public class KonfigurationSessionTest {
         assertEquals(konfigurationDTO.getStep_8().getId(),konfigurationDTO_FromSession.getStep_8().getId());
         assertEquals(konfigurationDTO.getStep_8().getEinzelteileTyp(),konfigurationDTO_FromSession.getStep_8().getEinzelteileTyp());
         // Step9
-        assertEquals(konfigurationDTO.getStep_9().isGefragt(),konfigurationDTO_FromSession.getStep_9().isGefragt());
-        assertEquals(konfigurationDTO.getStep_9().isFestLicht(),konfigurationDTO_FromSession.getStep_9().isFestLicht());
-        assertEquals(konfigurationDTO.getStep_9().isSteckLicht(),konfigurationDTO_FromSession.getStep_9().isSteckLicht());
+        assertEquals(konfigurationDTO.getStep_9().getGefragt(),konfigurationDTO_FromSession.getStep_9().getGefragt());
+        assertEquals(konfigurationDTO.getStep_9().getFestLicht(),konfigurationDTO_FromSession.getStep_9().getFestLicht());
+        assertEquals(konfigurationDTO.getStep_9().getSteckLicht(), konfigurationDTO_FromSession.getStep_9().getSteckLicht());
 
         assertEquals(konfigurationDTO.getStep_10(),konfigurationDTO_FromSession.getStep_10());
 
@@ -433,11 +430,11 @@ public class KonfigurationSessionTest {
         StepDTO              step6DTO = new StepDTO(4,EinzelTeileTyp.MANTEL.getValue());
         StepDTO              step7DTO = new StepDTO(4,EinzelTeileTyp.VORBAU.getValue());
         StepDTO              step8DTO = new StepDTO(4,EinzelTeileTyp.SATTEL.getValue());
-        StepLichtDTO         step9DTO = new StepLichtDTO(true,true,false);
+        StepLichtDTO         step9DTO = new StepLichtDTO(1,1,0);
 
         int[] ids = {12,13,14,15,99,1};
-        List<Integer> zubehoerlist = new ArrayList(Arrays.asList(ids));
-        StepZubehoerDTO      step10DTO= new StepZubehoerDTO(zubehoerlist,EinzelTeileTyp.ZUBEHOER.getValue());
+        StepZubehoerDTO      step10DTO= new StepZubehoerDTO(new ArrayList(),EinzelTeileTyp.ZUBEHOER.getValue());
+        step10DTO.setZubehoerListe(ids);
         KonfigurationDTO konfigurationDTO = new KonfigurationDTO(step1DTO,step2DTO,step3DTO,step4DTO,step5DTO,step6DTO,step7DTO,step8DTO,step9DTO,step10DTO);
 
         // In Session speichern
@@ -470,13 +467,11 @@ public class KonfigurationSessionTest {
         assertEquals(konfigurationDTO.getStep_8().getId(),konfigurationDTO_FromSession.getStep_8().getId());
         assertEquals(konfigurationDTO.getStep_8().getEinzelteileTyp(),konfigurationDTO_FromSession.getStep_8().getEinzelteileTyp());
         // Step9
-        assertEquals(konfigurationDTO.getStep_9().isGefragt(),konfigurationDTO_FromSession.getStep_9().isGefragt());
-        assertEquals(konfigurationDTO.getStep_9().isFestLicht(),konfigurationDTO_FromSession.getStep_9().isFestLicht());
-        assertEquals(konfigurationDTO.getStep_9().isSteckLicht(),konfigurationDTO_FromSession.getStep_9().isSteckLicht());
+        assertEquals(konfigurationDTO.getStep_9().getGefragt(),konfigurationDTO_FromSession.getStep_9().getGefragt());
+        assertEquals(konfigurationDTO.getStep_9().getFestLicht(),konfigurationDTO_FromSession.getStep_9().getFestLicht());
+        assertEquals(konfigurationDTO.getStep_9().getSteckLicht(),konfigurationDTO_FromSession.getStep_9().getSteckLicht());
         // Step10
-        assertEquals(konfigurationDTO.getStep_10().getEinzelteileTyp(),konfigurationDTO_FromSession.getStep_10().getEinzelteileTyp());
-        assertEquals(konfigurationDTO.getStep_10().getZubehoerListe(),konfigurationDTO_FromSession.getStep_10().getZubehoerListe());
-        assertEquals(konfigurationDTO.getStep_10().getZubehoerListe().size(),konfigurationDTO_FromSession.getStep_10().getZubehoerListe().size());
+        assertEquals(step10DTO ,konfigurationDTO_FromSession.getStep_10());
 
     }
 
