@@ -5,40 +5,47 @@ package models.KonfigurationKomponente.DTO;
  */
 public class StepLichtDTO {
 
-    private boolean isGefragt = false;
-    private boolean isSteckLicht = false;
-    private boolean isFestLicht = false;
+    private int gefragt = 0;
+    private int steckLicht = 0;
+    private int festLicht = 0;
 
 
-    public StepLichtDTO(boolean isGefragt, boolean isSteckLicht, boolean isFestLicht) {
-        this.isGefragt = isGefragt;
-        this.isSteckLicht = isSteckLicht;
-        this.isFestLicht = isFestLicht;
+    public StepLichtDTO(){};
+
+    public StepLichtDTO(int isGefragt, int isSteckLicht, int isFestLicht) {
+        this.gefragt = isGefragt;
+        this.steckLicht = isSteckLicht;
+        this.festLicht = isFestLicht;
     }
 
     /*** GETTER ***/
-    public boolean isGefragt() {
-        return isGefragt;
+    public int getGefragt() {
+        return gefragt;
     }
 
-    public boolean isSteckLicht() {
-        return isSteckLicht;
+    public int getSteckLicht() {
+        return steckLicht;
     }
 
-    public boolean isFestLicht() {
-        return isFestLicht;
+    public int getFestLicht() {
+        return festLicht;
     }
 
     /*** SETTER ***/
-    public void setIsGefragt(boolean isGefragt) {
-        this.isGefragt = isGefragt;
+    public void setGefragt(int gefragt) {
+        this.gefragt = gefragt;
     }
 
-    public void setIsSteckLicht(boolean isSteckLicht) {
-        this.isSteckLicht = isSteckLicht;
+    public void setSteckLicht(int steckLicht) {
+        this.steckLicht = steckLicht;
     }
 
-    public void setIsFestLicht(boolean isFestLicht) {
-        this.isFestLicht = isFestLicht;
+    public void setFestLicht(int festLicht) {
+        this.festLicht = festLicht;
+    }
+
+    @Override
+    public String toString() {
+        return "StepLichtDTO{gefragt:"+ gefragt +", steckLicht:"+ steckLicht +",festLicht:"+ festLicht +"}";
     }
 }

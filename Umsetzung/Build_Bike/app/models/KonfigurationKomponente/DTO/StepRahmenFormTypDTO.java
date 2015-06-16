@@ -7,6 +7,8 @@ public class StepRahmenFormTypDTO {
 
     private String rahmenFormTyp;
 
+    public StepRahmenFormTypDTO(){};
+
     public StepRahmenFormTypDTO(String rahmenFormTyp) {
         this.rahmenFormTyp = rahmenFormTyp;
     }

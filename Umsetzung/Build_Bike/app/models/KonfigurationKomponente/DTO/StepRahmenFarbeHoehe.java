@@ -8,6 +8,8 @@ public class StepRahmenFarbeHoehe {
     private String rahmenfarbe;
     private int rahmenhoehe;
 
+    public StepRahmenFarbeHoehe(){};
+
     public StepRahmenFarbeHoehe(String rahmenfarbe, int rahmenhoehe){
         this.rahmenfarbe = rahmenfarbe;
         this.rahmenhoehe = rahmenhoehe;

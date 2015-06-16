@@ -8,6 +8,8 @@ public class StepDTO {
     private int id;
     private String einzelteileTyp;
 
+    public StepDTO(){};
+
     public StepDTO(int id,String einzelteileTyp){
         this.id = id;
         this.einzelteileTyp = einzelteileTyp;

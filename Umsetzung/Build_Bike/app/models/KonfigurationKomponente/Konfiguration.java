@@ -289,7 +289,10 @@ public class Konfiguration implements IKonfiguration {
         StepLichtDTO stepDTO_9 = null;
 
         if(step_9.isGefragt()){
-            stepDTO_9  = new StepLichtDTO(step_9.isGefragt(),step_9.isSteckLicht(),step_9.isFestLicht());
+            int istGefragt = (step_9.isGefragt()? 1: 0);
+            int isSteckLicht = (step_9.isSteckLicht()? 1:0);
+            int isFestLicht = (step_9.isFestLicht()? 1:0);
+            stepDTO_9  = new StepLichtDTO(istGefragt,isSteckLicht,isFestLicht);
         }
 
         IStep_10 step_10 = (IStep_10) steps;
@@ -313,5 +316,26 @@ public class Konfiguration implements IKonfiguration {
                                                                     stepDTO_6,stepDTO_7,stepDTO_8,stepDTO_9,stepDTO_10);
 
         return konfigurationDTO;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if(obj == null) return false;
+        if(obj == this) return true;
+        if(!(obj instanceof Konfiguration)) return false;
+        Konfiguration aKonfiguration = (Konfiguration) obj;
+
+        boolean ergebnis = true;
+
+//        if(this.getStep1().getRahmenFormTyp() == null && aKonfiguration.getStep1().)
+//        {
+//            ergebnis &= this.getStep1().getRahmenFormTyp() == aKonfiguration.getStep1().getRahmenFormTyp();
+//        }
+//        else
+//        {
+//            ergebnis &=
+//        }
+        return false;
     }
 }

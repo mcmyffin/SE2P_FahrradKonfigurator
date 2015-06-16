@@ -17,6 +17,8 @@ public class KonfigurationDTO {
     private StepLichtDTO step_9;
     private StepZubehoerDTO step_10;
 
+    public KonfigurationDTO(){};
+
     public KonfigurationDTO(StepRahmenFormTypDTO step_1, StepDTO step_2, StepRahmenFarbeHoehe step_3, StepDTO step_4, StepDTO step_5,
                             StepDTO step_6, StepDTO step_7, StepDTO step_8, StepLichtDTO step_9, StepZubehoerDTO step_10) {
 

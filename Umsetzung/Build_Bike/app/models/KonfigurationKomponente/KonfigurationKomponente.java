@@ -10,7 +10,6 @@ import models.KonfigurationKomponente.Step.IStep_2;
 import models.TeileKomponente.EinzelTeileTyp;
 import models.TeileKomponente.Einzelteile.*;
 import models.TeileKomponente.RahmenFormTyp;
-import views.html.konfigurator;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -248,7 +247,11 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         if(step9 != null){
 
             try {
-                konfiguration.setStep9(step9.isGefragt(), step9.isSteckLicht(), step9.isFestLicht());
+                boolean isGefragt = (step9.getGefragt() == 0? false: true);
+                boolean isSteckLicht = (step9.getSteckLicht()== 0 ? false: true);
+                boolean isFestLicht = (step9.getFestLicht() == 0? false: true);
+
+                konfiguration.setStep9(isGefragt, isSteckLicht , isFestLicht);
             } catch (UngueltigerStepException e) {
                 // TODO
                 e.printStackTrace();
@@ -259,10 +262,14 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         if(step10 != null){
 
             try {
-                List<Integer> zubehoerList = step10.getZubehoerListe();
+                int[] zubehoerList = step10.getZubehoerListe();
                 EinzelTeileTyp einzelTeileTyp = EinzelTeileTyp.getEinzelteileTypByString(step10.getEinzelteileTyp());
 
-                konfiguration.setStep10(einzelTeileTyp, zubehoerList);
+                List<Integer> list = new ArrayList();
+                for(int id : zubehoerList){
+                    list.add(id);
+                }
+                konfiguration.setStep10(einzelTeileTyp, list);
 
             } catch (EinzelteileTypException|KonfigurationException|UngueltigerStepException e) {
                 // TODO
