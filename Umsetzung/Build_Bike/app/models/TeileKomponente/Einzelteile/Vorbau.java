@@ -36,7 +36,7 @@ public class Vorbau {
      * Vergleich diese Objekte
      * @return boolean
      */
-
+    @Override
     public boolean equals(Object obj){
         if (obj == this)return true;
         if (!(obj instanceof Felge)) return false;

@@ -61,4 +61,22 @@ public class FormTyp {
     public int getSattel() {
         return sattel;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)return true;
+        if (!(obj instanceof FormTyp)) return false;
+
+        FormTyp formTyp = (FormTyp) obj;
+        return (
+                formTyp.getFelge() == this.getFelge() &&
+                formTyp.getGabel() == this.getGabel() &&
+                formTyp.getId() == this.getId() &&
+                formTyp.getMantel() == this.getMantel() &&
+                formTyp.getRahmen() == this.getRahmen() &&
+                formTyp.getSattel() == this.getSattel() &&
+                formTyp.getTeile() == this.getTeile() &&
+                formTyp.getVorbau() == this.getVorbau()
+                );
+    }
 }
