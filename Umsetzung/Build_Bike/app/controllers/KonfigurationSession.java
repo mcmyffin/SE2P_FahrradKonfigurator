@@ -22,14 +22,14 @@ public class KonfigurationSession extends Controller {
     private static final String KONFIGURATION = "TMP_KONFIGURATION";
 //    private static Map<String,String> mokupSession = new HashMap();
 
-    public static void setKonfigurationInSession(KonfigurationDTO dto){
+    private static void setKonfiguration(KonfigurationDTO dto){
 
         JsonNode dto_Json = Json.toJson(dto);
 //        mokupSession.put(KONFIGURATION,dto_Json.toString());
         session(KONFIGURATION,dto_Json.toString());
     }
 
-    public static KonfigurationDTO getKonfigurationFromSession(){
+    private static KonfigurationDTO getKonfiguration(){
 
         if(!session().containsKey(KONFIGURATION)) return null;
 //        if(!mokupSession.containsKey(KONFIGURATION)) return null;
@@ -44,7 +44,7 @@ public class KonfigurationSession extends Controller {
     }
 
 
-    public IKonfiguration fromDTO(KonfigurationDTO dto){
+    private static IKonfiguration fromDTO(KonfigurationDTO dto){
 
         IKofigurationKomponente kofigurationKomponente = new KonfigurationKomponente();
         IKonfiguration konfiguration = kofigurationKomponente.fromKonfigurtionDTO(dto);
@@ -52,7 +52,7 @@ public class KonfigurationSession extends Controller {
         return konfiguration;
     }
 
-    public KonfigurationDTO toDTO(IKonfiguration konfiguration){
+    private static KonfigurationDTO toDTO(IKonfiguration konfiguration){
 
         if(konfiguration == null)
         {
@@ -65,4 +65,20 @@ public class KonfigurationSession extends Controller {
             return konfiguration.asDTO();
         }
     }
+
+
+    public static IKonfiguration getKonfigurationFromSession(){
+
+        KonfigurationDTO dto = getKonfiguration();
+        IKonfiguration konfiguration = fromDTO(dto);
+        return konfiguration;
+    }
+
+    public static void setKonfigurationToSession(IKonfiguration konfiguration){
+
+        KonfigurationDTO dto = toDTO(konfiguration);
+        setKonfiguration(dto);
+    }
+
+
 }
