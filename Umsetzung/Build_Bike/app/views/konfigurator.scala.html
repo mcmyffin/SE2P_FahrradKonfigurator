@@ -1,5 +1,7 @@
 @main("Build your bike for dummies") {
 	<html lang="de">
+	<form id="step" action="@routes.Verlinkung.step02()" method="post">
+
 	<div id="timeline-bg">
 		<div id="timeline">
 			<table height="50px" width="850px">
@@ -38,9 +40,15 @@
 						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
 
 							Sie haben die Auswahl zwischen:<br /><br />
-							- <a href=""> <font color="#8B4513"><b> Crossrad </b></font></a><br />
-							- <a href=""><font color="#8B4513"><b> Mountainbike </b></font></a><br />
-							- <a href=""><font color="#8B4513"><b> Stadtrad </b></font></a><br /><br />
+
+							<input type="radio" checked="checked" name="Fahrradtyp" value="City Bike"> <label>City Bike</label><br>
+							<input type="radio" checked="checked" name="Fahrradtyp" value="Mounten Bike"> <label>Mounten Bike</label><br>
+							<input type="radio" checked="checked" name="Fahrradtyp" value="Trekking Bike"> <label>Trekking Bike</label>
+
+
+								@*- <a href=""> <font color="#8B4513"><b> Crossrad </b></font></a><br />*@
+							@*- <a href=""><font color="#8B4513"><b> Mountainbike </b></font></a><br />*@
+							@*- <a href=""><font color="#8B4513"><b> Stadtrad </b></font></a><br /><br />*@
 
 						</div>
 					</div>
@@ -70,10 +78,11 @@
 	<div id="menu">
 		<div id="info">
 			<div id="info-bg-left"></div>
-			<div id="info-bg-center"><div class="info">Aktueller Preis: php€</div></div>
+			<div id="info-bg-center"><div class="info">Aktueller Preis: 0 &euro;</div></div>
 			<div id="info-bg-right"></div>
 		</div>
-		<div id="next"><a href="step02"><img alt="Next" src="@routes.Assets.at("images/next.png")" /></a></div>
+		<div id="next"><img onclick="$('#step').submit();" alt="Next" src="@routes.Assets.at("images/next.png")" /></div>
 	</div>
+	</form>
 	</html>
 }

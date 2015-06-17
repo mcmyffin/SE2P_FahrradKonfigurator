@@ -1,5 +1,9 @@
 package controllers;
 
+import models.DatenTypen.Pair;
+import models.KonfigurationKomponente.IKonfiguration;
+import models.TeileKomponente.DTO.EinzelteilDTO;
+import models.TeileKomponente.Einzelteile.Mantel;
 import play.*;
 import play.mvc.*;
 
@@ -51,39 +55,61 @@ public class Verlinkung extends Controller {
     }
 
     public static Result step02() {
-        return ok(step02.render());
+
+        List<EinzelteilDTO> rahmenliste = KonfigurationsSchritte.getRahmenListe();
+
+        return ok(step02.render(rahmenliste));
     }
 
     public static Result step03() {
-        return ok(step03.render());
+
+        Pair<List<String>,List<Integer>> rahmenFarbeHoehe = KonfigurationsSchritte.getRahmenFarbeHoehe();
+
+        return ok(step03.render(rahmenFarbeHoehe));
     }
 
     public static Result step04() {
-        return ok(step04.render());
+
+        List<EinzelteilDTO> gabelListe = KonfigurationsSchritte.getFahrradGabelList();
+
+        return ok(step04.render(gabelListe));
     }
 
     public static Result step05() {
-        return ok(step05.render());
+
+        List<EinzelteilDTO> felgeListe = KonfigurationsSchritte.getFelgeList();
+
+        return ok(step05.render(felgeListe));
     }
 
     public static Result step06() {
-        return ok(step06.render());
+
+        List<EinzelteilDTO> mantelList = KonfigurationsSchritte.getMantelList();
+        return ok(step06.render(mantelList));
     }
 
     public static Result step07() {
-        return ok(step07.render());
+
+        List<EinzelteilDTO> vorbauList = KonfigurationsSchritte.getVorbauList();
+        return ok(step07.render(vorbauList));
     }
 
     public static Result step08() {
-        return ok(step08.render());
+
+        List<EinzelteilDTO> sattelList = KonfigurationsSchritte.getSattelList();
+        return ok(step08.render(sattelList));
     }
 
     public static Result step09() {
-        return ok(step09.render());
+
+        Boolean isFestLicht = KonfigurationsSchritte.getBeleuchtung();
+        return ok(step09.render(isFestLicht));
     }
 
     public static Result step10() {
-        return ok(step10.render());
+
+        List<EinzelteilDTO> zubehoerListe = KonfigurationsSchritte.getZubehoerList();
+        return ok(step10.render(zubehoerListe));
     }
 
     public static Result bestellen() {
@@ -91,6 +117,8 @@ public class Verlinkung extends Controller {
     }
 
     public static Result warenkorb() {
+
+        IKonfiguration konfiguration = KonfigurationSession.getKonfigurationFromSession();
         return ok(warenkorb.render());
     }
 

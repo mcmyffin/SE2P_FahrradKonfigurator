@@ -1,5 +1,10 @@
+@(isFestLicht : java.lang.Boolean)
+
 @main("Build your bike for dummies") {
-	<div id="timeline-bg">
+		<html lang="de">
+		<form id="step" action="@routes.Verlinkung.step10()" method="post">
+
+		<div id="timeline-bg">
 		<div id="timeline">
 			<table height="50px" width="850px">
 				<colgroup>
@@ -24,7 +29,6 @@
 	</div>
 	<div id="infobox-bg">
 		<div id="infobox">
-
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="panel panel-default">
 					<div class="panel-heading" role="tab" id="überschriftEins">
@@ -38,26 +42,29 @@
 						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
 
 							Sie haben die Auswahl zwischen:<br /><br />
-							<form action="step09#form">
-								<table style="overflow: auto; height: 150px; background-color: #f4efff">
+								<table style="border-spacing: 0px;">
 									<tr>
-										<td align="center" height="4px" width="200px"><b>Belechtungsart</b></td>
-										<td align="left" height="4px" width="40px"><b>✓</b></td>
+										<td align="left" height="20px" width="40px"><b>✓</b></td>
 									</tr>
 									<tr>
-										<td align="center" height="4px" width="200px">keine</td>
-										<td align="left" height="4px" width="40px"><input name="Rahmengroesse" type="radio" value="35-38cm" /></td>
+										<td align="center" height="4px" width="200px">
+											Stecklicht
+										</td>
+										<td align="left" height="4px" width="40px">
+											<input name="Stecklicht" type="checkbox" value="true">
+										</td>
 									</tr>
-									<tr>
-										<td align="center" height="4px" width="200px">Stecklicher</td>
-										<td align="left" height="4px" width="40px"><input name="Rahmengroesse" type="radio" value="38-41cm" /></td>
-									</tr>
-									<tr>
-										<td align="center" height="4px" width="200px">kompl. Lichtanlage</td>
-										<td align="left" height="4px" width="40px"><input checked="checked" name="Rahmengroesse" type="radio" value="41-43cm" /></td>
-									</tr>
+									@if(isFestLicht) {
+										<tr>
+											<td align="center" height="4px" width="200px">
+												kompl. Lichtanlage
+											</td>
+											<td align="left" height="4px" width="40px">
+												<input name="Festlicht" type="checkbox" value="true">
+											</td>
+										</tr>
+									}
 								</table><br />
-							</form>
 						</div>
 					</div>
 				</div>
@@ -69,14 +76,6 @@
 							</a>
 						</h4>
 					</div>
-					<div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftZwei">
-						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
-							Fahrrad fahrrad FAHRRAD  Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-						</div>
-					</div>
 				</div>
 			</div>
 
@@ -85,9 +84,11 @@
 	<div id="menu">
 		<div id="info">
 			<div id="info-bg-left"></div>
-			<div id="info-bg-center"><div class="info">Aktueller Preis: php€</div></div>
+			<div id="info-bg-center"><div class="info">Aktueller Preis: @controllers.KonfigurationSession.getKonfigurationFromSession.getKonfigurationsPreis() &euro;</div></div>
 			<div id="info-bg-right"></div>
 		</div>
-		<div id="next"><a href="step10"><img alt="Next" src="@routes.Assets.at("images/next.png")" /></a></div>
+		<div id="next"><img onclick="$('#step').submit();" alt="Next" src="@routes.Assets.at("images/next.png")" /></div>
 	</div>
+	</form>
+	</html>
 }

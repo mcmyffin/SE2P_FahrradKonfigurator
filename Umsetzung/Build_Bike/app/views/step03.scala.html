@@ -1,4 +1,9 @@
+@(rahmenFarbenHoehen: models.DatenTypen.Pair[java.util.List[String],java.util.List[Integer]])
+
 @main("Build your bike for dummies") {
+	<html lang="de">
+	<form id="step" action="@routes.Verlinkung.step04()" method="post">
+
 	<div id="timeline-bg">
 		<div id="timeline">
 			<table height="50px" width="850px">
@@ -39,18 +44,32 @@
 
 							Sie haben die Auswahl zwischen:<br /><br />
 
-							<table style="border-spacing: 0px;">
-								<tr>
-									<td align="center" bgcolor="#fa842b" height="50px" width="85px"></td>
-									<td align="center" bgcolor="#48a43f" height="50px" width="85px"></td>
-									<td align="center" bgcolor="#3481b9" height="50px" width="85px"></td>
-								</tr>
-								<tr>
-									<td align="center" bgcolor="#f3e03b" height="50px" width="85px"></td>
-									<td align="center" bgcolor="#f4f8f4" height="50px" width="85px"></td>
-									<td align="center" bgcolor="#0a0a0d" height="50px" width="85px"></td>
-								</tr>
-							</table>
+									<table style="border-spacing: 0px;">
+									@for(i <- 0 to rahmenFarbenHoehen.getKey.size()-1){
+
+										@if(i == 0){
+											<tr>
+												<td align="left" height="20px" width="40px">
+													<input id="f@i" checked="checked"  name="Farbe" type="radio" onclick="meinscript(@i,@rahmenFarbenHoehen.getKey.size())" value="@rahmenFarbenHoehen.getKey.get(i)">
+												</td>
+												<td align="center" height="20px" width="200px">
+													<label for="f@i">@rahmenFarbenHoehen.getKey.get(i)</label>
+												</td>
+											</tr>
+
+										}else{
+
+											<tr>
+												<td align="left" height="20px" width="40px">
+													<input id="@i" name="Farbe" type="radio" value="@rahmenFarbenHoehen.getKey.get(i)" onclick="meinscript(@i,@rahmenFarbenHoehen.getKey.size())">
+												</td>
+												<td align="center" height="20px" width="200px">
+													<label for="@i">@rahmenFarbenHoehen.getKey.get(i)</label>
+												</td>
+											</tr>
+										}
+									}
+									</table><br>
 
 						</div>
 					</div>
@@ -65,56 +84,33 @@
 					</div>
 					<div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftZwei">
 						<div class="panel-body" style="overflow: auto; height: 220px; background-color: #f4efff">
-							<form action="step02#form">
 								Sie haben die Auswahl zwischen:<br /><br />
-								<table style="border-spacing : 0 px ;">
-									<tr>
-										<td align="left" height="20px" width="110px"><b>Körpergröße</b></td>
-										<td align="center" height="20px" width="110px"><b>Rahmengröße</b></td>
-										<td align="center" height="20px" width="10px"><b>✓</b></td>
-									</tr>
-									<tr>
-										<td align="center" height="20px" width="115px">155 - 165 cm</td>
-										<td align="center" height="20px" width="115px">35 - 38 cm</td>
-										<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="35-38cm" /></td>
-									</tr>
-									<tr>
-										<td align="center" height="20px" width="115px">165 - 170 cm</td>
-										<td align="center" height="20px" width="115px">38 - 41 cm</td>
-										<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="38-41cm" /></td>
-									</tr>
-									<tr>
-										<td align="center" height="20px" width="115px">170 - 175 cm</td>
-										<td align="center" height="20px" width="115px">41 - 43 cm</td>
-										<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="41-43cm" /></td>
-									</tr>
-									<tr>
-										<td align="center" height="20px" width="115px">175 - 180 cm</td>
-										<td align="center" height="20px" width="115px">43 - 46 cm</td>
-										<td align="center" height="20px" width="10px"><input checked="checked" name="Rahmengroesse" type="radio" value="43-46cm" /></td>
-									</tr>
-									<tr>
-										<td align="center" height="20px" width="115px">180 - 185 cm</td>
-										<td align="center" height="20px" width="115px">46 - 48 cm</td>
-										<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="46-48cm" /></td>
-									</tr>
-									<tr>
-										<td align="center" height="20px" width="115px">185 - 190 cm</td>
-										<td align="center" height="20px" width="115px">48 - 53 cm</td>
-										<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="48-53cm" /></td>
-									</tr>
-									<tr>
-										<td align="center" height="20px" width="115px">190 - 195 cm</td>
-										<td align="center" height="20px" width="115px">53 - 56 cm</td>
-										<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="53-56cm" /></td>
-									</tr>
-									<tr>
-										<td align="center" height="20px" width="115px">195 - 200 cm</td>
-										<td align="center" height="20px" width="115px">56 - 58 cm</td>
-										<td align="center" height="20px" width="10px"><input name="Rahmengroesse" type="radio" value="56-58cm" /></td>
-									</tr>
-								</table>
-							</form>
+									<table style="border-spacing: 0px;">
+									@for(i <- 0 to rahmenFarbenHoehen.getValue.size()-1){
+
+										@if(i == 0){
+											<tr>
+												<td align="left" height="20px" width="40px">
+													<input id="h@i" checked="checked"  name="Hoehe" type="radio" onclick="meinscript(@i,@rahmenFarbenHoehen.getValue.size())" value="@rahmenFarbenHoehen.getValue.get(i)">
+												</td>
+												<td align="center" height="20px" width="200px">
+													<label for="h@i">@rahmenFarbenHoehen.getValue.get(i)</label>
+												</td>
+											</tr>
+
+										}else{
+
+											<tr>
+												<td align="left" height="20px" width="40px">
+													<input id="@i" name="Hoehe" type="radio" value="@rahmenFarbenHoehen.getValue.get(i)" onclick="meinscript(@i,@rahmenFarbenHoehen.getValue.size())">
+												</td>
+												<td align="center" height="20px" width="200px">
+													<label for="@i">@rahmenFarbenHoehen.getValue.get(i)</label>
+												</td>
+											</tr>
+										}
+									}
+									</table><br>
 						</div>
 					</div>
 				</div>
@@ -130,10 +126,44 @@
 					<div id="collapseDrei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftDrei">
 						<div class="panel-body" style="overflow: auto; height: 220px; background-color: #f4efff">
 
-							Fahrrad fahrrad FAHRRAD  Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+							<table style="border-spacing : 0 px ;">
+								<tr>
+									<td align="left" height="20px" width="110px"><b>Körpergröße</b></td>
+									<td align="center" height="20px" width="110px"><b>Rahmengröße</b></td>
+								</tr>
+								<tr>
+									<td align="center" height="20px" width="115px">155 - 165 cm</td>
+									<td align="center" height="20px" width="115px">35 - 38 cm</td>
+								</tr>
+								<tr>
+									<td align="center" height="20px" width="115px">165 - 170 cm</td>
+									<td align="center" height="20px" width="115px">38 - 41 cm</td>
+								</tr>
+								<tr>
+									<td align="center" height="20px" width="115px">170 - 175 cm</td>
+									<td align="center" height="20px" width="115px">41 - 43 cm</td>
+								</tr>
+								<tr>
+									<td align="center" height="20px" width="115px">175 - 180 cm</td>
+									<td align="center" height="20px" width="115px">43 - 46 cm</td>
+								</tr>
+								<tr>
+									<td align="center" height="20px" width="115px">180 - 185 cm</td>
+									<td align="center" height="20px" width="115px">46 - 48 cm</td>
+								</tr>
+								<tr>
+									<td align="center" height="20px" width="115px">185 - 190 cm</td>
+									<td align="center" height="20px" width="115px">48 - 53 cm</td>
+								</tr>
+								<tr>
+									<td align="center" height="20px" width="115px">190 - 195 cm</td>
+									<td align="center" height="20px" width="115px">53 - 56 cm</td>
+								</tr>
+								<tr>
+									<td align="center" height="20px" width="115px">195 - 200 cm</td>
+									<td align="center" height="20px" width="115px">56 - 58 cm</td>
+								</tr>
+							</table>
 
 						</div>
 					</div>
@@ -145,9 +175,11 @@
 	<div id="menu">
 		<div id="info">
 			<div id="info-bg-left"></div>
-			<div id="info-bg-center"><div class="info">Aktueller Preis: php€</div></div>
+			<div id="info-bg-center"><div class="info">Aktueller Preis: @controllers.KonfigurationSession.getKonfigurationFromSession.getKonfigurationsPreis() &euro;</div></div>
 			<div id="info-bg-right"></div>
 		</div>
-		<div id="next"><a href="step04"><img alt="Next" src="@routes.Assets.at("images/next.png")" /></a></div>
+		<div id="next"><img onclick="$('#step').submit();" alt="Next" src="@routes.Assets.at("images/next.png")" /></div>
 	</div>
+	</form>
+	</html>
 }

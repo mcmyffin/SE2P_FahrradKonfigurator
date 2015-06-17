@@ -1,4 +1,9 @@
+@(zubehoerListe : java.util.List[models.TeileKomponente.DTO.EinzelteilDTO])
+
 @main("Build your bike for dummies") {
+    <html lang="de">
+    <form id="step" action="@routes.Verlinkung.warenkorb()" method="post">
+
     <div id="timeline-bg">
         <div id="timeline">
             <table height="50px" width="850px">
@@ -9,7 +14,7 @@
                 }
                 </colgroup>
                 <tr>
-                @for(p <- Array("Typ","Rahmen","Farbe/ Höhe","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","Zubehör")){
+                @for(p <- Array("Typ","Rahmen","Farbe/ HÃ¶he","Gabel","Felge","Mantel","Vorbau","Sattel","Licht","ZubehÃ¶r")){
                     <td align="center"> <b class="text">@p</b> </td>
                     <td><img alt="|" height="41px" src="@routes.Assets.at("images/timeline-break.png")" /></td>
                 }
@@ -25,59 +30,87 @@
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="überschriftEins">
+                    <div class="panel-heading" role="tab">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseEins" aria-expanded="true" aria-controls="collapseEins">
-                                <b class="text">Zubehör</b>
+                                <b class="text">ZubehÃ¶r</b>
                             </a>
                         </h4>
                     </div>
-                    <div id="collapseEins" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="überschriftEins">
+
+                    <script>
+						function meinscript(divID,maxDivID){
+							for(i = 0; i < maxDivID; i++){
+								$('#D'+i).hide();
+							}
+							$('#D'+divID).show();
+						}
+					</script>
+
+                    <div id="collapseEins" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="&Uuml;berschriftEins">
                         <div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
 
                             Sie haben die Auswahl zwischen:<br /><br />
-                            <form action="step10#form">
-                                <table style="border-spacing : 0 px ;">
+
+                            <table style="border-spacing: 0px;">
+                            @for(i <- 0 to zubehoerListe.size()-1){
+
+                                @if(i == 0){
                                     <tr>
-                                        <td align="center" height="20px" width="200px"><b>Artikel</b></td>
-                                        <td align="left" height="20px" width="40px"><b>?</b></td>
+                                        <td align="left" height="20px" width="40px">
+                                            <input id="@i" checked="checked"  name="@zubehoerListe.get(i).getId" type="checkbox" onclick="meinscript(@i,@zubehoerListe.size())" value="@zubehoerListe.get(i).getId()">
+                                        </td>
+                                        <td align="center" height="20px" width="200px">
+                                            <label for="@i">@zubehoerListe.get(i).getName()</label>
+                                        </td>
                                     </tr>
+
+                                }else{
+
                                     <tr>
-                                        <td align="center" height="20px" width="200px">Fahrradhelm</td>
-                                        <td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradhelm" /></td>
+                                        <td align="left" height="20px" width="40px">
+                                            <input id="@i" name="@zubehoerListe.get(i).getId" type="checkbox" value="@zubehoerListe.get(i).getId()" onclick="meinscript(@i,@zubehoerListe.size())">
+                                        </td>
+                                        <td align="center" height="20px" width="200px">
+                                            <label for="@i">@zubehoerListe.get(i).getName()</label>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td align="center" height="20px" width="200px">Fahrradschloss</td>
-                                        <td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradschloss" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center" height="20px" width="200px">Fahrradpumpe</td>
-                                        <td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradpumpe" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center" height="20px" width="200px">Fahrradklingel</td>
-                                        <td align="left" height="20px" width="40px"><input type="checkbox" name="Zubehoer" value="Fahrradklingel" /></td>
-                                    </tr>
-                                </table><br />
-                            </form>
+                                }
+                            }
+                            </table><br>
 
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="überschriftZwei">
+                    <div class="panel-heading" role="tab">
                         <h4 class="panel-title">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseZwei" aria-expanded="false" aria-controls="collapseZwei">
                                 <b class="text">Beschreibung</b>
                             </a>
                         </h4>
                     </div>
-                    <div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftZwei">
+                    <div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ï¿½berschriftZwei">
                         <div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
-                            Fahrrad fahrrad FAHRRAD  Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-                            Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-                            Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-                            Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+
+                        @for(i <- 0 to zubehoerListe.size()-1){
+
+                            @if(i == 0){
+
+                                <div id="D@i" style="display: block">
+                                @zubehoerListe.get(i).getWerbetext
+                                </div>
+
+                            }else{
+
+                                <div id="D@i" style="display: none">
+                                @zubehoerListe.get(i).getWerbetext
+                                </div>
+
+                            }
+                        }
+
+
                         </div>
                     </div>
                 </div>
@@ -87,9 +120,11 @@
     <div id="menu">
         <div id="info">
             <div id="info-bg-left"></div>
-            <div id="info-bg-center"><div class="info">Aktueller Preis: php€</div></div>
+            <div id="info-bg-center"><div class="info">Aktueller Preis: @controllers.KonfigurationSession.getKonfigurationFromSession.getKonfigurationsPreis() &euro;</div></div>
             <div id="info-bg-right"></div>
         </div>
-        <div id="next"><a href="bestellen"><img alt="Next" src="@routes.Assets.at("images/next.png")" /></a></div>
+        <div id="next"><img onclick="$('#step').submit();" alt="Next" src="@routes.Assets.at("images/next.png")" /></div>
     </div>
+    </form>
+    </html>
 }

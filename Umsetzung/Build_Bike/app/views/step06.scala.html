@@ -1,5 +1,10 @@
+@(mantelList : java.util.List[models.TeileKomponente.DTO.EinzelteilDTO])
+
 @main("Build your bike for dummies") {
-	<div id="timeline-bg">
+	<html lang="de">
+	<form id="step" action="@routes.Verlinkung.step07()" method="post">
+
+		<div id="timeline-bg">
 		<div id="timeline">
 			<table height="50px" width="850px">
 				<colgroup>
@@ -34,16 +39,47 @@
 							</a>
 						</h4>
 					</div>
+
+					<script>
+						function meinscript(divID,maxDivID){
+							for(i = 0; i < maxDivID; i++){
+								$('#D'+i).hide();
+							}
+							$('#D'+divID).show();
+						}
+					</script>
+
 					<div id="collapseEins" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="überschriftEins">
 						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
 
 							Sie haben die Auswahl zwischen:<br /><br />
-							<form action="step06#form">
-								<select size="1">
-									<option>Mantel 1</option>
-									<option>Mantel 2</option>
-								</select><br /><br />
-							</form>
+
+								<table style="border-spacing: 0px;">
+								@for(i <- 0 to mantelList.size()-1){
+
+									@if(i == 0){
+										<tr>
+											<td align="left" height="20px" width="40px">
+												<input id="@i" checked="checked"  name="Mantel" type="radio" onclick="meinscript(@i,@mantelList.size())" value="@mantelList.get(i).getId">
+											</td>
+											<td align="center" height="20px" width="200px">
+												<label for="@i">@mantelList.get(i).getName</label>
+											</td>
+										</tr>
+
+									}else{
+
+										<tr>
+											<td align="left" height="20px" width="40px">
+												<input id="@i" name="Mantel" type="radio" value="@mantelList.get(i).getId" onclick="meinscript(@i,@mantelList.size())">
+											</td>
+											<td align="center" height="20px" width="200px">
+												<label for="@i">@mantelList.get(i).getName</label>
+											</td>
+										</tr>
+									}
+								}
+								</table><br>
 						</div>
 					</div>
 				</div>
@@ -57,10 +93,25 @@
 					</div>
 					<div id="collapseZwei" class="panel-collapse collapse" role="tabpanel" aria-labelledby="überschriftZwei">
 						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
-							Fahrrad fahrrad FAHRRAD  Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
-							Fahrrad fahrrad FAHRRAD Fahrrad fahrrad FAHRRAD
+
+
+						@for(i <- 0 to mantelList.size()-1){
+
+							@if(i == 0){
+
+								<div id="D@i" style="display: block">
+									@mantelList.get(i).getWerbetext
+								</div>
+
+							}else{
+
+								<div id="D@i" style="display: none">
+									@mantelList.get(i).getWerbetext
+								</div>
+
+							}
+						}
+
 						</div>
 					</div>
 				</div>
@@ -72,9 +123,11 @@
 	<div id="menu">
 		<div id="info">
 			<div id="info-bg-left"></div>
-			<div id="info-bg-center"><div class="info">Aktueller Preis: php€</div></div>
+			<div id="info-bg-center"><div class="info">Aktueller Preis: @controllers.KonfigurationSession.getKonfigurationFromSession.getKonfigurationsPreis() &euro;</div></div>
 			<div id="info-bg-right"></div>
 		</div>
-		<div id="next"><a href="step07"><img alt="Next" src="@routes.Assets.at("images/next.png")" /></a></div>
+		<div id="next"><img onclick="$('#step').submit();" alt="Next" src="@routes.Assets.at("images/next.png")" /></div>
 	</div>
+	</form>
+	</html>
 }

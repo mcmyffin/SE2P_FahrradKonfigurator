@@ -29,5 +29,18 @@ POST        /kontakt             controllers.Mail.kontaktMail()
 POST        /registrieren        controllers.User.registrieren()
 POST        /account             controllers.User.logout()
 
+POST        /step02              controllers.KonfigurationsSchritte.setStep01()
+POST        /step03              controllers.KonfigurationsSchritte.setStep02()
+POST        /step04              controllers.KonfigurationsSchritte.setStep03()
+POST        /step05              controllers.KonfigurationsSchritte.setStep04()
+POST        /step06              controllers.KonfigurationsSchritte.setStep05()
+POST        /step07              controllers.KonfigurationsSchritte.setStep06()
+POST        /step08              controllers.KonfigurationsSchritte.setStep07()
+POST        /step09              controllers.KonfigurationsSchritte.setStep08()
+POST        /step10              controllers.KonfigurationsSchritte.setStep09()
+POST        /warenkorb           controllers.KonfigurationsSchritte.setStep10()
+
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)
