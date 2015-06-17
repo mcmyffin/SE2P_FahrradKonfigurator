@@ -22,14 +22,14 @@ public class KonfigurationSession extends Controller {
     private static final String KONFIGURATION = "TMP_KONFIGURATION";
 //    private static Map<String,String> mokupSession = new HashMap();
 
-    private static void setKonfiguration(KonfigurationDTO dto){
+    public static void setKonfiguration(KonfigurationDTO dto){
 
         JsonNode dto_Json = Json.toJson(dto);
 //        mokupSession.put(KONFIGURATION,dto_Json.toString());
         session(KONFIGURATION,dto_Json.toString());
     }
 
-    private static KonfigurationDTO getKonfiguration(){
+    public static KonfigurationDTO getKonfiguration(){
 
         if(!session().containsKey(KONFIGURATION)) return null;
 //        if(!mokupSession.containsKey(KONFIGURATION)) return null;
@@ -78,6 +78,10 @@ public class KonfigurationSession extends Controller {
 
         KonfigurationDTO dto = toDTO(konfiguration);
         setKonfiguration(dto);
+    }
+
+    public static void removeKonfiguration(){
+        session().remove(KONFIGURATION);
     }
 
 

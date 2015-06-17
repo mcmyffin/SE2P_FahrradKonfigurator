@@ -347,4 +347,19 @@ public class Konfiguration implements IKonfiguration {
 
         return gesamtpreis;
     }
+
+    @Override
+    public String toString() {
+        return "Konfiguration[ \n"+
+                    "Step01{"+getStep1().getRahmenFormTyp()+"}\n"+
+                    "Step02{"+getStep2().getRahmen()+"}\n"+
+                    "Step03{farbe: "+getStep3().getFarbe()+", höhe: "+getStep3().getRahmenHoehe()+"}\n"+
+                    "Step04{"+getStep4().getGabel()+"}\n"+
+                    "Step05{"+getStep5().getFelge()+"}\n"+
+                    "Step06{"+getStep6().getMantel()+"}\n"+
+                    "Step07{"+getStep7().getVorbau()+"}\n"+
+                    "Step08{"+getStep8().getSattel()+"}\n"+
+                    "Step09{gefragt: "+getStep9().isGefragt()+" , stecklicht: "+getStep9().isSteckLicht()+" , festlicht: "+ getStep9().isFestLicht()+"}\n"+
+                    "Step10{"+getStep10().getZubehoerList()+"}"+" ]";
+    }
 }

@@ -135,4 +135,11 @@ public class Mantel {
     public EinzelTeileTyp getEinzelTeileTyp() {
         return einzelTeileTyp;
     }
+
+    @Override
+    public String toString() {
+        return "Mantel{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

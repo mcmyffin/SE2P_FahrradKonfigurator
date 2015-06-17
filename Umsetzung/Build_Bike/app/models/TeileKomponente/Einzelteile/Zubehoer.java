@@ -126,4 +126,11 @@ public class Zubehoer {
     public EinzelTeileTyp getEinzelTeileTyp() {
         return einzelTeileTyp;
     }
+
+    @Override
+    public String toString() {
+        return "Zubehoer{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

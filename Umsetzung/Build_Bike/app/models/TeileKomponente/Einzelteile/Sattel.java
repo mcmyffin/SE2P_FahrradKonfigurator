@@ -121,4 +121,11 @@ public class Sattel {
     public EinzelTeileTyp getEinzelTeileTyp() {
         return einzelTeileTyp;
     }
+
+    @Override
+    public String toString() {
+        return "Sattel{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

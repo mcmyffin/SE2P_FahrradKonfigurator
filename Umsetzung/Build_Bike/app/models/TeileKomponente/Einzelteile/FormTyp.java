@@ -79,4 +79,11 @@ public class FormTyp {
                 formTyp.getVorbau() == this.getVorbau()
                 );
     }
+
+    @Override
+    public String toString() {
+        return "FormTyp{" +
+                "id=" + id +
+                '}';
+    }
 }

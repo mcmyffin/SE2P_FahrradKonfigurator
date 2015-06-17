@@ -100,12 +100,16 @@
 							@if(i == 0){
 
 								<div id="D@i" style="display: block">
+									<b>Preis:</b> @felgeListe.get(i).getPreis &euro;
+									<br>
 									@felgeListe.get(i).getWerbetext;
 								</div>
 
 							}else{
 
 								<div id="D@i" style="display: none">
+									<b>Preis:</b> @felgeListe.get(i).getPreis &euro;
+									<br>
 									@felgeListe.get(i).getWerbetext;
 								</div>
 

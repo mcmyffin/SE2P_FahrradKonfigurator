@@ -119,6 +119,8 @@ public class Verlinkung extends Controller {
     public static Result warenkorb() {
 
         IKonfiguration konfiguration = KonfigurationSession.getKonfigurationFromSession();
+        Logger.debug(konfiguration.toString());
+        KonfigurationSession.removeKonfiguration();
         return ok(warenkorb.render());
     }
 

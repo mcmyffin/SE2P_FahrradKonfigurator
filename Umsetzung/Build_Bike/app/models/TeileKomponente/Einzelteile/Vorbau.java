@@ -118,4 +118,11 @@ public class Vorbau {
     public EinzelTeileTyp getEinzelTeileTyp() {
         return einzelTeileTyp;
     }
+
+    @Override
+    public String toString() {
+        return "Vorbau{" +
+                "id=" + id +
+                '}';
+    }
 }

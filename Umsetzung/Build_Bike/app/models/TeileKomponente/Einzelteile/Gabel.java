@@ -133,4 +133,10 @@ public class Gabel {
         return einzelTeileTyp;
     }
 
+    @Override
+    public String toString() {
+        return "Gabel{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

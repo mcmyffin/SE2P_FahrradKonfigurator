@@ -98,13 +98,17 @@
                             @if(i == 0){
 
                                 <div id="D@i" style="display: block">
-                                @zubehoerListe.get(i).getWerbetext
+                                    <b>Preis:</b> @zubehoerListe.get(i).getPreis &euro;
+                                    <br>
+                                    @zubehoerListe.get(i).getWerbetext
                                 </div>
 
                             }else{
 
                                 <div id="D@i" style="display: none">
-                                @zubehoerListe.get(i).getWerbetext
+                                    <b>Preis:</b> @zubehoerListe.get(i).getPreis &euro;
+                                    <br>
+                                    @zubehoerListe.get(i).getWerbetext
                                 </div>
 
                             }

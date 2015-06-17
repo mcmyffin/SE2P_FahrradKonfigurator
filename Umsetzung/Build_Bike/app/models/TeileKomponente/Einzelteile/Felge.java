@@ -138,4 +138,11 @@ public class Felge {
     public EinzelTeileTyp getEinzelTeileTyp() {
         return einzelTeileTyp;
     }
+
+    @Override
+    public String toString() {
+        return "Felge{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

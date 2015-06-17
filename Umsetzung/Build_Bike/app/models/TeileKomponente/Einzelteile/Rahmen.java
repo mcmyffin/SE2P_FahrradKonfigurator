@@ -271,4 +271,10 @@ public class Rahmen {
         return einzelTeileTyp;
     }
 
+    @Override
+    public String toString() {
+        return "Rahmen{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
