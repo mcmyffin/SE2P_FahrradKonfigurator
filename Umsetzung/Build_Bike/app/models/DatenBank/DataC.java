@@ -18,29 +18,29 @@ import play.db.DB;
  * Created by tin on 01.05.15.
  */
 public class DataC implements IDatenBank {
-    Connection _con;
 
     public DataC(){
-        _con = DB.getConnection();
     }
 
-    private DataC(Connection con){
+    /*private DataC(Connection con){
         _con = con;
-    }
+    }*/
 
-    public static IDatenBank setTestEnv() throws DatabaseException{
+    /*public static IDatenBank setTestEnv() throws DatabaseException{
         try {
             return new DataC(DriverManager.getConnection("jdbc:mariadb://localhost/FahrradKonfi", "se2", ""));
         } catch (Exception e) {
             throw new DatabaseException("Konnte keine verbindung aufbauen",1);
         }
-    }
+    }*/
 
     private ResultSet getDataFormDB(String sqlStmt) throws DatabaseException{
         try {
-            Statement stmt = _con.createStatement();
+            Connection con = DB.getConnection();
+            Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sqlStmt);
             stmt.close();
+            con.close();
             return rs;
         } catch (Exception e) {
             throw new DatabaseException(1);
@@ -114,8 +114,11 @@ public class DataC implements IDatenBank {
     @Override
     public boolean setVorname(int id, String vorname) throws DatabaseException {
         try {
-            Statement stmt = _con.createStatement();
+            Connection con = DB.getConnection();
+            Statement stmt = con.createStatement();
             stmt.execute("UPDATE KundeT SET K_vorname = '"+ vorname +"' WHERE K_ID ="+id);
+            stmt.close();
+            con.close();
             return true;
         } catch (Exception e){
             throw new DatabaseException(2);
@@ -125,8 +128,11 @@ public class DataC implements IDatenBank {
     @Override
     public boolean setNachname(int id, String nachname) throws DatabaseException {
         try {
-            Statement stmt = _con.createStatement();
+            Connection con = DB.getConnection();
+            Statement stmt = con.createStatement();
             stmt.execute("UPDATE KundeT SET K_nachname = '"+ nachname +"' WHERE K_ID ="+id);
+            stmt.close();
+            con.close();
             return true;
 
         } catch (Exception e){
@@ -142,8 +148,11 @@ public class DataC implements IDatenBank {
     @Override
     public boolean setEMail(int id, String email) throws DatabaseException {
         try {
-            Statement stmt = _con.createStatement();
+            Connection con = DB.getConnection();
+            Statement stmt = con.createStatement();
             stmt.execute("UPDATE KundeT SET K_email = '"+ email +"' WHERE K_ID ="+id);
+            stmt.close();
+            con.close();
             return true;
         } catch (Exception e){
             throw new DatabaseException(2);
@@ -153,8 +162,11 @@ public class DataC implements IDatenBank {
     @Override
     public boolean setPasswort(int id, String passwort) throws DatabaseException {
         try {
-            Statement stmt = _con.createStatement();
+            Connection con = DB.getConnection();
+            Statement stmt = con.createStatement();
             stmt.execute("UPDATE KundeT SET K_passwort = '"+ passwort +"' WHERE K_ID ="+id);
+            stmt.close();
+            con.close();
             return true;
         } catch (Exception e){
             throw new DatabaseException(2);
@@ -165,7 +177,8 @@ public class DataC implements IDatenBank {
     public boolean setNeuerKunde(String email, String passwort, String vorname, String nachname, String gebDatum, String telefonummer, String strasse, int hausnummer, String adresszusatz, int plz, String stadt) throws DatabaseException {
         List<String> adrArr = new ArrayList<String>();
         try {
-            Statement stmt = _con.createStatement();
+            Connection con = DB.getConnection();
+            Statement stmt = con.createStatement();
             stmt.execute("INSERT INTO AdresseT (A_adresszusatz, A_hausnummer, A_plz, A_Stadt, A_strasse)" +
                     "VALUES ('" + adresszusatz + "', " + hausnummer + ", " + plz + ",'" + stadt + "', '" + strasse + "');");
             ResultSet rs = stmt.executeQuery("SELECT MAX( A_ID ) AS A_ID FROM AdresseT;");
@@ -174,6 +187,7 @@ public class DataC implements IDatenBank {
             stmt.execute("INSERT INTO KundeT (K_adresse, K_email, K_nachname, K_passwort, K_telefon, K_vorname, K_gebdatum)" +
                     " VALUES ("+adressindex+",'"+email+"', '"+nachname+"', '"+passwort+"', '"+telefonummer+"', '"+vorname+"','"+gebDatum+"');");
             stmt.close();
+            con.close();
             return true;
         } catch (Exception e) {
             throw new DatabaseException(2);
@@ -580,7 +594,7 @@ public class DataC implements IDatenBank {
             ResultSet rs = getDataFormDB("SELECT * from BeschreibungT WHERE B_ID="+id+";");
             rs.next();
 
-            return new Beschreibung(rs.getString("B_text"),rs.getString("B_kurzbesch"));
+            return new Beschreibung(rs.getString("B_kurzbesch"),rs.getString("B_text"));
         } catch (Exception e) {
             throw new DatabaseException(1);
         }
