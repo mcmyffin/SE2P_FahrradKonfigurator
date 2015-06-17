@@ -16,11 +16,12 @@ public class KonfigurationDTO {
     private StepDTO step_8;
     private StepLichtDTO step_9;
     private StepZubehoerDTO step_10;
+    private int gesamtPreis = 0;
 
     public KonfigurationDTO(){};
 
     public KonfigurationDTO(StepRahmenFormTypDTO step_1, StepDTO step_2, StepRahmenFarbeHoehe step_3, StepDTO step_4, StepDTO step_5,
-                            StepDTO step_6, StepDTO step_7, StepDTO step_8, StepLichtDTO step_9, StepZubehoerDTO step_10) {
+                            StepDTO step_6, StepDTO step_7, StepDTO step_8, StepLichtDTO step_9, StepZubehoerDTO step_10, int gesamtPreis) {
 
         this.step_1 = step_1;
         this.step_2 = step_2;
@@ -32,6 +33,7 @@ public class KonfigurationDTO {
         this.step_8 = step_8;
         this.step_9 = step_9;
         this.step_10 = step_10;
+        this.gesamtPreis = gesamtPreis;
     }
 
 
@@ -74,6 +76,10 @@ public class KonfigurationDTO {
         return step_10;
     }
 
+    public int getGesamtPreis() {
+        return gesamtPreis;
+    }
+
     /*** SETTER ***/
     public void setStep_1(StepRahmenFormTypDTO step_1) {
         this.step_1 = step_1;
@@ -111,5 +117,9 @@ public class KonfigurationDTO {
 
     public void setStep_10(StepZubehoerDTO step_10) {
         this.step_10 = step_10;
+    }
+
+    public void setGesamtPreis(int gesamtPreis) {
+        this.gesamtPreis = gesamtPreis;
     }
 }

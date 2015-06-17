@@ -139,7 +139,7 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
                 String formtypNummer = step1.getRahmenFormTyp();
 
             try {
-                konfiguration.setStep1(RahmenFormTyp.getRahmenFormTypByInt(Integer.parseInt(formtypNummer)));
+                konfiguration.setStep1(RahmenFormTyp.getRahmenFormTypByString(formtypNummer));
             } catch (UngueltigerStepException|RahmenFormTypException e) {
                 // TODO
                 e.printStackTrace();
@@ -300,5 +300,11 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
             return rahmen.getHoehen();
         }
         return null;
+    }
+
+    @Override
+    public boolean filterFestlicht(IKonfiguration konfiguration) {
+
+        return konfiguration.getStep2().getRahmen().isLicht() && konfiguration.getStep4().getGabel().isLicht();
     }
 }

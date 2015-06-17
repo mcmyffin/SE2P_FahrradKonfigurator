@@ -194,7 +194,7 @@ public class Konfiguration implements IKonfiguration {
     @Override
     public boolean setStep9(boolean isGefragt, boolean isStecklicht, boolean isFestlicht) throws UngueltigerStepException {
 
-        steps.setLicht(isGefragt,isStecklicht,isFestlicht);
+        steps.setLicht(isGefragt, isStecklicht, isFestlicht);
 
         return true;
     }
@@ -313,29 +313,38 @@ public class Konfiguration implements IKonfiguration {
 
 
         KonfigurationDTO konfigurationDTO = new KonfigurationDTO(stepDTO_1,stepDTO_2,stepDTO_3,stepDTO_4,stepDTO_5,
-                                                                    stepDTO_6,stepDTO_7,stepDTO_8,stepDTO_9,stepDTO_10);
+                                                                    stepDTO_6,stepDTO_7,stepDTO_8,stepDTO_9,stepDTO_10, getKonfigurationsPreis());
 
         return konfigurationDTO;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public int getKonfigurationsPreis() {
 
-        if(obj == null) return false;
-        if(obj == this) return true;
-        if(!(obj instanceof Konfiguration)) return false;
-        Konfiguration aKonfiguration = (Konfiguration) obj;
+        Felge felge = steps.getFelge();
+        Gabel gabel = steps.getGabel();
+        Mantel mantel = steps.getMantel();
+        Rahmen rahmen = steps.getRahmen();
+        Sattel sattel = steps.getSattel();
+        Vorbau vorbau = steps.getVorbau();
+        List<Zubehoer> zubehoerList = steps.getZubehoerList();
 
-        boolean ergebnis = true;
+        int gesamtpreis = 0;
 
-//        if(this.getStep1().getRahmenFormTyp() == null && aKonfiguration.getStep1().)
-//        {
-//            ergebnis &= this.getStep1().getRahmenFormTyp() == aKonfiguration.getStep1().getRahmenFormTyp();
-//        }
-//        else
-//        {
-//            ergebnis &=
-//        }
-        return false;
+        if(felge != null) gesamtpreis += felge.getPreis();
+        if(gabel != null) gesamtpreis += gabel.getPreis();
+        if(mantel != null) gesamtpreis += mantel.getPreis();
+        if(rahmen != null) gesamtpreis += rahmen.getPreis();
+        if(sattel != null) gesamtpreis += sattel.getPreis();
+        if(vorbau != null) gesamtpreis += vorbau.getPreis();
+        if(zubehoerList != null){
+
+            for(Zubehoer einZubehoer : zubehoerList){
+
+                gesamtpreis += einZubehoer.getPreis();
+            }
+        }
+
+        return gesamtpreis;
     }
 }

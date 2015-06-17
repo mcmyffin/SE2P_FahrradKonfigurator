@@ -41,4 +41,6 @@ public interface IKonfiguration {
 
     public KonfigurationDTO asDTO();
 
+    public int getKonfigurationsPreis();
+
 }

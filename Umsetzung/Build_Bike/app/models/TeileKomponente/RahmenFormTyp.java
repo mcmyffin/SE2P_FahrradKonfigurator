@@ -8,9 +8,9 @@ import models.Exception.RahmenFormTypException;
  */
 public enum RahmenFormTyp {
 
-    CITTY_BIKE(0,"Citty Bike"),
+    CITTY_BIKE(0,"City Bike"),
     MOUNTEN_BIKE(1, "Mounten Bike"),
-    TRAKKING_BIKE(2, "Trakking Bike");
+    TRAKKING_BIKE(2, "Trekking Bike");
 
     private int nummer;
     private String bezeichnung;

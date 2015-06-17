@@ -22,6 +22,8 @@ public interface IKofigurationKomponente {
 
     public List<Vorbau> filterVorbauByKonfiguration(IKonfiguration konfiguration, List<Vorbau> vorbauList);
 
+    public boolean filterFestlicht(IKonfiguration konfiguration);
+
     public List<Zubehoer> filterZubehoerByKonfiguration(IKonfiguration konfiguration, List<Zubehoer> zubehoerList);
 
     public List<String> getRahmenFarbenByKonfiguration(IKonfiguration konfiguration);
