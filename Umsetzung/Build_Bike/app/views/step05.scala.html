@@ -60,10 +60,10 @@
 									@if(i == 0){
 										<tr>
 											<td align="left" height="20px" width="40px">
-												<input id="@i" checked="checked"  name="Felge" type="radio" onclick="meinscript(@i,@felgeListe.size())" value="@felgeListe.get(i).getId">
+												<input id="@i" checked="checked"  name="Felge" type="radio" onclick="meinscript(@i,@felgeListe.size())" value="@felgeListe.get(i).getId" title="@felgeListe.get(i).getKurzbeschreibung">
 											</td>
 											<td align="center" height="20px" width="200px">
-												<label for="@i">@felgeListe.get(i).getName</label>
+												<label title="@felgeListe.get(i).getKurzbeschreibung" for="@i">@felgeListe.get(i).getName</label>
 											</td>
 										</tr>
 
@@ -71,10 +71,10 @@
 
 										<tr>
 											<td align="left" height="20px" width="40px">
-												<input id="@i" name="Felge" type="radio" value="@felgeListe.get(i).getId" onclick="meinscript(@i,@felgeListe.size())">
+												<input id="@i" name="Felge" type="radio" value="@felgeListe.get(i).getId" onclick="meinscript(@i,@felgeListe.size())" title="@felgeListe.get(i).getKurzbeschreibung">
 											</td>
 											<td align="center" height="20px" width="200px">
-												<label for="@i">@felgeListe.get(i).getName</label>
+												<label title="@felgeListe.get(i).getKurzbeschreibung" for="@i">@felgeListe.get(i).getName</label>
 											</td>
 										</tr>
 									}

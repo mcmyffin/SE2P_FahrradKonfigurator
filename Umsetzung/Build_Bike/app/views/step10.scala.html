@@ -58,10 +58,10 @@
                                 @if(i == 0){
                                     <tr>
                                         <td align="left" height="20px" width="40px">
-                                            <input id="@i" checked="checked"  name="@zubehoerListe.get(i).getId" type="checkbox" onclick="meinscript(@i,@zubehoerListe.size())" value="@zubehoerListe.get(i).getId()">
+                                            <input id="@i" checked="checked"  name="@zubehoerListe.get(i).getId" type="checkbox" onclick="meinscript(@i,@zubehoerListe.size())" value="@zubehoerListe.get(i).getId()" title="@zubehoerListe.get(i).getKurzbeschreibung">
                                         </td>
                                         <td align="center" height="20px" width="200px">
-                                            <label for="@i">@zubehoerListe.get(i).getName()</label>
+                                            <label title="@zubehoerListe.get(i).getKurzbeschreibung" for="@i">@zubehoerListe.get(i).getName()</label>
                                         </td>
                                     </tr>
 
@@ -69,10 +69,10 @@
 
                                     <tr>
                                         <td align="left" height="20px" width="40px">
-                                            <input id="@i" name="@zubehoerListe.get(i).getId" type="checkbox" value="@zubehoerListe.get(i).getId()" onclick="meinscript(@i,@zubehoerListe.size())">
+                                            <input id="@i" name="@zubehoerListe.get(i).getId" type="checkbox" value="@zubehoerListe.get(i).getId()" onclick="meinscript(@i,@zubehoerListe.size())" title="@zubehoerListe.get(i).getKurzbeschreibung">
                                         </td>
                                         <td align="center" height="20px" width="200px">
-                                            <label for="@i">@zubehoerListe.get(i).getName()</label>
+                                            <label title="@zubehoerListe.get(i).getKurzbeschreibung" for="@i">@zubehoerListe.get(i).getName()</label>
                                         </td>
                                     </tr>
                                 }
@@ -113,8 +113,6 @@
 
                             }
                         }
-
-
                         </div>
                     </div>
                 </div>

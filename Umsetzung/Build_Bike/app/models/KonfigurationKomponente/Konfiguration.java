@@ -16,6 +16,7 @@ import java.util.List;
 public class Konfiguration implements IKonfiguration {
 
 
+    private long konfigurationsID = System.currentTimeMillis();
     private IStep steps;
     private ITeileKomponente teileKomponente;
 
@@ -24,6 +25,11 @@ public class Konfiguration implements IKonfiguration {
     public Konfiguration(){
         steps = new Step();
         teileKomponente = new TeileKomponente();
+    }
+
+    Konfiguration(long id){
+        this();
+        konfigurationsID = id;
     }
 
 
@@ -312,7 +318,7 @@ public class Konfiguration implements IKonfiguration {
         }
 
 
-        KonfigurationDTO konfigurationDTO = new KonfigurationDTO(stepDTO_1,stepDTO_2,stepDTO_3,stepDTO_4,stepDTO_5,
+        KonfigurationDTO konfigurationDTO = new KonfigurationDTO(konfigurationsID,stepDTO_1,stepDTO_2,stepDTO_3,stepDTO_4,stepDTO_5,
                                                                     stepDTO_6,stepDTO_7,stepDTO_8,stepDTO_9,stepDTO_10, getKonfigurationsPreis());
 
         return konfigurationDTO;
@@ -349,8 +355,14 @@ public class Konfiguration implements IKonfiguration {
     }
 
     @Override
+    public long getKonfigurationsID() {
+        return konfigurationsID;
+    }
+
+    @Override
     public String toString() {
         return "Konfiguration[ \n"+
+                    "id: "+konfigurationsID+"\n"+
                     "Step01{"+getStep1().getRahmenFormTyp()+"}\n"+
                     "Step02{"+getStep2().getRahmen()+"}\n"+
                     "Step03{farbe: "+getStep3().getFarbe()+", höhe: "+getStep3().getRahmenHoehe()+"}\n"+

@@ -13,6 +13,8 @@ import models.TeileKomponente.Einzelteile.*;
 import models.TeileKomponente.ITeileKomponente;
 import models.TeileKomponente.RahmenFormTyp;
 import models.TeileKomponente.TeileKomponente;
+import models.WarenkorbKomponente.DTO.WarenkorbSessionDTO;
+import models.WarenkorbKomponente.IWarenkorb;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
@@ -401,6 +403,14 @@ public class KonfigurationsSchritte extends Controller{
         } catch (KonfigurationException|UngueltigerStepException e) {
             return Verlinkung.step10();
         }
+
+        IWarenkorb warenkorb = WarenkorbSession.getWarenkorbFromSession();
+        IKonfiguration eineKonfiguration = KonfigurationSession.getKonfigurationFromSession();
+        warenkorb.addKonfiguration(eineKonfiguration);
+        WarenkorbSession.setWarenkorbToSession(warenkorb);
+
+        KonfigurationSession.removeKonfiguration();
+
         return Verlinkung.warenkorb();
     }
 }

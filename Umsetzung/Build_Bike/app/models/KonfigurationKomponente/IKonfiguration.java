@@ -38,6 +38,7 @@ public interface IKonfiguration {
     public boolean setStep9(boolean isGefragt, boolean isStecklicht, boolean isFestlicht) throws UngueltigerStepException;
     public boolean setStep10(EinzelTeileTyp einzelTeileTyp, List<Integer> ids) throws UngueltigerStepException, KonfigurationException;
 
+    public long getKonfigurationsID();
 
     public KonfigurationDTO asDTO();
 

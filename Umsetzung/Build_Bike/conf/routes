@@ -40,6 +40,8 @@ POST        /step09              controllers.KonfigurationsSchritte.setStep08()
 POST        /step10              controllers.KonfigurationsSchritte.setStep09()
 POST        /warenkorb           controllers.KonfigurationsSchritte.setStep10()
 
+POST        /doWarenkorb         controllers.WarenkorbSession.removeKonfiguration()
+
 
 
 # Map static resources from the /public folder to the /assets URL path

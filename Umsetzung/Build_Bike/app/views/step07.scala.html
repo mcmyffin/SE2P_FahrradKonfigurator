@@ -49,10 +49,10 @@
 									@if(i == 0){
 										<tr>
 											<td align="left" height="20px" width="40px">
-												<input id="@i" checked="checked"  name="Vorbau" type="radio" onclick="meinscript(@i,@vorbauList.size())" value="@vorbauList.get(i).getId()">
+												<input id="@i" checked="checked"  name="Vorbau" type="radio" onclick="meinscript(@i,@vorbauList.size())" value="@vorbauList.get(i).getId()" title="@vorbauList.get(i).getKurzbeschreibung">
 											</td>
 											<td align="center" height="20px" width="200px">
-												<label for="@i">Vorbau @(i+1)</label>
+												<label title="@vorbauList.get(i).getKurzbeschreibung" for="@i">Vorbau @(i+1)</label>
 											</td>
 										</tr>
 
@@ -60,10 +60,10 @@
 
 										<tr>
 											<td align="left" height="20px" width="40px">
-												<input id="@i" name="Vorbau" type="radio" value="@vorbauList.get(i).getId()" onclick="meinscript(@i,@vorbauList.size())">
+												<input id="@i" name="Vorbau" type="radio" value="@vorbauList.get(i).getId()" onclick="meinscript(@i,@vorbauList.size())" title="@vorbauList.get(i).getKurzbeschreibung">
 											</td>
 											<td align="center" height="20px" width="200px">
-												<label for="@i">Vorbau @(i+1)</label>
+												<label title="@vorbauList.get(i).getKurzbeschreibung" for="@i">Vorbau @(i+1)</label>
 											</td>
 										</tr>
 									}

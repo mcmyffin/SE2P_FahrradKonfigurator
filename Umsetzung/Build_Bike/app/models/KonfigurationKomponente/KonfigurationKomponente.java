@@ -128,10 +128,10 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
     @Override
     public IKonfiguration fromKonfigurtionDTO(KonfigurationDTO konfigurationDTO) {
 
-        IKonfiguration konfiguration = new Konfiguration();
-
         // Wenn keine Konfiguration vorhanden, dann ertelle eine leere
-        if(konfigurationDTO == null) return konfiguration;
+        if(konfigurationDTO == null) return (IKonfiguration) new Konfiguration();
+
+        IKonfiguration konfiguration = new Konfiguration(konfigurationDTO.getKonfigurationsID());
 
         StepRahmenFormTypDTO step1 = konfigurationDTO.getStep_1();
 

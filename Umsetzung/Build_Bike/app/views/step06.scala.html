@@ -60,10 +60,10 @@
 									@if(i == 0){
 										<tr>
 											<td align="left" height="20px" width="40px">
-												<input id="@i" checked="checked"  name="Mantel" type="radio" onclick="meinscript(@i,@mantelList.size())" value="@mantelList.get(i).getId">
+												<input id="@i" checked="checked"  name="Mantel" type="radio" onclick="meinscript(@i,@mantelList.size())" value="@mantelList.get(i).getId" title="@mantelList.get(i).getKurzbeschreibung">
 											</td>
 											<td align="center" height="20px" width="200px">
-												<label for="@i">@mantelList.get(i).getName</label>
+												<label title="@mantelList.get(i).getKurzbeschreibung" for="@i">@mantelList.get(i).getName</label>
 											</td>
 										</tr>
 
@@ -71,10 +71,10 @@
 
 										<tr>
 											<td align="left" height="20px" width="40px">
-												<input id="@i" name="Mantel" type="radio" value="@mantelList.get(i).getId" onclick="meinscript(@i,@mantelList.size())">
+												<input id="@i" name="Mantel" type="radio" value="@mantelList.get(i).getId" onclick="meinscript(@i,@mantelList.size())" title="@mantelList.get(i).getKurzbeschreibung">
 											</td>
 											<td align="center" height="20px" width="200px">
-												<label for="@i">@mantelList.get(i).getName</label>
+												<label title="@mantelList.get(i).getKurzbeschreibung" for="@i">@mantelList.get(i).getName</label>
 											</td>
 										</tr>
 									}

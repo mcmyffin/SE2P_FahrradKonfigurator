@@ -58,10 +58,10 @@
 								@if(i == 0){
 									<tr>
 										<td align="left" height="20px" width="40px">
-											<input id="@i" checked="checked"  name="Rahmen" type="radio" onclick="meinscript(@i,@rahmenliste.size())" value="@rahmenliste.get(i).getId">
+											<input id="@i" checked="checked"  name="Rahmen" type="radio" onclick="meinscript(@i,@rahmenliste.size())" value="@rahmenliste.get(i).getId" title="@rahmenliste.get(i).getKurzbeschreibung">
 										</td>
 										<td align="center" height="20px" width="200px">
-											<label for="@i">@rahmenliste.get(i).getName()</label>
+											<label title="@rahmenliste.get(i).getKurzbeschreibung" for="@i">@rahmenliste.get(i).getName() </label>
 										</td>
 									</tr>
 
@@ -69,10 +69,10 @@
 
 									<tr>
 										<td align="left" height="20px" width="40px">
-											<input id="@i" name="Rahmen" type="radio" value="@rahmenliste.get(i).getId" onclick="meinscript(@i,@rahmenliste.size())">
+											<input id="@i" name="Rahmen" type="radio" value="@rahmenliste.get(i).getId" onclick="meinscript(@i,@rahmenliste.size())" title="@rahmenliste.get(i).getKurzbeschreibung">
 										</td>
 										<td align="center" height="20px" width="200px">
-											<label for="@i">@rahmenliste.get(i).getName()</label>
+											<label title="@rahmenliste.get(i).getKurzbeschreibung" for="@i">@rahmenliste.get(i).getName()</label>
 										</td>
 									</tr>
 								}

@@ -4,6 +4,7 @@ import models.DatenTypen.Pair;
 import models.KonfigurationKomponente.IKonfiguration;
 import models.TeileKomponente.DTO.EinzelteilDTO;
 import models.TeileKomponente.Einzelteile.Mantel;
+import models.WarenkorbKomponente.DTO.WarenkorbDTO;
 import play.*;
 import play.mvc.*;
 
@@ -117,10 +118,6 @@ public class Verlinkung extends Controller {
     }
 
     public static Result warenkorb() {
-
-        IKonfiguration konfiguration = KonfigurationSession.getKonfigurationFromSession();
-        Logger.debug(konfiguration.toString());
-        KonfigurationSession.removeKonfiguration();
         return ok(warenkorb.render());
     }
 

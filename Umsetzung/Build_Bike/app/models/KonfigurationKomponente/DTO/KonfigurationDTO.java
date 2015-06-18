@@ -6,6 +6,7 @@ package models.KonfigurationKomponente.DTO;
 public class KonfigurationDTO {
 
 
+    private long konfigurationsID = System.currentTimeMillis();
     private StepRahmenFormTypDTO step_1;
     private StepDTO step_2;
     private StepRahmenFarbeHoehe step_3;
@@ -20,9 +21,10 @@ public class KonfigurationDTO {
 
     public KonfigurationDTO(){};
 
-    public KonfigurationDTO(StepRahmenFormTypDTO step_1, StepDTO step_2, StepRahmenFarbeHoehe step_3, StepDTO step_4, StepDTO step_5,
+    public KonfigurationDTO(long id, StepRahmenFormTypDTO step_1, StepDTO step_2, StepRahmenFarbeHoehe step_3, StepDTO step_4, StepDTO step_5,
                             StepDTO step_6, StepDTO step_7, StepDTO step_8, StepLichtDTO step_9, StepZubehoerDTO step_10, int gesamtPreis) {
 
+        this.konfigurationsID = id;
         this.step_1 = step_1;
         this.step_2 = step_2;
         this.step_3 = step_3;
@@ -37,7 +39,13 @@ public class KonfigurationDTO {
     }
 
 
+
+
     /*** GETTER ***/
+    public long getKonfigurationsID() {
+        return konfigurationsID;
+    }
+
     public StepRahmenFormTypDTO getStep_1() {
         return step_1;
     }
@@ -80,7 +88,12 @@ public class KonfigurationDTO {
         return gesamtPreis;
     }
 
+
     /*** SETTER ***/
+    public void setKonfigurationsID(long konfigurationsID) {
+        this.konfigurationsID = konfigurationsID;
+    }
+
     public void setStep_1(StepRahmenFormTypDTO step_1) {
         this.step_1 = step_1;
     }
