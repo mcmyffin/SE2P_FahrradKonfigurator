@@ -41,6 +41,7 @@ POST        /step10              controllers.KonfigurationsSchritte.setStep09()
 POST        /warenkorb           controllers.KonfigurationsSchritte.setStep10()
 
 POST        /doWarenkorb         controllers.WarenkorbSession.removeKonfiguration()
+POST        /bestellen           controllers.WarenkorbSession.bestellen()
 
 
 

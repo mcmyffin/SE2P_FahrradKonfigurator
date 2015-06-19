@@ -11,6 +11,7 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.bestellen;
 import views.html.warenkorb;
 
 /**
@@ -107,5 +108,20 @@ public class WarenkorbSession extends Controller{
 
         warenkorb.render();
         return redirect("/warenkorb");
+    }
+
+    private static void removeWarenkorb(){
+        session().remove(WARENKORB);
+    }
+
+    public static Result bestellen(){
+
+        // TODO Emailservice
+        DynamicForm form = Form.form().bindFromRequest();
+        System.out.println(form.get("email"));
+
+
+        removeWarenkorb();
+        return ok(bestellen.render());
     }
 }

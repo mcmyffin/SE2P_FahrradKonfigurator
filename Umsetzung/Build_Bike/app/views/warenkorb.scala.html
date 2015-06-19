@@ -17,18 +17,18 @@
 				@for(konfiguration <-controllers.WarenkorbSession.getWarenkorbFromSessionAsDTO.getKonfigurationList){
 
 					<tr align="center" bgcolor="#ccc" height="80px">
-						<td align="left"><img alt="Bild" src="@routes.Assets.at("images/logo.png")" style="padding: 5px;" title="@konfiguration.toWarenkorbTitel">
+						<td align="left"><img alt="Bild" src="@routes.Assets.at("images/logo.png")" style="padding: 5px;" title="@konfiguration.toWarenkorbTitel()">
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<span style="position: absolute; text-align: left;">
-								Typ: @konfiguration.getStep1.getRahmenFormTyp.getBezeichnung<br>
-								Rahmenfarbe: @konfiguration.getStep3.getFarbe<br>
+								Typ:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@konfiguration.getStep1.getRahmenFormTyp.getBezeichnung<br>
+								Rahmenfarbe:&nbsp;&nbsp;&nbsp;@konfiguration.getStep3.getFarbe<br>
 							</span>
 						</td>
 						<td>
 							<button type="submit" name="delete" value="@konfiguration.getKonfigurationsID"><img alt="x" src="@routes.Assets.at("images/delete.png")" /></button>
 
 						</td>
-						<td>
+						<td align="center">
 							@konfiguration.getKonfigurationsPreis &euro;
 						</td>
 					</tr>
@@ -45,25 +45,25 @@
 					<col width="200px">
 					<col width="150px">
 				</colgroup>
-				<tr align="right" height="26px">
+				<tr height="26px">
 					<td></td>
-					<td>Warenwert</td>
-					<td>@(controllers.WarenkorbSession.getWarenkorbFromSession.getGesamtpreis()).00 &euro;</td>
+					<td align="right">Warenwert</td>
+					<td align="center">@(controllers.WarenkorbSession.getWarenkorbFromSession.getGesamtpreis()).00 &euro;</td>
 				</tr>
-				<tr align="right" height="26px">
+				<tr height="26px">
 					<td></td>
-					<td>zzgl. Versankosten</td>
-					<td>6,95 &euro;</td>
+					<td align="right">zzgl. Versankosten</td>
+					<td align="center">6,95 &euro;</td>
 				</tr>
-				<tr align="right" height="26px">
+				<tr height="26px">
 					<td></td>
 					<td></td>
 					<td></td>
 				</tr>
-				<tr align="right" height="26px">
+				<tr height="26px">
 					<td></td>
-					<td><b>Gesamtpreis</b></td>
-					<td>
+					<td align="right"><b>Gesamtpreis</b></td>
+					<td align="center">
 						<b>
  						@{
 							var warenwert = controllers.WarenkorbSession.getWarenkorbFromSession.getGesamtpreis() + 6.95
@@ -75,10 +75,10 @@
 						</b>
 					</td>
 				</tr>
-				<tr align="right" height="26px">
+				<tr height="26px">
 					<td></td>
-					<td>inkl. 19% MwSt.</td>
-					<td> @((math.floor((controllers.WarenkorbSession.getWarenkorbFromSession.getGesamtpreis()) * 19))/100) &euro; </td>
+					<td align="right">davon 19% MwSt.</td>
+					<td align="center"> @((math.floor((controllers.WarenkorbSession.getWarenkorbFromSession.getGesamtpreis()) * 19))/100) &euro; </td>
 				</tr>
 			</table>
 
@@ -87,14 +87,13 @@
 					var emailadress = prompt("Bitte gebe Deine E-Mail-Adresse ein.", "");
 					if (emailadress != ""){
 						 if(validateEmail(emailadress)){
-							 document.getElementById("email").setAttribute(emailadress);
-							 $();
+							 document.getElementById("email").value = emailadress;
+							 document.getElementById("bestellen").submit();
+
 						 } else {
-							 document.getElementById("bestellen").innerHTML = "geben Sie eine gültige E-Mail-Adresse ein.";
 							 alert("keine gültige E-Mail-Adresse.");
 						 }
 					} else {
-						 document.getElementById("bestellen").innerHTML = "geben Sie eine E-Mail-Adresse ein.";
 						 alert("keine gültige E-Mail-Adresse.");
 					}
 				}
@@ -103,11 +102,20 @@
 					var re = /^([\w-]+(?:\.[\w-]+)*)@@((?:[\w-]+\\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 					return re.test(email);
 				}
+
+				function checkSubmit(){
+					var x = document.getElementById("email").value;
+					if(x == null || x == ""){
+						getEmailFromPopup();
+						return false;
+					}
+
+				}
 			</script>
 
-			<form action="" method="post">
+			<form action="@routes.WarenkorbSession.bestellen()" method="post" onsubmit="return checkSubmit()">
 				<input id="email" type="hidden" name="email" value="">
-				<input onclick="getEmailFromPopup()" id="bestellen" style="cursor: pointer !important; margin-left: 556px; margin-top: 13px; width: 292px;" type="submit" value="Jetzt bestellen" />
+				<input id="bestellen" style="cursor: pointer !important; margin-left: 556px; margin-top: 13px; width: 292px;" type="submit" value="Jetzt Bestellen" />
 			</form>
 		}
 	</div>

@@ -380,16 +380,16 @@ public class Konfiguration implements IKonfiguration {
     public String toWarenkorbTitel() {
         return  "KonfigurationNr.: "+konfigurationsID+"\n"+
                 "Typ: "+getStep1().getRahmenFormTyp().getBezeichnung()+"\n"+
-                "Rahmen: "+getStep2().getRahmen().getName()+"\n"+
-                "Farbe: "+getStep3().getFarbe()+"\n"+
-                "Hoehe: "+ getStep3().getRahmenHoehe()+" cm\n"+
-                "Gabel: "+getStep4().getGabel().getName()+"\n"+
-                "Felge: "+getStep5().getFelge().getName()+"\n"+
-                "Mantel: "+getStep6().getMantel().getName()+"\n"+
-                "VorbauNr: "+getStep7().getVorbau().getId()+"\n"+
-                "Sattel: "+getStep8().getSattel().getName()+"\n"+
-                "Stecklicht: "+(getStep9().isSteckLicht() == true ? "ja" : "nein")+"\n"+
-                "Festlicht: "+(getStep9().isFestLicht() == true ? "ja" : "nein")+"\n"+
+                "Rahmen: "+getStep2().getRahmen().getName()+" | "+getStep2().getRahmen().getPreis()+" €\n"+
+                "Farbe: "+getStep3().getFarbe()+" | Kostenlos\n"+
+                "Hoehe: "+ getStep3().getRahmenHoehe()+" cm | Kostenlos\n"+
+                "Gabel: "+getStep4().getGabel().getName()+" | "+getStep4().getGabel().getId()+" €\n"+
+                "Felge: "+getStep5().getFelge().getName()+" | "+getStep5().getFelge().getPreis()+" €\n"+
+                "Mantel: "+getStep6().getMantel().getName()+" | "+getStep6().getMantel().getPreis()+" €\n"+
+                "VorbauNr: "+getStep7().getVorbau().getId()+" | "+getStep7().getVorbau().getPreis()+" €\n"+
+                "Sattel: "+getStep8().getSattel().getName()+" | "+getStep8().getSattel().getPreis()+" €\n"+
+                "Stecklicht: "+(getStep9().isSteckLicht() == true ? "ja" : "nein")+" | Kostenlos\n"+
+                "Festlicht: "+(getStep9().isFestLicht() == true ? "ja" : "nein")+" | Kostenlos\n"+
                 "Zubehoer: "+(ListeToString(getStep10().getZubehoerList()));
     }
 
@@ -399,7 +399,7 @@ public class Konfiguration implements IKonfiguration {
 
         for(Zubehoer zubehoer : zubehoerList){
 
-            ausgabe+=zubehoer.getName()+"\n";
+            ausgabe+=zubehoer.getName()+" | "+zubehoer.getPreis()+" €\n";
         }
         return ausgabe;
     }
