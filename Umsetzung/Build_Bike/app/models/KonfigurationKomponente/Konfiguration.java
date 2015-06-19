@@ -374,4 +374,35 @@ public class Konfiguration implements IKonfiguration {
                     "Step09{gefragt: "+getStep9().isGefragt()+" , stecklicht: "+getStep9().isSteckLicht()+" , festlicht: "+ getStep9().isFestLicht()+"}\n"+
                     "Step10{"+getStep10().getZubehoerList()+"}"+" ]";
     }
+
+
+    @Override
+    public String toWarenkorbTitel() {
+        return  "KonfigurationNr.: "+konfigurationsID+"\n"+
+                "Typ: "+getStep1().getRahmenFormTyp().getBezeichnung()+"\n"+
+                "Rahmen: "+getStep2().getRahmen().getName()+"\n"+
+                "Farbe: "+getStep3().getFarbe()+"\n"+
+                "Hoehe: "+ getStep3().getRahmenHoehe()+" cm\n"+
+                "Gabel: "+getStep4().getGabel().getName()+"\n"+
+                "Felge: "+getStep5().getFelge().getName()+"\n"+
+                "Mantel: "+getStep6().getMantel().getName()+"\n"+
+                "VorbauNr: "+getStep7().getVorbau().getId()+"\n"+
+                "Sattel: "+getStep8().getSattel().getName()+"\n"+
+                "Stecklicht: "+(getStep9().isSteckLicht() == true ? "ja" : "nein")+"\n"+
+                "Festlicht: "+(getStep9().isFestLicht() == true ? "ja" : "nein")+"\n"+
+                "Zubehoer: "+(ListeToString(getStep10().getZubehoerList()));
+    }
+
+    private String ListeToString(List<Zubehoer> zubehoerList){
+
+        String ausgabe = "";
+
+        for(Zubehoer zubehoer : zubehoerList){
+
+            ausgabe+=zubehoer.getName()+"\n";
+        }
+        return ausgabe;
+    }
 }
+
+

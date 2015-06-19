@@ -37,9 +37,10 @@ public class User extends Controller {
         if(loginResult){
             session(USER,email);
             session(TIME,Long.toString(System.currentTimeMillis()));
+            return ok(account.render());
         }
 
-        return ok(account.render());
+        return ok(login.render("Benutzername oder Passwort falsch!"));
     }
 
     public static Result registrieren(){

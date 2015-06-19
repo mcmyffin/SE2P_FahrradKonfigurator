@@ -52,7 +52,7 @@ public class Verlinkung extends Controller {
     }
 
     public static Result registrieren() {
-        return ok(registrieren.render("Got it"));
+        return ok(registrieren.render(null));
     }
 
     public static Result step02() {

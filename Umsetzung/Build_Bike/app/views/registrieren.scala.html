@@ -1,6 +1,9 @@
 @(message: String)
 @main("Build your bike for dummies") {
 	<div class="content">
+		@if(message != null){
+			<div class="alert-warning" > <center>@message </center></div>
+		}
 		<div class="headline">Registrieren</div><br />
 		<div id="form">
 			<form action="registrieren" method="post" onsubmit="">

@@ -8,9 +8,6 @@
 			<form action="login" method="post" onsubmit="">
 				<p>
                     <label id="resultLogin" class="text">
-                        @if(message != null){
-                            @message
-                        }
                     </label><br>
 
 					<label class="text" for="username">Benutzername</label><br />
@@ -30,5 +27,8 @@
 		Ich bin neu hier und möchte mich registrieren<br />
 		<a href="registrieren"><input style="cursor: pointer !important; width: 333px;" type="button" value="Registrieren" /></a>
 	</div>
+	@if(message != null){
+		<div class="alert-danger" > <center>@message </center></div>
+	}
 </div>
 	}
