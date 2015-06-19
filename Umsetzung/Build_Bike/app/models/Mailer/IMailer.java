@@ -13,4 +13,6 @@ public interface IMailer {
      * @return Erfolgreich --> true;
      */
     public boolean sendKontaktMail(String email, String betreff, String nachricht);
+
+    public boolean sendEMailTo(String toEmail, String betreff, String nachricht);
 }
