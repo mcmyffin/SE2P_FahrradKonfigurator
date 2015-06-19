@@ -8,7 +8,7 @@ import play.api.Play.*;
 /**
  * Created by tin on 02.05.15.
  */
-public class Mailer implements IMailer {
+public class Mailer implements IMailer{
     @Override
     public boolean sendKontaktMail(String email, String betreff, String nachricht) {
         Email mail = new Email();

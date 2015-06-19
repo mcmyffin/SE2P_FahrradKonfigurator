@@ -84,4 +84,26 @@ public class Warenkorb implements IWarenkorb {
         WarenkorbDTO warenkorbDTO = new WarenkorbDTO(konfigurationList,getGesamtpreis());
         return warenkorbDTO;
     }
+
+    @Override
+    public String getRechnung() {
+
+        String rechnung = "";
+        int i = 1;
+        for(IKonfiguration konfiguration : getKonfigurationen()){
+
+            rechnung += "===== Konfiguration "+i+" =====\n";
+            rechnung += konfiguration.toWarenkorbTitel()+"\n";
+            rechnung += "==========================\n";
+            rechnung += "Warenwert: "+konfiguration.getKonfigurationsPreis()+" €\n";
+            rechnung += "==========================\n";
+        }
+        rechnung += "###############################\n";
+        rechnung += "Gesamtwarenwert: "+getGesamtpreis()+" €\n";
+        rechnung += "+ Versandkosten:   "+6.95+" €\n";
+        rechnung += "+ MwSt.:           "+(Math.floor(getGesamtpreis()*19) / 100)+" €\n";
+        rechnung += "= Rechnungsbetrag inkl. MwSt.: "+(((Math.floor(getGesamtpreis()*19))/100) + getGesamtpreis() + 6.95)+" €\n";
+        rechnung += "###############################\n";
+        return rechnung;
+    }
 }

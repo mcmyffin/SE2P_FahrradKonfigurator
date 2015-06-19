@@ -1,6 +1,9 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import models.DatenTypen.Time;
+import models.Mailer.IMailer;
+import models.Mailer.Mailer;
 import models.WarenkorbKomponente.DTO.WarenkorbDTO;
 import models.WarenkorbKomponente.DTO.WarenkorbSessionDTO;
 import models.WarenkorbKomponente.IWarenkorb;
@@ -116,10 +119,16 @@ public class WarenkorbSession extends Controller{
 
     public static Result bestellen(){
 
-        // TODO Emailservice
         DynamicForm form = Form.form().bindFromRequest();
-        System.out.println(form.get("email"));
+        String email = form.get("email");
 
+        if(email != null){
+
+            IWarenkorb warenkorb = getWarenkorbFromSession();
+            IMailer mailer = new Mailer();
+
+            mailer.sendEMailTo(email, "Ihre Bestellung vom " + Time.getDate()+" um "+Time.getTime(), warenkorb.getRechnung());
+        }
 
         removeWarenkorb();
         return ok(bestellen.render());

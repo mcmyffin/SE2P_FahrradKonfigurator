@@ -21,5 +21,7 @@ public interface IWarenkorb {
 
     public WarenkorbSessionDTO toSessionDTO();
 
+    public String getRechnung();
+
     public WarenkorbDTO toDTO();
 }
