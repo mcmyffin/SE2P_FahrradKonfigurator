@@ -54,7 +54,7 @@ public class KonfigurationsSchritte extends Controller{
     }
 
     // get step2
-    public static List<EinzelteilDTO> getRahmenListe(){
+    public static List<EinzelteilDTO> getRahmenListe() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         teileKomponente = new TeileKomponente();
@@ -98,7 +98,7 @@ public class KonfigurationsSchritte extends Controller{
     }
 
     // setStep03
-    public static Pair<List<String>,List<Integer>> getRahmenFarbeHoehe(){
+    public static Pair<List<String>,List<Integer>> getRahmenFarbeHoehe() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         IKonfiguration konfiguration = KonfigurationSession.getKonfigurationFromSession();
@@ -132,7 +132,7 @@ public class KonfigurationsSchritte extends Controller{
     }
 
     // getStep04
-    public static List<EinzelteilDTO> getFahrradGabelList(){
+    public static List<EinzelteilDTO> getFahrradGabelList() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         teileKomponente = new TeileKomponente();
@@ -171,7 +171,7 @@ public class KonfigurationsSchritte extends Controller{
     }
 
     // getStep05
-    public static List<EinzelteilDTO> getFelgeList(){
+    public static List<EinzelteilDTO> getFelgeList() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         teileKomponente = new TeileKomponente();
@@ -211,7 +211,7 @@ public class KonfigurationsSchritte extends Controller{
     }
 
     // getStep06
-    public static List<EinzelteilDTO> getMantelList(){
+    public static List<EinzelteilDTO> getMantelList() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         teileKomponente = new TeileKomponente();
@@ -313,7 +313,7 @@ public class KonfigurationsSchritte extends Controller{
     }
 
     // getStep07
-    public static List<EinzelteilDTO> getVorbauList(){
+    public static List<EinzelteilDTO> getVorbauList() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         teileKomponente = new TeileKomponente();
@@ -332,7 +332,7 @@ public class KonfigurationsSchritte extends Controller{
     }
 
     // getStep08
-    public static List<EinzelteilDTO> getSattelList(){
+    public static List<EinzelteilDTO> getSattelList() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         teileKomponente = new TeileKomponente();
@@ -350,7 +350,7 @@ public class KonfigurationsSchritte extends Controller{
         return sattelListe;
     }
 
-    public static boolean getBeleuchtung(){
+    public static boolean getBeleuchtung() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         IKonfiguration konfiguration = KonfigurationSession.getKonfigurationFromSession();
@@ -359,7 +359,7 @@ public class KonfigurationsSchritte extends Controller{
         return isFestlicht;
     }
 
-    public static List<EinzelteilDTO> getZubehoerList(){
+    public static List<EinzelteilDTO> getZubehoerList() throws UngueltigerStepException {
 
         konfigurationKomponente = new KonfigurationKomponente();
         teileKomponente = new TeileKomponente();

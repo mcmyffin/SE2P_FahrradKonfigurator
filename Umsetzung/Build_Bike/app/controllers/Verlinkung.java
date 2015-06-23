@@ -1,6 +1,7 @@
 package controllers;
 
 import models.DatenTypen.Pair;
+import models.Exception.UngueltigerStepException;
 import models.KonfigurationKomponente.IKonfiguration;
 import models.TeileKomponente.DTO.EinzelteilDTO;
 import models.TeileKomponente.Einzelteile.Mantel;
@@ -57,59 +58,104 @@ public class Verlinkung extends Controller {
 
     public static Result step02() {
 
-        List<EinzelteilDTO> rahmenliste = KonfigurationsSchritte.getRahmenListe();
+        List<EinzelteilDTO> rahmenliste = null;
+        try {
+            rahmenliste = KonfigurationsSchritte.getRahmenListe();
+        } catch (UngueltigerStepException e) {
+            return ok(konfigurator.render());
+        }
 
         return ok(step02.render(rahmenliste));
     }
 
     public static Result step03() {
 
-        Pair<List<String>,List<Integer>> rahmenFarbeHoehe = KonfigurationsSchritte.getRahmenFarbeHoehe();
+        Pair<List<String>,List<Integer>> rahmenFarbeHoehe = null;
+        try {
+            rahmenFarbeHoehe = KonfigurationsSchritte.getRahmenFarbeHoehe();
+        } catch (UngueltigerStepException e) {
+            return step02();
+        }
 
         return ok(step03.render(rahmenFarbeHoehe));
     }
 
     public static Result step04() {
 
-        List<EinzelteilDTO> gabelListe = KonfigurationsSchritte.getFahrradGabelList();
+        List<EinzelteilDTO> gabelListe = null;
+        try {
+            gabelListe = KonfigurationsSchritte.getFahrradGabelList();
+        } catch (UngueltigerStepException e) {
+            return step03();
+        }
 
         return ok(step04.render(gabelListe));
     }
 
     public static Result step05() {
 
-        List<EinzelteilDTO> felgeListe = KonfigurationsSchritte.getFelgeList();
+        List<EinzelteilDTO> felgeListe = null;
+        try {
+            felgeListe = KonfigurationsSchritte.getFelgeList();
+        } catch (UngueltigerStepException e) {
+            return step04();
+        }
 
         return ok(step05.render(felgeListe));
     }
 
     public static Result step06() {
 
-        List<EinzelteilDTO> mantelList = KonfigurationsSchritte.getMantelList();
+        List<EinzelteilDTO> mantelList = null;
+        try {
+            mantelList = KonfigurationsSchritte.getMantelList();
+        } catch (UngueltigerStepException e) {
+            return step05();
+        }
         return ok(step06.render(mantelList));
     }
 
     public static Result step07() {
 
-        List<EinzelteilDTO> vorbauList = KonfigurationsSchritte.getVorbauList();
+        List<EinzelteilDTO> vorbauList = null;
+        try {
+            vorbauList = KonfigurationsSchritte.getVorbauList();
+        } catch (UngueltigerStepException e) {
+            return step06();
+        }
         return ok(step07.render(vorbauList));
     }
 
     public static Result step08() {
 
-        List<EinzelteilDTO> sattelList = KonfigurationsSchritte.getSattelList();
+        List<EinzelteilDTO> sattelList = null;
+        try {
+            sattelList = KonfigurationsSchritte.getSattelList();
+        } catch (UngueltigerStepException e) {
+            return step07();
+        }
         return ok(step08.render(sattelList));
     }
 
     public static Result step09() {
 
-        Boolean isFestLicht = KonfigurationsSchritte.getBeleuchtung();
+        Boolean isFestLicht = null;
+        try {
+            isFestLicht = KonfigurationsSchritte.getBeleuchtung();
+        } catch (UngueltigerStepException e) {
+            return step08();
+        }
         return ok(step09.render(isFestLicht));
     }
 
     public static Result step10() {
 
-        List<EinzelteilDTO> zubehoerListe = KonfigurationsSchritte.getZubehoerList();
+        List<EinzelteilDTO> zubehoerListe = null;
+        try {
+            zubehoerListe = KonfigurationsSchritte.getZubehoerList();
+        } catch (UngueltigerStepException e) {
+            return step09();
+        }
         return ok(step10.render(zubehoerListe));
     }
 

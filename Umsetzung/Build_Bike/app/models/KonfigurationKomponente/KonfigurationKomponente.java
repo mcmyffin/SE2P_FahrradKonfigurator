@@ -23,8 +23,11 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
 
     public KonfigurationKomponente(){}
 
+    // step 5
     @Override
-    public List<Felge> filterFelgeByKonfiguration(IKonfiguration konfiguration, List<Felge> felgeList) {
+    public List<Felge> filterFelgeByKonfiguration(IKonfiguration konfiguration, List<Felge> felgeList)  throws UngueltigerStepException{
+
+        if(!isStep4(konfiguration)) throw new UngueltigerStepException();
 
         IStep_2 step_2 = konfiguration.getStep2();
         Rahmen rahmen = step_2.getRahmen();
@@ -41,8 +44,11 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         return felgeResultList;
     }
 
+    // step 4
     @Override
-    public List<Gabel> filterGabelByKonfiguration(IKonfiguration konfiguration, List<Gabel> gabelList) {
+    public List<Gabel> filterGabelByKonfiguration(IKonfiguration konfiguration, List<Gabel> gabelList)  throws UngueltigerStepException{
+
+        if(!isStep3(konfiguration)) throw new UngueltigerStepException();
 
         IStep_2 step_2 = konfiguration.getStep2();
         Rahmen rahmen = step_2.getRahmen();
@@ -64,8 +70,11 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         return gabelResultList;
     }
 
+    // step 6
     @Override
-    public List<Mantel> filterMantelByKonfiguration(IKonfiguration konfiguration, List<Mantel> mantelList) {
+    public List<Mantel> filterMantelByKonfiguration(IKonfiguration konfiguration, List<Mantel> mantelList)  throws UngueltigerStepException{
+
+        if(!isStep5(konfiguration)) throw new UngueltigerStepException();
 
         IStep_2 step_2 = konfiguration.getStep2();
         Rahmen rahmen = step_2.getRahmen();
@@ -81,13 +90,18 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         return mantelResultList;
     }
 
+    // step 8
     @Override
-    public List<Sattel> filterSattelByKonfiguration(IKonfiguration konfiguration, List<Sattel> sattelList) {
+    public List<Sattel> filterSattelByKonfiguration(IKonfiguration konfiguration, List<Sattel> sattelList)  throws UngueltigerStepException{
+        if(!isStep7(konfiguration)) throw new UngueltigerStepException();
         return sattelList;
     }
 
+    // step 2
     @Override
-    public List<Rahmen> filterRahmenByKonfiguration(IKonfiguration konfiguration, List<Rahmen> rahmenList) {
+    public List<Rahmen> filterRahmenByKonfiguration(IKonfiguration konfiguration, List<Rahmen> rahmenList)  throws UngueltigerStepException{
+
+        if(!isStep1(konfiguration)) throw new UngueltigerStepException();
 
         IStep_1 step_1 = konfiguration.getStep1();
         RahmenFormTyp rahmenFormTyp = step_1.getRahmenFormTyp();
@@ -103,8 +117,11 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         return rahmenResultList;
     }
 
+    // step 7
     @Override
-    public List<Vorbau> filterVorbauByKonfiguration(IKonfiguration konfiguration, List<Vorbau> vorbauList) {
+    public List<Vorbau> filterVorbauByKonfiguration(IKonfiguration konfiguration, List<Vorbau> vorbauList)  throws UngueltigerStepException{
+
+        if(!isStep6(konfiguration)) throw new UngueltigerStepException();
 
         IStep_2 step_2 = konfiguration.getStep2();
         Rahmen rahmen = step_2.getRahmen();
@@ -120,10 +137,113 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         return vorbauResultList;
     }
 
+    // step 10
     @Override
-    public List<Zubehoer> filterZubehoerByKonfiguration(IKonfiguration konfiguration, List<Zubehoer> zubehoerList) {
+    public List<Zubehoer> filterZubehoerByKonfiguration(IKonfiguration konfiguration, List<Zubehoer> zubehoerList)  throws UngueltigerStepException{
+
+        if(!isStep9(konfiguration)) throw new UngueltigerStepException();
+
         return zubehoerList;
     }
+
+    // step 3
+    @Override
+    public List<String> getRahmenFarbenByKonfiguration(IKonfiguration konfiguration)  throws UngueltigerStepException{
+
+        if(!isStep2(konfiguration)) throw new UngueltigerStepException();
+
+        if(konfiguration.getStep2().getRahmen() != null){
+
+            Rahmen rahmen = konfiguration.getStep2().getRahmen();
+            return rahmen.getFarben();
+        }
+        return null;
+    }
+
+    // step 3
+    @Override
+    public List<Integer> getRahmenHoehenByKonfiguration(IKonfiguration konfiguration)  throws UngueltigerStepException{
+
+        if(!isStep2(konfiguration)) throw new UngueltigerStepException();
+
+        if(konfiguration.getStep2().getRahmen() != null){
+
+            Rahmen rahmen = konfiguration.getStep2().getRahmen();
+            return rahmen.getHoehen();
+        }
+        return null;
+    }
+
+    // step 9
+    @Override
+    public boolean filterFestlicht(IKonfiguration konfiguration)  throws UngueltigerStepException{
+
+        if(!isStep8(konfiguration)) throw new UngueltigerStepException();
+
+        return konfiguration.getStep2().getRahmen().isLicht() && konfiguration.getStep4().getGabel().isLicht();
+    }
+
+    private boolean isStep1(IKonfiguration konfiguration){
+
+        if(konfiguration == null) return false;
+        return konfiguration.getStep1().getRahmenFormTyp() != null;
+    }
+
+    private boolean isStep2(IKonfiguration konfiguration){
+
+        if(!isStep1(konfiguration)) return false;
+        return konfiguration.getStep2().getRahmen() != null;
+    }
+
+    private boolean isStep3(IKonfiguration konfiguration){
+
+        if(!isStep2(konfiguration)) return false;
+        return konfiguration.getStep3().getFarbe() != null;
+    }
+
+    private boolean isStep4(IKonfiguration konfiguration){
+
+        if(!isStep3(konfiguration)) return false;
+        return konfiguration.getStep4().getGabel() != null;
+    }
+
+    private boolean isStep5(IKonfiguration konfiguration){
+
+        if(!isStep4(konfiguration)) return false;
+        return konfiguration.getStep5().getFelge() != null;
+    }
+
+    private boolean isStep6(IKonfiguration konfiguration){
+
+        if(!isStep5(konfiguration)) return false;
+        return konfiguration.getStep6().getMantel() != null;
+    }
+
+    private boolean isStep7(IKonfiguration konfiguration){
+
+        if(!isStep6(konfiguration)) return false;
+        return konfiguration.getStep7().getVorbau() != null;
+    }
+
+    private boolean isStep8(IKonfiguration konfiguration){
+
+        if(!isStep7(konfiguration)) return false;
+        return konfiguration.getStep8().getSattel() != null;
+    }
+
+    private boolean isStep9(IKonfiguration konfiguration){
+
+        if(!isStep8(konfiguration)) return false;
+        return konfiguration.getStep9().isGefragt();
+    }
+
+    private boolean isStep10(IKonfiguration konfiguration){
+
+        if(!isStep9(konfiguration)) return false;
+        return konfiguration.getStep10().getZubehoerList() != null;
+    }
+
+
 
     @Override
     public IKonfiguration fromKonfigurtionDTO(KonfigurationDTO konfigurationDTO) {
@@ -136,7 +256,7 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         StepRahmenFormTypDTO step1 = konfigurationDTO.getStep_1();
 
         if(step1 != null){
-                String formtypNummer = step1.getRahmenFormTyp();
+            String formtypNummer = step1.getRahmenFormTyp();
 
             try {
                 konfiguration.setStep1(RahmenFormTyp.getRahmenFormTypByString(formtypNummer));
@@ -278,33 +398,5 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         }
 
         return konfiguration;
-    }
-
-    @Override
-    public List<String> getRahmenFarbenByKonfiguration(IKonfiguration konfiguration) {
-
-        if(konfiguration.getStep2().getRahmen() != null){
-
-            Rahmen rahmen = konfiguration.getStep2().getRahmen();
-            return rahmen.getFarben();
-        }
-        return null;
-    }
-
-    @Override
-    public List<Integer> getRahmenHoehenByKonfiguration(IKonfiguration konfiguration) {
-
-        if(konfiguration.getStep2().getRahmen() != null){
-
-            Rahmen rahmen = konfiguration.getStep2().getRahmen();
-            return rahmen.getHoehen();
-        }
-        return null;
-    }
-
-    @Override
-    public boolean filterFestlicht(IKonfiguration konfiguration) {
-
-        return konfiguration.getStep2().getRahmen().isLicht() && konfiguration.getStep4().getGabel().isLicht();
     }
 }

@@ -97,6 +97,7 @@ public class Warenkorb implements IWarenkorb {
             rechnung += "==========================\n";
             rechnung += "Warenwert: "+konfiguration.getKonfigurationsPreis()+" €\n";
             rechnung += "==========================\n";
+            i++;
         }
         rechnung += "###############################\n";
         rechnung += "Gesamtwarenwert: "+getGesamtpreis()+" €\n";

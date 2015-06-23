@@ -1,5 +1,6 @@
 package models.KonfigurationKomponente;
 
+import models.Exception.UngueltigerStepException;
 import models.KonfigurationKomponente.DTO.KonfigurationDTO;
 import models.TeileKomponente.Einzelteile.*;
 
@@ -10,45 +11,35 @@ import java.util.List;
  */
 public interface IKofigurationKomponente {
 
-    public List<Felge> filterFelgeByKonfiguration(IKonfiguration konfiguration, List<Felge> felgeList);
+    // step 2
+    public List<Rahmen> filterRahmenByKonfiguration(IKonfiguration konfiguration, List<Rahmen> rahmenList) throws UngueltigerStepException;
 
-    public List<Gabel> filterGabelByKonfiguration(IKonfiguration konfiguration, List<Gabel> gabelList);
+    // step 3
+    public List<String> getRahmenFarbenByKonfiguration(IKonfiguration konfiguration) throws UngueltigerStepException;
+    public List<Integer> getRahmenHoehenByKonfiguration(IKonfiguration konfiguration) throws UngueltigerStepException;
 
-    public List<Mantel> filterMantelByKonfiguration(IKonfiguration konfiguration, List<Mantel> mantelList);
+    // step 4
+    public List<Gabel> filterGabelByKonfiguration(IKonfiguration konfiguration, List<Gabel> gabelList) throws UngueltigerStepException;
 
-    public List<Sattel> filterSattelByKonfiguration(IKonfiguration konfiguration, List<Sattel> sattelList);
+    // step 5
+    public List<Felge> filterFelgeByKonfiguration(IKonfiguration konfiguration, List<Felge> felgeList) throws UngueltigerStepException;
 
-    public List<Rahmen> filterRahmenByKonfiguration(IKonfiguration konfiguration, List<Rahmen> rahmenList);
+    // step 6
+    public List<Mantel> filterMantelByKonfiguration(IKonfiguration konfiguration, List<Mantel> mantelList) throws UngueltigerStepException;
 
-    public List<Vorbau> filterVorbauByKonfiguration(IKonfiguration konfiguration, List<Vorbau> vorbauList);
+    // step 7
+    public List<Vorbau> filterVorbauByKonfiguration(IKonfiguration konfiguration, List<Vorbau> vorbauList) throws UngueltigerStepException;
 
-    public boolean filterFestlicht(IKonfiguration konfiguration);
+    // step 8
+    public List<Sattel> filterSattelByKonfiguration(IKonfiguration konfiguration, List<Sattel> sattelList) throws UngueltigerStepException;
 
-    public List<Zubehoer> filterZubehoerByKonfiguration(IKonfiguration konfiguration, List<Zubehoer> zubehoerList);
+    // step 9
+    public boolean filterFestlicht(IKonfiguration konfiguration) throws UngueltigerStepException;
 
-    public List<String> getRahmenFarbenByKonfiguration(IKonfiguration konfiguration);
+    // step 10
+    public List<Zubehoer> filterZubehoerByKonfiguration(IKonfiguration konfiguration, List<Zubehoer> zubehoerList) throws UngueltigerStepException;
 
-    public List<Integer> getRahmenHoehenByKonfiguration(IKonfiguration konfiguration);
 
     public IKonfiguration fromKonfigurtionDTO(KonfigurationDTO konfigurationDTO);
-
-    /*****************/
-    // TODO step 1 TYP
-
-    // TODO step 2 FARBE
-
-    // TODO step 3 RAHMENGROESSE
-
-    // TODO step 4 FAHRRADGABEL
-
-    // TODO step 5 REIFEN (unplattbar?)
-
-    // TODO step 6 SchaltungsTyp
-
-    // TODO step 7 Sattel
-
-    // TODO step 8 Beleuchtung/Art
-
-    // TODO step 9 Zubehoer(Fahrradhelm, Fahrradschloss, Fahrradpumpe, Fahrradklingel)
 
 }
