@@ -61,7 +61,7 @@ public class KonfigurationKomponente implements IKofigurationKomponente {
         for(Gabel eineGabel : gabelList){
 
             if(eineGabel.getSteuersatz() == rahmenSteuersatz && eineGabel.getSchaftslaenge() >= rahmenSchafthoehe &&
-                    ((eineGabel.isFelgenbremse() && rahmen.isFelgenbremse()) || eineGabel.isScheibenbremse() && rahmen.isScheibenbremse())){
+                    ((eineGabel.isFelgenbremse() && rahmen.isFelgenbremse()) || eineGabel.isScheibenbremse() && rahmen.isScheibenbremse()) && eineGabel.getReifengroesse() == rahmen.getReifengroesse()){
 
                 gabelResultList.add(eineGabel);
             }

@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.3
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 18. Jun 2015 um 17:01
--- Server-Version: 5.5.43-0ubuntu0.14.04.1
+-- Erstellungszeit: 24. Jun 2015 um 13:49
+-- Server Version: 10.0.20-MariaDB-1~trusty-log
 -- PHP-Version: 5.5.9-1ubuntu4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -27,13 +27,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `AdresseT` (
-  `A_ID` int(11) NOT NULL,
+  `A_ID` int(11) NOT NULL AUTO_INCREMENT,
   `A_strasse` varchar(127) NOT NULL,
   `A_hausnummer` int(6) NOT NULL,
   `A_plz` int(11) NOT NULL,
   `A_Stadt` varchar(32) NOT NULL,
-  `A_adresszusatz` varchar(63) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  `A_adresszusatz` varchar(63) NOT NULL,
+  PRIMARY KEY (`A_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Daten für Tabelle `AdresseT`
@@ -52,10 +53,11 @@ INSERT INTO `AdresseT` (`A_ID`, `A_strasse`, `A_hausnummer`, `A_plz`, `A_Stadt`,
 --
 
 CREATE TABLE IF NOT EXISTS `BeschreibungT` (
-  `B_ID` int(11) NOT NULL,
+  `B_ID` int(11) NOT NULL AUTO_INCREMENT,
   `B_text` text NOT NULL,
-  `B_kurzbesch` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+  `B_kurzbesch` text NOT NULL,
+  PRIMARY KEY (`B_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Daten für Tabelle `BeschreibungT`
@@ -86,7 +88,7 @@ INSERT INTO `BeschreibungT` (`B_ID`, `B_text`, `B_kurzbesch`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `FelgenT` (
-  `F_ID` int(11) NOT NULL,
+  `F_ID` int(11) NOT NULL AUTO_INCREMENT,
   `F_bild` varchar(127) NOT NULL,
   `F_BESCH` int(11) NOT NULL,
   `F_preis` int(11) NOT NULL,
@@ -94,18 +96,21 @@ CREATE TABLE IF NOT EXISTS `FelgenT` (
   `F_name` varchar(128) NOT NULL,
   `F_narbendynamo` tinyint(1) NOT NULL,
   `F_formTyp` int(11) NOT NULL,
-  `F_formTypID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `F_formTypID` int(11) NOT NULL,
+  PRIMARY KEY (`F_ID`),
+  KEY `F_BESCH` (`F_BESCH`),
+  KEY `F_formTypID` (`F_formTypID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Daten für Tabelle `FelgenT`
 --
 
 INSERT INTO `FelgenT` (`F_ID`, `F_bild`, `F_BESCH`, `F_preis`, `F_reifengroesse`, `F_name`, `F_narbendynamo`, `F_formTyp`, `F_formTypID`) VALUES
-(1, '', 8, 60, 28, 'Stahliodraht 28"', 1, 28, 8),
-(2, '', 8, 60, 26, 'Stahliodraht 26"', 1, 26, 9),
-(3, '', 9, 80, 26, 'Swissalu 26"', 1, 26, 9),
-(4, '', 9, 80, 28, 'Swissalu 28"', 1, 28, 8);
+(1, 'staliodraht.png', 8, 60, 28, 'Stahliodraht 28"', 1, 28, 8),
+(2, 'staliodraht.png', 8, 60, 26, 'Stahliodraht 26"', 1, 26, 9),
+(3, 'swissalu.png', 9, 80, 26, 'Swissalu 26"', 1, 26, 9),
+(4, 'swissalu.png', 9, 80, 28, 'Swissalu 28"', 1, 28, 8);
 
 -- --------------------------------------------------------
 
@@ -114,15 +119,17 @@ INSERT INTO `FelgenT` (`F_ID`, `F_bild`, `F_BESCH`, `F_preis`, `F_reifengroesse`
 --
 
 CREATE TABLE IF NOT EXISTS `FormTypT` (
-  `Fo_ID` int(11) NOT NULL,
+  `Fo_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Fo_gabel` int(11) NOT NULL,
   `Fo_felgen` int(11) NOT NULL,
   `Fo_vorbau` int(11) NOT NULL,
   `Fo_mantel` int(11) NOT NULL,
   `Fo_rahmen` int(11) NOT NULL,
   `Fo_teile` int(11) NOT NULL,
-  `Fo_sattel` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+  `Fo_sattel` int(11) NOT NULL,
+  PRIMARY KEY (`Fo_ID`),
+  KEY `Fo_ID` (`Fo_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Daten für Tabelle `FormTypT`
@@ -152,7 +159,7 @@ INSERT INTO `FormTypT` (`Fo_ID`, `Fo_gabel`, `Fo_felgen`, `Fo_vorbau`, `Fo_mante
 --
 
 CREATE TABLE IF NOT EXISTS `GabelT` (
-  `G_ID` int(11) NOT NULL,
+  `G_ID` int(11) NOT NULL AUTO_INCREMENT,
   `G_bild` varchar(127) NOT NULL,
   `G_BESCH` int(11) NOT NULL,
   `G_formTyp` int(11) NOT NULL,
@@ -165,17 +172,21 @@ CREATE TABLE IF NOT EXISTS `GabelT` (
   `G_reifengroesse` int(3) NOT NULL,
   `G_preis` int(11) NOT NULL,
   `G_name` varchar(256) NOT NULL,
-  `G_farbe` varchar(256) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `G_farbe` varchar(256) NOT NULL,
+  PRIMARY KEY (`G_ID`),
+  KEY `G_BESCH` (`G_BESCH`),
+  KEY `G_formTypID` (`G_formTypID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Daten für Tabelle `GabelT`
 --
 
 INSERT INTO `GabelT` (`G_ID`, `G_bild`, `G_BESCH`, `G_formTyp`, `G_formTypID`, `G_schaftlaenge`, `G_steuersatz`, `G_felgenbrems`, `G_scheibenbrems`, `G_licht`, `G_reifengroesse`, `G_preis`, `G_name`, `G_farbe`) VALUES
-(1, '', 5, 18, 5, 400, 18, 1, 1, 1, 26, 120, 'Helly Yeah', ''),
-(2, '', 6, 18, 6, 400, 18, 1, 0, 1, 28, 130, 'FACK', ''),
-(3, '', 7, 1, 7, 300, 1, 1, 0, 1, 28, 30, 'YOU', '');
+(1, 'helly.png', 5, 18, 5, 400, 18, 1, 1, 1, 26, 120, 'Helly Yeah', ''),
+(2, 'fack.png', 6, 18, 6, 400, 18, 1, 0, 1, 28, 130, 'FACK', ''),
+(3, 'you.png', 7, 1, 7, 300, 1, 1, 0, 1, 28, 30, 'YOU', ''),
+(4, 'fack.png', 6, 18, 6, 400, 18, 1, 1, 1, 28, 130, 'RoadRace', '');
 
 -- --------------------------------------------------------
 
@@ -184,7 +195,7 @@ INSERT INTO `GabelT` (`G_ID`, `G_bild`, `G_BESCH`, `G_formTyp`, `G_formTypID`, `
 --
 
 CREATE TABLE IF NOT EXISTS `KundeT` (
-  `K_ID` int(11) NOT NULL,
+  `K_ID` int(11) NOT NULL AUTO_INCREMENT,
   `K_vorname` varchar(63) NOT NULL,
   `K_nachname` varchar(63) NOT NULL,
   `K_passwort` varchar(127) NOT NULL,
@@ -192,8 +203,11 @@ CREATE TABLE IF NOT EXISTS `KundeT` (
   `K_adresse` int(11) NOT NULL,
   `K_telefon` int(11) NOT NULL,
   `K_gebdatum` varchar(11) NOT NULL,
-  `K_anrede` varchar(12) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `K_anrede` varchar(12) NOT NULL,
+  PRIMARY KEY (`K_ID`),
+  UNIQUE KEY `K_email` (`K_email`),
+  KEY `K_adresse` (`K_adresse`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Daten für Tabelle `KundeT`
@@ -212,7 +226,7 @@ INSERT INTO `KundeT` (`K_ID`, `K_vorname`, `K_nachname`, `K_passwort`, `K_email`
 --
 
 CREATE TABLE IF NOT EXISTS `MantelT` (
-  `M_ID` int(11) NOT NULL,
+  `M_ID` int(11) NOT NULL AUTO_INCREMENT,
   `M_bild` varchar(127) NOT NULL,
   `M_BESCH` int(11) NOT NULL,
   `M_name` varchar(128) NOT NULL,
@@ -220,20 +234,23 @@ CREATE TABLE IF NOT EXISTS `MantelT` (
   `M_formTypID` int(11) NOT NULL,
   `M_durchm` int(11) NOT NULL,
   `M_reifengroesse` int(3) NOT NULL,
-  `M_preis` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `M_preis` int(11) NOT NULL,
+  PRIMARY KEY (`M_ID`),
+  KEY `M_BESCH` (`M_BESCH`),
+  KEY `M_formTypID` (`M_formTypID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Daten für Tabelle `MantelT`
 --
 
 INSERT INTO `MantelT` (`M_ID`, `M_bild`, `M_BESCH`, `M_name`, `M_formTyp`, `M_formTypID`, `M_durchm`, `M_reifengroesse`, `M_preis`) VALUES
-(1, '', 10, 'VollgummiProfiler', 28, 11, 200, 28, 33),
-(2, '', 10, 'VollgummiProfiler', 26, 10, 200, 26, 33),
-(3, '', 11, 'Schneekette', 26, 10, 150, 26, 40),
-(4, '', 11, 'Schneekette', 28, 11, 150, 28, 40),
-(5, '', 12, 'Strecke', 28, 11, 150, 28, 40),
-(6, '', 12, 'Strecke', 26, 10, 150, 26, 40);
+(1, 'Vollgummi.png', 10, 'VollgummiProfiler', 28, 11, 200, 28, 33),
+(2, 'Vollgummi.png', 10, 'VollgummiProfiler', 26, 10, 200, 26, 33),
+(3, 'schneekette.png', 11, 'Schneekette', 26, 10, 150, 26, 40),
+(4, 'schneekette.png', 11, 'Schneekette', 28, 11, 150, 28, 40),
+(5, 'strecke.png', 12, 'Strecke', 28, 11, 150, 28, 40),
+(6, 'strecke.png', 12, 'Strecke', 26, 10, 150, 26, 40);
 
 -- --------------------------------------------------------
 
@@ -242,7 +259,7 @@ INSERT INTO `MantelT` (`M_ID`, `M_bild`, `M_BESCH`, `M_name`, `M_formTyp`, `M_fo
 --
 
 CREATE TABLE IF NOT EXISTS `RahmenT` (
-  `R_ID` int(11) NOT NULL,
+  `R_ID` int(11) NOT NULL AUTO_INCREMENT,
   `R_hoehe` varchar(256) NOT NULL,
   `R_form` int(11) NOT NULL,
   `R_reifengroesse` int(3) NOT NULL,
@@ -260,18 +277,22 @@ CREATE TABLE IF NOT EXISTS `RahmenT` (
   `R_preis` int(11) NOT NULL,
   `R_gepaektraeger` tinyint(1) NOT NULL,
   `R_licht` tinyint(1) NOT NULL,
-  `R_farbe` varchar(256) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `R_farbe` varchar(256) NOT NULL,
+  PRIMARY KEY (`R_ID`),
+  KEY `R_BESCH` (`R_BESCH`),
+  KEY `R_formTypID` (`R_formTypID`),
+  KEY `R_formTypID_2` (`R_formTypID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Daten für Tabelle `RahmenT`
 --
 
 INSERT INTO `RahmenT` (`R_ID`, `R_hoehe`, `R_form`, `R_reifengroesse`, `R_bild`, `R_BESCH`, `R_steuersatz`, `R_schafthoehe`, `R_zusatzbefest`, `R_scheibenbrems`, `R_felgenbrems`, `R_tretlager`, `R_formTyp`, `R_formTypID`, `R_name`, `R_preis`, `R_gepaektraeger`, `R_licht`, `R_farbe`) VALUES
-(2, '45#46#47#48#50#52', 0, 28, '', 1, 1, 150, 2, 0, 1, 1, 0, 1, 'Gemütliches Cittybike', 200, 1, 1, 'Orange#Blau#Rot'),
-(4, '44#47#50', 0, 28, '', 2, 18, 150, 1, 1, 0, 1, 2, 2, 'Arlu', 200, 0, 1, 'Blau#Rot'),
-(5, '47', 0, 26, '', 3, 18, 200, 0, 1, 0, 2, 1, 3, 'Mounti Mount', 300, 0, 0, 'Rot'),
-(6, '45', 0, 26, '', 4, 18, 250, 2, 1, 0, 1, 1, 4, 'Mounti Neu Mount', 350, 0, 0, 'Blau');
+(2, '45#46#47#48#50#52', 0, 28, 'hollandrad.png', 1, 1, 150, 2, 0, 1, 1, 0, 1, 'Gemütliches Cittybike', 200, 1, 1, 'Orange#Blau#Gruen#Gelb'),
+(4, '44#47#50', 0, 28, 'stadtrad.png', 2, 18, 150, 1, 1, 0, 1, 2, 2, 'Arlu', 200, 0, 1, 'Rot#Gruen#Orange#Gelb'),
+(5, '47', 0, 26, 'mountimount.png', 3, 18, 200, 0, 1, 0, 2, 1, 3, 'Mounti Mount', 300, 0, 0, 'Rot#Blau#Gruen#Orange'),
+(6, '45', 0, 26, 'mountimountneu.png', 4, 18, 250, 2, 1, 0, 1, 1, 4, 'Mounti Neu Mount', 350, 0, 0, 'Blau#Rot#Cyan#Violett#Gelb#Grau#Schwarz#Gruen');
 
 -- --------------------------------------------------------
 
@@ -280,22 +301,25 @@ INSERT INTO `RahmenT` (`R_ID`, `R_hoehe`, `R_form`, `R_reifengroesse`, `R_bild`,
 --
 
 CREATE TABLE IF NOT EXISTS `SattelT` (
-  `S_ID` int(11) NOT NULL,
+  `S_ID` int(11) NOT NULL AUTO_INCREMENT,
   `S_bild` varchar(127) NOT NULL,
   `S_BESCH` int(11) NOT NULL,
   `S_name` varchar(128) NOT NULL,
   `S_preis` int(11) NOT NULL,
   `S_formTyp` int(11) NOT NULL,
-  `S_formTypID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `S_formTypID` int(11) NOT NULL,
+  PRIMARY KEY (`S_ID`),
+  KEY `S_BESCH` (`S_BESCH`),
+  KEY `S_formTypID` (`S_formTypID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Daten für Tabelle `SattelT`
 --
 
 INSERT INTO `SattelT` (`S_ID`, `S_bild`, `S_BESCH`, `S_name`, `S_preis`, `S_formTyp`, `S_formTypID`) VALUES
-(1, '', 13, 'Kuscheligion', 20, 0, 12),
-(2, '', 14, 'Sportife', 20, 0, 12);
+(1, 'kuschel.png', 13, 'Kuscheligion', 20, 0, 12),
+(2, 'sport.png', 14, 'Sportife', 20, 0, 12);
 
 -- --------------------------------------------------------
 
@@ -304,7 +328,7 @@ INSERT INTO `SattelT` (`S_ID`, `S_bild`, `S_BESCH`, `S_name`, `S_preis`, `S_form
 --
 
 CREATE TABLE IF NOT EXISTS `TeileT` (
-  `T_ID` int(11) NOT NULL,
+  `T_ID` int(11) NOT NULL AUTO_INCREMENT,
   `T_bild` varchar(127) NOT NULL,
   `T_BESCH` int(11) NOT NULL,
   `T_name` varchar(128) NOT NULL,
@@ -312,15 +336,18 @@ CREATE TABLE IF NOT EXISTS `TeileT` (
   `T_zusatzBelegt` tinyint(1) NOT NULL,
   `T_formTyp` int(11) NOT NULL,
   `T_formTypID` int(11) NOT NULL,
-  `T_gepaeck` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `T_gepaeck` tinyint(1) NOT NULL,
+  PRIMARY KEY (`T_ID`),
+  KEY `T_BESCH` (`T_BESCH`),
+  KEY `T_formTypID` (`T_formTypID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Daten für Tabelle `TeileT`
 --
 
 INSERT INTO `TeileT` (`T_ID`, `T_bild`, `T_BESCH`, `T_name`, `T_preis`, `T_zusatzBelegt`, `T_formTyp`, `T_formTypID`, `T_gepaeck`) VALUES
-(1, '', 15, 'SicherHelm', 9, 0, 0, 13, 0);
+(1, 'SicherHelm.png', 15, 'SicherHelm', 9, 0, 0, 13, 0);
 
 -- --------------------------------------------------------
 
@@ -329,170 +356,26 @@ INSERT INTO `TeileT` (`T_ID`, `T_bild`, `T_BESCH`, `T_name`, `T_preis`, `T_zusat
 --
 
 CREATE TABLE IF NOT EXISTS `VorbauT` (
-  `V_ID` int(11) NOT NULL,
+  `V_ID` int(11) NOT NULL AUTO_INCREMENT,
   `V_bild` varchar(127) NOT NULL,
   `V_BESCH` int(11) NOT NULL,
   `V_preis` int(11) NOT NULL,
   `V_schaftgroesse` int(11) NOT NULL,
   `V_formTyp` int(11) NOT NULL,
-  `V_formTypID` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `V_formTypID` int(11) NOT NULL,
+  PRIMARY KEY (`V_ID`),
+  KEY `V_BESCH` (`V_BESCH`),
+  KEY `V_formTypID` (`V_formTypID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Daten für Tabelle `VorbauT`
 --
 
 INSERT INTO `VorbauT` (`V_ID`, `V_bild`, `V_BESCH`, `V_preis`, `V_schaftgroesse`, `V_formTyp`, `V_formTypID`) VALUES
-(1, '', 16, 20, 1, 1, 14),
-(2, '', 16, 20, 18, 18, 15);
+(1, 'hollandVorbau.png', 16, 20, 1, 1, 14),
+(2, 'hollandVorbau.png', 16, 20, 18, 18, 15);
 
---
--- Indizes der exportierten Tabellen
---
-
---
--- Indizes für die Tabelle `AdresseT`
---
-ALTER TABLE `AdresseT`
-  ADD PRIMARY KEY (`A_ID`);
-
---
--- Indizes für die Tabelle `BeschreibungT`
---
-ALTER TABLE `BeschreibungT`
-  ADD PRIMARY KEY (`B_ID`);
-
---
--- Indizes für die Tabelle `FelgenT`
---
-ALTER TABLE `FelgenT`
-  ADD PRIMARY KEY (`F_ID`),
-  ADD KEY `F_BESCH` (`F_BESCH`),
-  ADD KEY `F_formTypID` (`F_formTypID`);
-
---
--- Indizes für die Tabelle `FormTypT`
---
-ALTER TABLE `FormTypT`
-  ADD PRIMARY KEY (`Fo_ID`),
-  ADD KEY `Fo_ID` (`Fo_ID`);
-
---
--- Indizes für die Tabelle `GabelT`
---
-ALTER TABLE `GabelT`
-  ADD PRIMARY KEY (`G_ID`),
-  ADD KEY `G_BESCH` (`G_BESCH`),
-  ADD KEY `G_formTypID` (`G_formTypID`);
-
---
--- Indizes für die Tabelle `KundeT`
---
-ALTER TABLE `KundeT`
-  ADD PRIMARY KEY (`K_ID`),
-  ADD UNIQUE KEY `K_email` (`K_email`),
-  ADD KEY `K_adresse` (`K_adresse`);
-
---
--- Indizes für die Tabelle `MantelT`
---
-ALTER TABLE `MantelT`
-  ADD PRIMARY KEY (`M_ID`),
-  ADD KEY `M_BESCH` (`M_BESCH`),
-  ADD KEY `M_formTypID` (`M_formTypID`);
-
---
--- Indizes für die Tabelle `RahmenT`
---
-ALTER TABLE `RahmenT`
-  ADD PRIMARY KEY (`R_ID`),
-  ADD KEY `R_BESCH` (`R_BESCH`),
-  ADD KEY `R_formTypID` (`R_formTypID`),
-  ADD KEY `R_formTypID_2` (`R_formTypID`);
-
---
--- Indizes für die Tabelle `SattelT`
---
-ALTER TABLE `SattelT`
-  ADD PRIMARY KEY (`S_ID`),
-  ADD KEY `S_BESCH` (`S_BESCH`),
-  ADD KEY `S_formTypID` (`S_formTypID`);
-
---
--- Indizes für die Tabelle `TeileT`
---
-ALTER TABLE `TeileT`
-  ADD PRIMARY KEY (`T_ID`),
-  ADD KEY `T_BESCH` (`T_BESCH`),
-  ADD KEY `T_formTypID` (`T_formTypID`);
-
---
--- Indizes für die Tabelle `VorbauT`
---
-ALTER TABLE `VorbauT`
-  ADD PRIMARY KEY (`V_ID`),
-  ADD KEY `V_BESCH` (`V_BESCH`),
-  ADD KEY `V_formTypID` (`V_formTypID`);
-
---
--- AUTO_INCREMENT für exportierte Tabellen
---
-
---
--- AUTO_INCREMENT für Tabelle `AdresseT`
---
-ALTER TABLE `AdresseT`
-  MODIFY `A_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT für Tabelle `BeschreibungT`
---
-ALTER TABLE `BeschreibungT`
-  MODIFY `B_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT für Tabelle `FelgenT`
---
-ALTER TABLE `FelgenT`
-  MODIFY `F_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT für Tabelle `FormTypT`
---
-ALTER TABLE `FormTypT`
-  MODIFY `Fo_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT für Tabelle `GabelT`
---
-ALTER TABLE `GabelT`
-  MODIFY `G_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT für Tabelle `KundeT`
---
-ALTER TABLE `KundeT`
-  MODIFY `K_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT für Tabelle `MantelT`
---
-ALTER TABLE `MantelT`
-  MODIFY `M_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT für Tabelle `RahmenT`
---
-ALTER TABLE `RahmenT`
-  MODIFY `R_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT für Tabelle `SattelT`
---
-ALTER TABLE `SattelT`
-  MODIFY `S_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT für Tabelle `TeileT`
---
-ALTER TABLE `TeileT`
-  MODIFY `T_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT für Tabelle `VorbauT`
---
-ALTER TABLE `VorbauT`
-  MODIFY `V_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints der exportierten Tabellen
 --

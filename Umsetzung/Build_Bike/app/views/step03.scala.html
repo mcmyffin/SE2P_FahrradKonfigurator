@@ -104,7 +104,7 @@
 										@if(i == 0){
 											<tr>
 												<td align="left" height="20px" width="40px">
-													<input id="h@i" checked="checked"  name="Hoehe" type="radio" onclick="meinscript(@i,@rahmenFarbenHoehen.getValue.size())" value="@rahmenFarbenHoehen.getValue.get(i)">
+													<input id="h@i" checked="checked"  name="Hoehe" type="radio" value="@rahmenFarbenHoehen.getValue.get(i)">
 												</td>
 												<td align="center" height="20px" width="200px">
 													<label for="h@i">@rahmenFarbenHoehen.getValue.get(i) cm</label>
@@ -115,7 +115,7 @@
 
 											<tr>
 												<td align="left" height="20px" width="40px">
-													<input id="@i" name="Hoehe" type="radio" value="@rahmenFarbenHoehen.getValue.get(i)" onclick="meinscript(@i,@rahmenFarbenHoehen.getValue.size())">
+													<input id="@i" name="Hoehe" type="radio" value="@rahmenFarbenHoehen.getValue.get(i)">
 												</td>
 												<td align="center" height="20px" width="200px">
 													<label for="@i">@rahmenFarbenHoehen.getValue.get(i) cm</label>
