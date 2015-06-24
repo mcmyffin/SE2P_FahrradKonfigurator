@@ -1,4 +1,4 @@
-@(rahmenFarbenHoehen: models.DatenTypen.Pair[java.util.List[String],java.util.List[Integer]])
+@(rahmenFarbenHoehen: models.DatenTypen.Pair[java.util.List[String],java.util.List[Integer]],rahmen: models.TeileKomponente.DTO.EinzelteilDTO)
 
 @main("Build your bike for dummies") {
 	<html lang="de">
@@ -24,8 +24,21 @@
 		</div>
 	</div>
 	<div id="view-bg">
-		<div id="view"><img alt="$php" height="366px" src="@routes.Assets.at("images/stadtrad/stadtrad-blau.png")" width="591px"/></div>
+		<div id="view">
+
+		@for(i <-0 to rahmenFarbenHoehen.getKey().size()-1){
+			<img id="B@i" alt="Ein Rahmen :O" height="366px" src="@routes.Assets.at("images/Rahmen/"+rahmenFarbenHoehen.getKey().get(i)+rahmen.getBild())" width="591px"/>
+		}
+		</div>
 	</div>
+		<script>
+						function meinscript(divID,maxDivID){
+							for(i = 0; i < maxDivID; i++){
+								$('#B'+i).hide();
+							}
+							$('#B'+divID).show();
+						}
+					</script>
 	<div id="infobox-bg">
 		<div id="infobox">
 
@@ -180,6 +193,7 @@
 		</div>
 		<div id="next"><img onclick="$('#step').submit();" alt="Next" src="@routes.Assets.at("images/next.png")" /></div>
 	</div>
+		<script>meinscript(0,@rahmenFarbenHoehen.getKey.size())</script>
 	</form>
 	</html>
 }

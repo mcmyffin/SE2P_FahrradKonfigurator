@@ -5,6 +5,8 @@ import models.Exception.UngueltigerStepException;
 import models.KonfigurationKomponente.IKonfiguration;
 import models.TeileKomponente.DTO.EinzelteilDTO;
 import models.TeileKomponente.Einzelteile.Mantel;
+import models.TeileKomponente.ITeileKomponente;
+import models.TeileKomponente.TeileKomponente;
 import models.WarenkorbKomponente.DTO.WarenkorbDTO;
 import play.*;
 import play.mvc.*;
@@ -71,13 +73,20 @@ public class Verlinkung extends Controller {
     public static Result step03() {
 
         Pair<List<String>,List<Integer>> rahmenFarbeHoehe = null;
+        EinzelteilDTO rahmen = null;
+
         try {
             rahmenFarbeHoehe = KonfigurationsSchritte.getRahmenFarbeHoehe();
+
+            ITeileKomponente teileKomponente = new TeileKomponente();
+            IKonfiguration konfiguration = KonfigurationSession.getKonfigurationFromSession();
+            rahmen = teileKomponente.toEinzelteilDTO(konfiguration.getStep2().getRahmen());
+
         } catch (UngueltigerStepException e) {
             return step02();
         }
 
-        return ok(step03.render(rahmenFarbeHoehe));
+        return ok(step03.render(rahmenFarbeHoehe,rahmen));
     }
 
     public static Result step04() {

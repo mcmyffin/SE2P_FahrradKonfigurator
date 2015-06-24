@@ -49,5 +49,5 @@ public class EinzelteilDTO {
         return einzelteiletyp;
     }
 
-//    public String getBild() { return bild; }
+    public String getBild() { return bild; }
 }

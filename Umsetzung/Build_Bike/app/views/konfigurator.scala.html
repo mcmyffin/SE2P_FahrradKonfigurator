@@ -22,15 +22,23 @@
 		</div>
 	</div>
 	<div id="view-bg">
-		<div id="view"><img alt="$php" height="366px" src="@routes.Assets.at("images/stadtrad/stadtrad-blau.png")" width="591px"/></div>
+		<div id="view">
+
+			<img id="B2" alt="Ein Fahrrad :D" height="366px" src="@routes.Assets.at("images/stadtrad.png")" width="591px"/>
+			<img id="B1" alt="Ein Fahrrad :D" height="366px" src="@routes.Assets.at("images/mountainbike.png")" width="591px"/>
+			<img id="B0" alt="Ein Fahrrad :D" height="366px" src="@routes.Assets.at("images/hollandrad.png")" width="591px"/>
+		</div>
+
 	</div>
 
 		<script>
 			function meinscript(divID,maxDivID){
 				for(i = 0; i < maxDivID; i++){
 					$('#D'+i).hide();
+					$('#B'+i).hide();
 				}
 				$('#D'+divID).show();
+				$('#B'+divID).show();
 			}
 		</script>
 
@@ -70,13 +78,16 @@
 						<div class="panel-body" style="overflow: auto; height: 265px; background-color: #f4efff">
 
 							<div id="D0" style="display: block">
-								City Bike Beschreibung
+								City Bikes, das Wunder der Technik. Die meisten Radfahrer schwören hier drauf laut einer nicht repräsentativen Studie des Nichtrepräsentativenstudien-Verlags (welcher von uns zu diesen Zweck erstellt wurde).
+								Wenn sie sich wünschen täglich durch die Städte jedes landes zu fahren und meistens auf Straßen mit einen festen Belag unterwegs sind, ist DAS genau das richtige für sie.
 							</div>
 							<div id="D1" style="display: none">
-								Mounten Bike Beschreibung
+								Schnell über jegliche Berge fahren, wer möchte das nicht? Durch diese Bikes brauchen ihnen Bodenschläge keine Angst mehr machen (es sei denn sie bestellen hier).
+								Durch die Federungen, die diese Kategorie bietet, haben sie garantiert keine Probleme mit unebenen gegenden.
 							</div>
 							<div id="D2" style="display: none">
-								Trekking Bike Beschreibung
+								Ein wenig übers land fahren, lange Strecken? Genau das macht diese Kategorie aus. Hier wird speziell auf den Ausgleich von Gewicht zu Komponenten geachtet (deswegen ist vieles aus Plastik [was so viel bedeutet wie UV-Aktiv]), um immer eine hohe Geschwindigkeit zu garantieren.
+								Wenn sie gern Touren fahren, auch mal übers Land, so ist dies die richtige Kategorie.
 							</div>
 						</div>
 					</div>
@@ -86,6 +97,9 @@
 
 		</div>
 	</div>
+		<script>
+			meinscript(0,3);
+		</script>
 	<div id="menu">
 		<div id="info">
 			<div id="info-bg-left"></div>
