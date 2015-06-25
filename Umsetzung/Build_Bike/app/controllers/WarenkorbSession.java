@@ -95,6 +95,7 @@ public class WarenkorbSession extends Controller{
         setWarenkorbToSession(warenkorb);
     }
 
+
     public static Result removeKonfiguration(){
 
         DynamicForm form = Form.form().bindFromRequest();
@@ -122,15 +123,23 @@ public class WarenkorbSession extends Controller{
         DynamicForm form = Form.form().bindFromRequest();
         String email = form.get("email");
 
-        if(email != null){
+        // Wenn keine Email gesetzt dann zurueck zum Warenkorb
+        if(email == null) return ok(warenkorb.render());
 
-            IWarenkorb warenkorb = getWarenkorbFromSession();
-            IMailer mailer = new Mailer();
+        IWarenkorb einWarenkorb = getWarenkorbFromSession();
 
-            mailer.sendEMailTo(email, "Ihre Bestellung vom " + Time.getDate()+" um "+Time.getTime(), warenkorb.getRechnung());
-        }
+        // Wenn warenkorb leer kann nicht bestellt werden
+        if(einWarenkorb == null || einWarenkorb.getKonfigurationen().isEmpty()) return ok(warenkorb.render());
 
+        // Versende Rechnung an Email
+        IMailer mailer = new Mailer();
+        mailer.sendEMailTo(email, "Ihre Bestellung vom " + Time.getDate()+" um "+Time.getTime(), einWarenkorb.getRechnung());
+        System.out.println(einWarenkorb.getRechnung());
+
+        // leere Warenkorb
         removeWarenkorb();
         return ok(bestellen.render());
+
+
     }
 }
